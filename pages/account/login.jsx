@@ -28,6 +28,7 @@ const LoginPage = () => {
       style={{
         overflowX: "hidden",
       }}
+      
     >
       <Head>
         <title>{titleView}</title>
