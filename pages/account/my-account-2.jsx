@@ -27,6 +27,8 @@ class MyAccountPage2 extends Component {
                     <BreadCrumb breacrumb={this.state.breadCrumb} />
                     <MyAccount2 />
                 </div>
+
+                
             </ContainerPage>
         );
     }
