@@ -129,7 +129,7 @@ const Register = () => {
       phone_number: user.phone_number,
     };
     const response = await AccountRepository.sendRegisterMobileOTP(payload);
-console.log("......otp....sent.....",response)
+
     if (response.httpcode == 200) {
       displayNotification(response.status, response.status, response.message);
       setOtpButton({

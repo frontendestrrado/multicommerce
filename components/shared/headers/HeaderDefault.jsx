@@ -35,7 +35,7 @@ const HeaderDefault = () => {
         <div className="ps-container">
           <div className="header__left">
             <Logo />
-            <MenuCategoriesDropdown />
+            {/* <MenuCategoriesDropdown /> */}
           </div>
           <div className="header__categ">
             <MenuCategoriesDropdown />

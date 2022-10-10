@@ -43,6 +43,7 @@ const HomepageDefaultPage = () => {
 
   const { homedata } = useSelector((state) => state.home);
   useEffect(() => {
+    console.log("...homedata....",homedata)
     if (homedata == null) {
       loadHomedata();
     } else {
@@ -59,7 +60,7 @@ const HomepageDefaultPage = () => {
         <HomeDefaultBanner homeitems={homeitems} loading={loading} />
         {/* <MarketPlace3SearchTrending /> */}
         {/* <SiteFeatures /> */}
-         {!loading && homeitems && homeitems?.daily_deals?.length > 0 && (
+         {!loading && homeitems && homeitems?.category?.length > 0 && (
           <ShopByCategory
             collectionSlug="deal-of-the-day"
             homeitems={homeitems}
@@ -68,15 +69,6 @@ const HomepageDefaultPage = () => {
         )}
         <TrendingNow />
         {/* <Homecategories homeitems={homeitems} loading={loading} /> */}
-
-        {!loading && homeitems && homeitems?.daily_deals?.length > 0 && (
-          <NewDealsDaily
-            collectionSlug="deal-of-the-day"
-            homeitems={homeitems}
-            loading={loading}
-          />
-        )}
-
         {!loading && homeitems && homeitems?.shocking_sale?.length > 0 && (
           <Shockingsale
             collectionSlug="deal-of-the-day"
@@ -84,11 +76,22 @@ const HomepageDefaultPage = () => {
             loading={loading}
           />
         )}
+       
+
+      
            <Advert/>
+
+           {!loading && homeitems && homeitems?.new_arrivals?.length > 0 && (
+          <NewDealsDaily
+            collectionSlug="deal-of-the-day"
+            homeitems={homeitems}
+            loading={loading}
+          />
+        )}
         {!loading && homeitems && homeitems?.featured_products?.length > 0 && (
           <Featureproducts
             collectionSlug="consumer-electronics"
-            title="New Arrivals"
+            title="Feature products"
             homeitems={homeitems}
             loading={loading}
           />

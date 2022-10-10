@@ -272,7 +272,7 @@ document.getElementById('registerId').style.display='none'
                 <div className="card-body">
                   {showLoginWithSMS ? <LoginWithSMS /> : <LoginWithEmail />}
                   <div className="forgt">
-                    <a className="frgt_link" href="#">
+                    <a className="frgt_link" href="#"> 
                       Forgot Password
                     </a>
                     <a className="frgt_link" href="#">
@@ -596,7 +596,7 @@ document.getElementById('registerId').style.display='none'
                     <div className="fotr_txt">
                       Already have an account?
                       
-                        <a onClick={() => reg()} className="ftr_link"> Log In </a>
+                        <a onClick={() => login()} className="ftr_link"> Log In </a>
                       
                     </div>
                   </div>

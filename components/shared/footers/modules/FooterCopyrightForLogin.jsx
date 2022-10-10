@@ -98,7 +98,7 @@ const FooterCopyright = () => (
                           <form className="form-inline position-relative"
                               action="/page/blank"
                               target="_blank" method="post">
-                              <input className="form-control" type="text" placeholder="Your email address">
+                              <input className="form-control" type="text" placeholder="Your email address"/>
                               <button className="btn nletter-btn text-capitalize" type="submit">Sign
                                   up</button>
                           </form>
@@ -125,7 +125,7 @@ const FooterCopyright = () => (
                   <div className="text-start">
                       <p className="mb-3 mb-md-0">
           © 2021 <span className="text-capitalize">Junno</span> Made
-          with <span style="color:#ea3a3c;">&#10084;</span> by
+          with <span >&#10084;</span> by
           <a target="_blank" href="https://hasthemes.com/">HasThemes</a>
         </p>
                   </div>

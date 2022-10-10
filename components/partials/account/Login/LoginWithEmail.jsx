@@ -24,7 +24,7 @@ const LoginWithEmail = () => {
     let os = osType();
     let input = user.input;
     let password = user.password;
-
+    console.log("....email...login.... ${apibaseurl}...",{apibaseurl})
     const data = await Axios.post(`${apibaseurl}/api/customer/login`, {
       input,
       password,
@@ -35,6 +35,8 @@ const LoginWithEmail = () => {
     })
       .then((response) => response.data)
       .then((data) => {
+        console.log("....email...login.... data...",data)
+    //    console.log("....email...login.... response...",response)
         if (data.httpcode == 400 && data.status == "error") {
           notification["error"]({
             message: data.message,

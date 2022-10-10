@@ -15,9 +15,9 @@ const ModuleDealOfDayCardProduct1 = ({ product }) => {
 
   return (
     <>
-      <Link href="/product/[pid]" as={`/product/${product.product_id}`}>
+      <Link href="/product/[pid]" as={`/product/${product.id}`}>
         <a>
-          <ProductThumbnail imageLink={product?.image[0]?.image} />
+          <ProductThumbnail imageLink={product.image} />
         </a>
       </Link>
       <div className="ps-product__container text-truncate text-center">
@@ -29,14 +29,14 @@ const ModuleDealOfDayCardProduct1 = ({ product }) => {
               fontWeight: "500",
             }}
           >
-            {product.product_name}
+            {product.category_name}
           </a>
         </Link>
 
-        <hr />
+        {/* <hr /> */}
 
-        <div className="ps-product__content">
-          {priceView}
+        {/* <div className="ps-product__content">
+          {priceView} */}
 
           {/* <Link href={`/seller/${product.seller_id}`}>
             <a className="ps-product__title text-capitalize">
@@ -46,7 +46,7 @@ const ModuleDealOfDayCardProduct1 = ({ product }) => {
           {/* <div  className="ps-product__rating">
             <Rating rating={product.rating} />
           </div> */}
-        </div>
+        {/* </div> */}
       </div>
     </>
   );

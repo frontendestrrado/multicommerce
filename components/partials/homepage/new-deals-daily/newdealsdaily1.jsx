@@ -6,15 +6,15 @@ import {
   carouselFullwidth,
   carouselStandard,
 } from "~/utilities/carousel-helpers";
-import ProductDealOfDay from "~/components/elements/products/ProductDealOfDay";
-import ProductDealOfDaySlider from "~/components/elements/products/ProductDealOfDaySlider";
+import ProductDealOfDay1 from "~/components/elements/products/ProductDealOfDay1";
+import ProductDealOfDaySlider1 from "~/components/elements/products/ProductDealOfDaySlider1";
 import { generateTempArray } from "~/utilities/common-helpers";
 import { getProductsByCollectionHelper } from "~/utilities/strapi-fetch-data-helpers";
 
 const Newdealsdaily = ({ homeitems, loading }) => {
   // Views
   const checkdealsobject = (homeitems) => {
-    if ("daily_deals" in homeitems) {
+    if ("category" in homeitems) {
       return true;
     } else {
       return false;
@@ -22,19 +22,19 @@ const Newdealsdaily = ({ homeitems, loading }) => {
   };
   let productItemsView;
   if (!loading) {
-    if (checkdealsobject && homeitems && homeitems?.daily_deals?.length > 0) {
+    if (checkdealsobject && homeitems && homeitems?.category?.length > 0) {
  
       const slideItems =
-        homeitems?.daily_deals?.length > 5
-          ? homeitems?.daily_deals?.map((item) => (
-              <ProductDealOfDaySlider product={item} key={item.product_id} />
+        homeitems?.category?.length > 5
+          ? homeitems?.category?.map((item) => (
+              <ProductDealOfDaySlider1 product={item} key={item.id} />
             ))
-          : homeitems?.daily_deals?.map((item) => (
-              <ProductDealOfDay product={item} key={item.product_id} />
+          : homeitems?.category?.map((item) => (
+              <ProductDealOfDay1 product={item} key={item.id} />
             ));
 
       productItemsView =
-        homeitems?.daily_deals?.length > 5 ? (
+        homeitems?.category?.length > 5 ? (
           <Slider {...carouselStandard} className="ps-carousel outside">
             {slideItems}
           </Slider>
