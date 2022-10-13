@@ -25,6 +25,22 @@ class AccountRepository {
     return response;
   }
 
+
+  async changePassword(payload) {
+    const response = await Repository.post(
+      `${apibaseurl}/api/customer/password/change`,
+      payload
+    )
+      .then((response) => {
+        if (response.data.httpcode == 200) {
+          return response.data;
+        }
+        return response.data;
+      })
+      .catch((err) => console.log(err));
+    return response;
+  }
+
   async registerNewUser(payload) {
     const response = await Repository.post(
       `${apibaseurl}/api/customer/register`,
@@ -456,6 +472,20 @@ class AccountRepository {
       .catch((error) => ({ error: JSON.stringify(error) }));
     return response;
   }
+
+  async verifyForgotOTP(payload) {
+    const response = await Repository.post(
+      `${apibaseurl}/api/customer/login/forgot/verify-otp`,
+      payload
+    )
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => ({ error: JSON.stringify(error) }));
+    return response;
+  }
 }
+
+
 
 export default new AccountRepository();

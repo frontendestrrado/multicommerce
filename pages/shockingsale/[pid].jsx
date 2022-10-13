@@ -27,6 +27,7 @@ const ShockingSaleDefaultPage = () => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
   async function getProduct(pid) {
+    console.log("...4........",pid)
     setLoading(true);
     let payload = {
       shock_sale_id: pid,
@@ -37,13 +38,16 @@ const ShockingSaleDefaultPage = () => {
       page_url: makePageUrl(router.asPath),
       os_type: "WEB",
     };
+    console.log("...5........",payload)
     const responseData = await ProductRepository.getShockSaleByid(payload);
+    console.log("...6........",responseData)
     if (
       responseData.httpcode == 200 &&
       responseData &&
       responseData.data !== undefined &&
       responseData.data.length > 0
     ) {
+      console.log("...7........")
       setProduct({ product: { ...responseData.data[0] } });
       setTimeout(
         function () {
@@ -52,6 +56,7 @@ const ShockingSaleDefaultPage = () => {
         250
       );
     } else {
+      console.log("...8........")
       notification["error"]({
         message: "Error",
         description: "Error While Fetching Data From Server.",
@@ -62,6 +67,7 @@ const ShockingSaleDefaultPage = () => {
   }
 
   async function getProductInwishList(pid) {
+    console.log("...9........",pid)
     let payload = {
       shock_sale_id: pid,
       product_id: pr_id,
@@ -71,13 +77,16 @@ const ShockingSaleDefaultPage = () => {
       page_url: makePageUrl(router.asPath),
       os_type: "WEB",
     };
+    console.log("...10........",payload)
     const responseData = await ProductRepository.getShockSaleByid(payload);
+    console.log("...11........",responseData)
     if (
       responseData.httpcode == 200 &&
       responseData &&
       responseData.data !== undefined &&
       responseData.data.length > 0
     ) {
+      console.log("...12........")
       setProduct({ product: { ...responseData.data[0] } });
       setTimeout(
         function () {
@@ -86,6 +95,7 @@ const ShockingSaleDefaultPage = () => {
         250
       );
     } else if (responseData && responseData.httpcode == 401) {
+      console.log("...13........")
       notification["error"]({
         message: "Error",
         description: responseData.message,
@@ -94,6 +104,7 @@ const ShockingSaleDefaultPage = () => {
       dispatch(logOut());
       router.push(`/${responseData.data.redirect}`);
     } else {
+      console.log("...14........")
       notification["error"]({
         message: "Error",
         description: "Error While Fetching Data From Server.",
@@ -104,12 +115,15 @@ const ShockingSaleDefaultPage = () => {
   }
 
   useEffect(() => {
+    console.log("...1........")
     if (access_token) {
+      console.log("...2........",pid)
       getProductInwishList(pid);
     }
   }, [shockingsale_wishlist, access_token]);
 
   useEffect(() => {
+    console.log("...3........",pid)
     getProduct(pid);
   }, [pid]);
 

@@ -6,6 +6,7 @@ import ContainerHomeDefault from "~/components/layouts/ContainerHomeDefault";
 import FeatureAndRecent from "~/components/partials/homepage/home-default/FeatureAndRecent";
 import Advert from "~/components/partials/homepage/home-default/Advert";
 import Discount from "~/components/partials/homepage/home-default/Discount";
+import Brand from "~/components/partials/homepage/home-default/Brand";
 import BottomCategory from "~/components/partials/homepage/home-default/BottomCategory";
 import HomeDefaultBanner from "~/components/partials/homepage/home-default/HomeDefaultBanner";
 import Homecategories from "~/components/partials/homepage/category/homecategories";
@@ -15,9 +16,9 @@ import Shockingsale from "~/components/partials/homepage/shockingsale/shockingsa
 import Featureproducts from "~/components/partials/homepage/featureproducts/featureproducts";
 import Homeauction from "~/components/partials/homepage/auction/auction";
 import Bestseller from "~/components/partials/homepage/home-default/Bestseller";
-
+import Repository, { apibaseurl } from "~/repositories/Repository";
 import FooterLinks from "~/components/shared/footers/modules/FooterLinks";
-
+import Axios from "axios";
 import { getHomedata } from "~/utilities/home-helper";
 import { useRouter } from "next/router";
 import { getHomeSuccess } from "~/store/home/action";
@@ -26,6 +27,7 @@ import { Spin } from "antd";
 
 const HomepageDefaultPage = () => {
   const [homeitems, setHomeitems] = useState([]);
+  const [getOfferData, setOfferData] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   const dispatch = useDispatch();
@@ -40,7 +42,35 @@ const HomepageDefaultPage = () => {
       setLoading(false);
     }, 250);
   }
-
+  const offer = () => {
+    console.log("....email...login.... ${apibaseurl}...",{apibaseurl})
+    const data = Axios.post(
+      `${apibaseurl}/api/customer/offer/list`)
+      .then((response) => response.data)
+      .then((data) => {
+        console.log("...offerrrrrrrrrrrr.",data)
+    //    console.log("....email...login.... response...",response)
+        if (data.httpcode == 400 && data.status == "error") {
+          // notification["error"]({
+          //   message: data.message,
+          // });
+          // return;
+        }
+        if (data.httpcode == 200 && data.status == "success") {
+          setOfferData(data.data)
+          // notification["success"]({
+          //   message: data.message,
+          // });
+         // localStorage.setItem("user", JSON.stringify(data.data));
+          return;
+        }
+      })
+      .catch((error) => {
+        notification["error"]({
+          message: error,
+        });
+      });
+  };
   const { homedata } = useSelector((state) => state.home);
   useEffect(() => {
     console.log("...homedata....",homedata)
@@ -52,6 +82,8 @@ const HomepageDefaultPage = () => {
         setLoading(false);
       }, 250);
     }
+
+offer()
   }, [homedata]);
 
   return (
@@ -67,7 +99,7 @@ const HomepageDefaultPage = () => {
             loading={loading}
           />
         )}
-        <TrendingNow />
+        <TrendingNow homeitems={homeitems}/>
         {/* <Homecategories homeitems={homeitems} loading={loading} /> */}
         {!loading && homeitems && homeitems?.shocking_sale?.length > 0 && (
           <Shockingsale
@@ -79,7 +111,7 @@ const HomepageDefaultPage = () => {
        
 
       
-           <Advert/>
+           <Advert  homeitems={homeitems} loading={loading}/>
 
            {!loading && homeitems && homeitems?.new_arrivals?.length > 0 && (
           <NewDealsDaily
@@ -88,21 +120,22 @@ const HomepageDefaultPage = () => {
             loading={loading}
           />
         )}
-        {!loading && homeitems && homeitems?.featured_products?.length > 0 && (
+        {/* {!loading && homeitems && homeitems?.featured_products?.length > 0 && (
           <Featureproducts
             collectionSlug="consumer-electronics"
             title="Feature products"
             homeitems={homeitems}
             loading={loading}
           />
-        )}
-        <FeatureAndRecent/>
-        <Discount/>
-        <BottomCategory/>
-        {!loading && homeitems && homeitems?.auction?.length > 0 && (
+        )} */}
+        <FeatureAndRecent homeitems={homeitems} loading={loading}/>
+        <Discount getOfferData={getOfferData} loading={loading}/>
+        <BottomCategory homeitems={homeitems} loading={loading}/>
+        <Brand homeitems={homeitems} loading={loading}/>
+        {/* {!loading && homeitems && homeitems?.auction?.length > 0 && (
           <Homeauction homeitems={homeitems} />
-        )}
-        <Bestseller homeitems={homeitems} />
+        )} */}
+        {/* <Bestseller homeitems={homeitems} /> */}
         {/* <DownLoadApp /> */}
         {/* <Newletters /> */}
         <div className="top-stories">

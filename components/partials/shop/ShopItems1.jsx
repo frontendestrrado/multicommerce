@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { generateTempArray } from "~/utilities/common-helpers";
 import SkeletonProduct from "~/components/elements/skeletons/SkeletonProduct";
 
-const ShopItems = ({ columns = 4, pageSize = 12 }) => {
+const ShopItems = ({ columns = 4, pageSize = 12, homeitems }) => {
   const Router = useRouter();
   const pathDetail = Router.pathname;
 
@@ -133,47 +133,47 @@ const ShopItems = ({ columns = 4, pageSize = 12 }) => {
   }
 
   useEffect(() => {
-    let params;
-    if (query) {
-      if (query.page) {
-        params = {
-          _start: page * pageSize,
-          _limit: pageSize,
-        };
-      } else {
-        params = query;
-        params._limit = pageSize;
-      }
-    } else {
-      params = {
-        _limit: pageSize,
-      };
-    }
-    getTotalRecords();
+    // let params;
+    // if (query) {
+    //   if (query.page) {
+    //     params = {
+    //       _start: page * pageSize,
+    //       _limit: pageSize,
+    //     };
+    //   } else {
+    //     params = query;
+    //     params._limit = pageSize;
+    //   }
+    // } else {
+    //   params = {
+    //     _limit: pageSize,
+    //   };
+    // }
+  //  getTotalRecords();
 
-    if (
-      category !== undefined ||
-      subcategory_id !== undefined ||
-      brand !== undefined ||
-      price_gt !== undefined ||
-      price_lt !== undefined ||
-      low_to_high !== undefined ||
-      high_to_low !== undefined ||
-      latest !== undefined
-    ) {
-      getProductsbyfilters();
-    } else {
-      getProducts(params);
-    }
+    // if (
+    //   category !== undefined ||
+    //   subcategory_id !== undefined ||
+    //   brand !== undefined ||
+    //   price_gt !== undefined ||
+    //   price_lt !== undefined ||
+    //   low_to_high !== undefined ||
+    //   high_to_low !== undefined ||
+    //   latest !== undefined
+    // ) {
+    //  getProductsbyfilters();
+   // } else {
+    //  getProducts(params);
+   // }
     handleSetColumns();
   }, [query]);
 
   // Views
   let productItemsView;
   if (!loading) {
-    if (productItems && productItems.length > 0) {
+    if (homeitems && homeitems?.trending_products?.length > 0) {
       if (listView) {
-        const items = productItems.slice(0, 8).map((item, index) => (
+        const items = homeitems.trending_products.slice(0, 8).map((item, index) => (
           <div className={classes} key={index}>
             <ShopProduct product={item} />
           </div>
@@ -184,7 +184,7 @@ const ShopItems = ({ columns = 4, pageSize = 12 }) => {
           </div>
         );
       } else {
-        productItemsView = productItems.map((item, index) => (
+        productItemsView = homeitems.trending_products.map((item, index) => (
           <ShopProductWide product={item} key={index} />
         ));
       }

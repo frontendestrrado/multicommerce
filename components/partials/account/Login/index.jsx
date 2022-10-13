@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Router from "next/router";
 import Repository, { apibaseurl } from "~/repositories/Repository";
-import { Form, Input, notification, Modal, Select, Spin } from "antd";
+import { Form, Input, notification, Modal, Select, Spin ,message} from "antd";
 import { connect, useDispatch } from "react-redux";
 import Axios from "axios";
+import $ from 'jquery'; 
+import AccountRepository from "~/repositories/AccountRepository";
 import { v4 as uuidv4 } from "uuid";
+import { displayNotification } from "~/utilities/common-helpers";
 import background from "public/static/img/custom_images/log-bg.jpg";
 import logo_image from "public/static/img/custom_images/logo_light.png";
 import { login } from "~/store/auth/action";
 import LoginWithSMS from "./LoginWithSMS";
 import LoginWithEmail from "./LoginWithEmail";
 import { LoadingOutlined } from "@ant-design/icons";
+
 const Login = (props) => {
   const [form] = Form.useForm();
   const initStateOtpButton = {
@@ -36,13 +40,72 @@ const Login = (props) => {
     phone_number,
     password,
     password_confirmation,
-    country_code,
+    country_code
   } = user;
   const [rememberMe, setRemember] = useState(false);
   const [userOtp, setUserOtp] = useState("");
+  const [getCustomerId, setCustomerId] = useState("");
   const [showLoginWithSMS, setShowLoginWithSMS] = useState(true);
   const { input } = user;
 
+  const handleSubmit1 = async () => {
+   // alert("2")
+    let payload = {
+ 
+      customer_id: getCustomerId,
+      password: user.password,
+      password_confirmation: user.password_confirmation,
+    };
+
+    try {
+      const values = await AccountRepository.changePassword(payload);
+      console.log("....register submit.. user....",user)
+console.log("....register submit...finale...",values)
+      if (values.httpcode == 200 && values.success) {
+        message.success("Your Password Changed Successfully!");
+        //Router.push("/account/login");
+      }
+      if (values.error) {
+        values.error.map((error) => {
+          notification["error"]({
+            message: error,
+          });
+        });
+      }
+    } catch (errorInfo) {
+      console.log("Failed:", errorInfo);
+    }
+  };
+  const handleSubmit = async () => {
+    let payload = {
+      first_name: user.first_name,
+      last_name: user.last_name,
+      country_code: user.country_code,
+      phone_number: user.phone_number,
+      email: user.email,
+      password: user.password,
+      password_confirmation: user.password_confirmation,
+    };
+
+    try {
+      const values = await AccountRepository.registerNewUser(user);
+      console.log("....register submit.. user....",user)
+console.log("....register submit......",values)
+      if (values.httpcode == 200 && values.success) {
+        message.success("You are registered successfully!");
+        //Router.push("/account/login");
+      }
+      if (values.error) {
+        values.error.map((error) => {
+          notification["error"]({
+            message: error,
+          });
+        });
+      }
+    } catch (errorInfo) {
+      console.log("Failed:", errorInfo);
+    }
+  };
   const handleFeatureWillUpdate = (e) => {
     e.preventDefault();
     notification.open({
@@ -51,7 +114,14 @@ const Login = (props) => {
       duration: 500,
     });
   };
-
+  useEffect(() => {
+    fetchCountry();
+  }, []);
+  async function fetchCountry() {
+    const countryDataFromServer = await AccountRepository.getCountry();
+    setCountry([...countryDataFromServer.country]);
+    return null;
+  }
   const handleChange = (name) => (event) => {
     setUser({ ...user, [name]: event.target.value });
   };
@@ -152,12 +222,85 @@ const Login = (props) => {
   const login =  () => {
 document.getElementById('loginId').style.display='block'
 document.getElementById('registerId').style.display='none'
+document.getElementById('registerId1').style.display='none'
   }
   const reg =  () => {
     document.getElementById('registerId').style.display='block'
     document.getElementById('loginId').style.display='none'
+ 
+      document.getElementById('registerId1').style.display='none'
+   
+
       }
-  
+      const forgot =  () => {
+        document.getElementById('registerId1').style.display='block'
+        document.getElementById('loginId').style.display='none'
+        document.getElementById('registerId').style.display='none'
+          }
+
+          const handleVerifyOTP1 = async () => {
+            setLoadingOTP(true);
+              console.log("...user.country_code....", user.country_code)
+            let payload = {
+              country_code: user.country_code.split("+")[1],
+              phone_number: user.phone_number,
+              otp: user.otp_text,
+            };
+        
+            const response = await AccountRepository.verifyForgotOTP(payload);
+            setCustomerId(response.customer_id)
+        console.log("...verifyForgotOTP....", response)
+            if (response.httpcode == 200) {
+              displayNotification(response.status, response.status, response.message);
+              setOtpButton({
+                class: "success",
+                text: "Verified",
+                verifyBox: false,
+                verifiedNumber: user.phone_number,
+                registerBoxShow: true,
+              });
+        
+              setTimeout(() => {
+                setLoadingOTP(false);
+              }, 500);
+            } else {
+              displayNotification(response.status, response.status, response.message);
+              setTimeout(() => {
+                setLoadingOTP(false);
+              }, 500);
+            }
+          };
+      const handleVerifyOTP = async () => {
+        setLoadingOTP(true);
+        let payload = {
+          country_code: user.country_code,
+          phone_number: user.phone_number,
+          otp: user.otp_text,
+        };
+    
+        const response = await AccountRepository.verifyRegisterMobileOTP(payload);
+
+    console.log("....veryfy otp.....", response)
+        if (response.httpcode == 200) {
+          displayNotification(response.status, response.status, response.message);
+          setOtpButton({
+            class: "success",
+            text: "Verified",
+            verifyBox: false,
+            verifiedNumber: user.phone_number,
+            registerBoxShow: true,
+          });
+    
+          setTimeout(() => {
+            setLoadingOTP(false);
+          }, 500);
+        } else {
+          displayNotification(response.status, response.status, response.message);
+          setTimeout(() => {
+            setLoadingOTP(false);
+          }, 500);
+        }
+      };
   const handleOTP = async () => {
     setLoadingOTP(true);
     let payload = {
@@ -217,8 +360,16 @@ document.getElementById('registerId').style.display='none'
     }
     return false;
   };
+  
+  // $('#myModal').on('shown.bs.modal', function () {
+  //   $('#myInput').trigger('focus')
+  // })
+  // const handleLoginSubmit = async () => {
 
+
+  // }
   return (
+    
     <div
       className="log"
       style={{
@@ -272,9 +423,12 @@ document.getElementById('registerId').style.display='none'
                 <div className="card-body">
                   {showLoginWithSMS ? <LoginWithSMS /> : <LoginWithEmail />}
                   <div className="forgt">
-                    <a className="frgt_link" href="#"> 
+                     <a className="frgt_link" href="#"    onClick={() => forgot()} > 
                       Forgot Password
                     </a>
+          
+
+
                     <a className="frgt_link" href="#">
                       <span
                         style={{ cursor: "pointer" }}
@@ -498,7 +652,7 @@ document.getElementById('registerId').style.display='none'
                 </Input.Group>
               </Form.Item>
 
-              {otpButton.verifyBox && (
+               {otpButton.verifyBox && ( 
                 <Form.Item
                   name={"verify_otp"}
                   rules={[{ required: true, message: "OTP is required" }]}
@@ -520,7 +674,7 @@ document.getElementById('registerId').style.display='none'
                     }
                   />
                 </Form.Item>
-              )}
+               )} 
 
               {otpButton.text.toLowerCase() == "verified" &&
                 otpButton.registerBoxShow && (
@@ -612,11 +766,244 @@ document.getElementById('registerId').style.display='none'
         </Form>
 
 
+        <Form
+          form={form}
+          className="ps-form--account"
+          onFinish={otpButton.registerBoxShow ? handleSubmit1 : undefined}
+          style={{ paddingTop: "10px" , display:'none'}}
+          id="registerId1"
+          size="large"
+          layout="vertical"
+        >
+          {/* <ul className="ps-tab-list">
+            <li>
+              <Link href="/account/login">
+                <a>Login</a>
+              </Link>
+            </li>
+            <li className="active">
+              <Link href="/account/register">
+                <a>Register</a>
+              </Link>
+            </li>
+          </ul> */}
+          <div className="logcard_header_inner">
+              <div className="logcard_header_title"> Forgot Password </div>
+          </div>
+          <div className="ps-tab active" id="register">
+            <div className="ps-form__content">
+           
+            
+             
+            
+              <Form.Item
+                name="phone_number"
+                rules={[
+                  {
+                    required: false,
+                  },
+                ]}
+              >
+                <Input.Group compact>
+                  <Form.Item
+                    name={["phone_number", "countrycode"]}
+                    noStyle
+                    rules={[
+                      { required: true, message: "countrycode is required" },
+                    ]}
+                  >
+                    <Select
+                      showSearch
+                      style={{ width: "25%" }}
+                      placeholder="Country Code"
+                      optionFilterProp="children"
+                      onChange={handleSelectCountryCode("country_code")}
+                      filterOption={(input, option) =>
+                        option.children
+                          .toString()
+                          .toLowerCase()
+                          .indexOf(input.toString().toLowerCase()) >= 0
+                      }
+                    >
+                      {serverCountry?.map((countryDetails, index) => (
+                        <Option
+                          value={`+${countryDetails.phonecode}`}
+                          key={index}
+                        >
+                          +{countryDetails.phonecode}
+                        </Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
+                  <Form.Item
+                    name={["phone_number", "phonenumber"]}
+                    noStyle
+                    rules={[
+                      { required: true, message: "phone number is required" },
+                      {
+                        min: 7,
+                        message: "Phone number should be 7-12 digit long!",
+                      },
+                      {
+                        max: 12,
+                        message: "Phone number should be 7-12 digit long!",
+                      },
+                      {
+                        pattern: new RegExp(/^[0-9]+$/i),
+                        message: "Only Numbers Accepted",
+                      },
+                    ]}
+                  >
+                    <Input
+                      type="text"
+                      placeholder="Enter Phone Number"
+                      onChange={handleChange("phone_number")}
+                      value={phone_number}
+                      style={{ width: "75%", height: "50px", padding: "2px" }}
+                      suffix={
+                        <Spin indicator={antIcon} spinning={loadingOTP}>
+                          <span
+                            style={{ cursor: "pointer" }}
+                            className={`text-${otpButton.class}`}
+                            onClick={handleOTP}
+                          >
+                            {otpButton.text}
+                          </span>
+                        </Spin>
+                      }
+                    />
+                  </Form.Item>
+                </Input.Group>
+              </Form.Item>
+
+               {otpButton.verifyBox && ( 
+                <Form.Item
+                  name={"verify_otp"}
+                  rules={[{ required: true, message: "OTP is required" }]}
+                >
+                  <Input
+                    type="text"
+                    placeholder="Verify OTP"
+                    onChange={handleChange("otp_text")}
+                    suffix={
+                      <Spin indicator={antIcon} spinning={loadingOTP}>
+                        <span
+                          style={{ cursor: "pointer" }}
+                          className={`text-primary`}
+                          onClick={handleVerifyOTP1}
+                        >
+                          {"Verify"}
+                        </span>
+                      </Spin>
+                    }
+                  />
+                </Form.Item>
+               )} 
+
+              {otpButton.text.toLowerCase() == "verified" &&
+                otpButton.registerBoxShow && (
+                  <>
+                    <Form.Item
+                      name="password"
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please input your password!",
+                        },
+                      ]}
+                    >
+                      <Input
+                        type="password"
+                        placeholder="Enter Password"
+                        onChange={handleChange("password")}
+                        value={password}
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      name="password_confirmation"
+                      dependencies={["password"]}
+                      rules={[
+                        {
+                          required: true,
+                          message: "Please input your password!",
+                        },
+                        ({ getFieldValue }) => ({
+                          validator(rule, value) {
+                            if (!value || getFieldValue("password") == value) {
+                              return Promise.resolve();
+                            }
+                            return Promise.reject(
+                              "The two passwords that you entered do not match!"
+                            );
+                          },
+                        }),
+                      ]}
+                    >
+                      <Input
+                        type="password"
+                        placeholder="Re-Enter Password"
+                        onChange={handleChange("password_confirmation")}
+                        value={password_confirmation}
+                      />
+                    </Form.Item>
+                  </>
+                )}
+
+              <div className="form-group submit">
+                {/* <Button
+                  type="primary"
+                  htmlType="submit"
+                  className="ps-btn ps-btn--fullwidth"
+                >
+                  Register
+                </Button> */}
+                <button
+                  onClick={handleSubmit1}
+                  className="ps-btn ps-btn--fullwidth"
+                  // onClick={otpButton.registerBoxShow ? handleSubmit : undefined}
+                >
+                  Change Password
+                </button>
+                <div
+                    className="card-footer"
+                    style={{
+                      backgroundColor: `#ffffff`,
+                      borderTop: `1px solid #ffffff`,
+                    }}
+                  >
+                    <div className="fotr_txt">
+                      Already have an account?
+                      
+                        <a onClick={() => login()} className="ftr_link"> Log In </a>
+                      
+                    </div>
+                  </div>
+                {/* <span
+                        
+                        onClick={() => login()}
+                      >
+                       Log In
+                      </span> */}
+              </div>
+            </div>
+          </div>
+        </Form>
+
+
+
+
+
+
+
             </div>
           </div>
         </div>
       </div>
+
+     
     </div>
+
+    
   );
 };
 

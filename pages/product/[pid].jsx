@@ -27,6 +27,7 @@ const ProductDefaultPage = () => {
     setLoading(true);
     let payload = pid;
     const responseData = await ProductRepository.getProductsById(payload);
+    console.log("....xxxxxxxxxx........",responseData)
     if (
       responseData &&
       responseData.httpcode == 200 &&
