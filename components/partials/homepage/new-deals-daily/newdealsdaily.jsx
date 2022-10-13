@@ -59,7 +59,7 @@ const Newdealsdaily = ({ homeitems, loading }) => {
       <div className="ps-section__header justify-content-center">
           <div className="ps-block--countdown-deal">
             <div className="ps-block__left">
-              <h3>Shocking Sales</h3>
+              <h3>New Arrivals</h3>
               <p className="text-center p-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             </div>
           </div>
