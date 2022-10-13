@@ -68,6 +68,7 @@ const ModuleVarientShoppingActions = React.memo(
 
     //Effects
     useEffect(() => {
+      console.log("vvvvvvvvvvvvvvvv...........",product)
       setAssociativeProd(product?.associative_products);
       let arrayVals = [
         ...new Map(

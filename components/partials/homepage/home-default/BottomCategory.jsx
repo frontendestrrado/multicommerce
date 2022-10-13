@@ -6,7 +6,51 @@ const BottomCategory = ({ homeitems, loading }) => {
    
   }, []);
 
+  let mainCarouselView;
+  if (!loading && homeitems?.category?.length > 0) {
 
+    mainCarouselView = (
+        <div className="row">
+        <div className="col-md-4">
+            <div className="offer-banner">
+                <a href="product-style-2.html" className="banner-hover">
+                     <img src={homeitems.category[0].image} alt="offer-banner" className="img-fluid"/> 
+                </a>
+                <div className="banner-content">
+                    <span>{homeitems.category[0].category_name}</span>
+                    {/* <h2>{homeitems.category[0].media}</h2> */}
+                    <a href="product-style-2.html" className="btn-style2">Shop now</a>
+                </div>
+            </div>
+        </div>
+        <div className="col-md-4">
+            <div className="offer-banner">
+                <a href="product-style-2.html" className="banner-hover">
+                 <img src={homeitems.category[0].image} alt="offer-banner" className="img-fluid"/>
+                </a>
+                <div className="banner-content">
+                    <span>{homeitems.category[0].category_name}</span>
+                    {/* <h2>{homeitems.category[0].media}</h2> */}
+                    <a href="product-style-2.html" className="btn-style2">Shop now</a>
+                </div>
+            </div>
+        </div>
+        <div className="col-md-4">
+            <div className="offer-banner">
+                <a href="product-style-2.html" className="banner-hover">
+                   <img src={homeitems.category[0].image} alt="offer-banner" className="img-fluid"/> 
+                </a>
+                <div className="banner-content">
+                    <span>{homeitems.category[0].category_name}</span>
+                    {/* <h2>{homeitems.category[0].media}</h2> */}
+                    <a href="product-style-2.html" className="btn-style2">Shop now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+     )
+
+  }
   return (
 
   <>
@@ -15,44 +59,7 @@ const BottomCategory = ({ homeitems, loading }) => {
 
   <div className="ps-bottomcategory">
     <div className="ps-container">
-        <div className="row">
-            <div className="col-md-4">
-                <div className="offer-banner">
-                    <a href="product-style-2.html" className="banner-hover">
-                        {/* <img src="image/home-9/banner-1.jpg" alt="offer-banner" className="img-fluid"> */}
-                    </a>
-                    <div className="banner-content">
-                        <span>Fresh food</span>
-                        <h2>Oraganic and fresh 30% off</h2>
-                        <a href="product-style-2.html" className="btn-style2">Shop now</a>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-4">
-                <div className="offer-banner">
-                    <a href="product-style-2.html" className="banner-hover">
-                        {/* <img src="image/home-9/banner-1.jpg" alt="offer-banner" className="img-fluid"> */}
-                    </a>
-                    <div className="banner-content">
-                        <span>Fresh food</span>
-                        <h2>Oraganic and fresh 30% off</h2>
-                        <a href="product-style-2.html" className="btn-style2">Shop now</a>
-                    </div>
-                </div>
-            </div>
-            <div className="col-md-4">
-                <div className="offer-banner">
-                    <a href="product-style-2.html" className="banner-hover">
-                        {/* <img src="image/home-9/banner-1.jpg" alt="offer-banner" className="img-fluid"> */}
-                    </a>
-                    <div className="banner-content">
-                        <span>Fresh food</span>
-                        <h2>Oraganic and fresh 30% off</h2>
-                        <a href="product-style-2.html" className="btn-style2">Shop now</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+       {mainCarouselView}
     </div>
   </div>
 

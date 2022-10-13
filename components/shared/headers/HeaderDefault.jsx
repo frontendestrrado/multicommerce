@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Link from "next/link";
 import { useLocation } from "react-router-dom";
 import Logo from "~/components/elements/common/Logo";
 import SearchHeader from "~/components/shared/headers/modules/SearchHeader";
@@ -22,9 +23,16 @@ const HeaderDefault = () => {
             <div className="top-content">
               <ul className="top-url">
                 <li className="top-li">
-                  <a href=""> Eng </a>
-                  <a href=""> Sign In </a>
-                  <a href=""> Register </a>
+                  <a> Eng </a>
+
+                   <Link href="/account/login">
+            <a> Sign In</a>
+          </Link>
+          <Link href="/account/login">
+            <a>Register</a>
+          </Link>
+                  {/* <a href=""> Sign In </a>
+                  <a href=""> Register </a> */}
                 </li>
               </ul>
             </div>

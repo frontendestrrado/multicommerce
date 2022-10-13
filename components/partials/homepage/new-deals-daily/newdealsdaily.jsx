@@ -14,7 +14,7 @@ import { getProductsByCollectionHelper } from "~/utilities/strapi-fetch-data-hel
 const Newdealsdaily = ({ homeitems, loading }) => {
   // Views
   const checkdealsobject = (homeitems) => {
-    if ("daily_deals" in homeitems) {
+    if ("new_arrivals" in homeitems) {
       return true;
     } else {
       return false;
@@ -22,19 +22,19 @@ const Newdealsdaily = ({ homeitems, loading }) => {
   };
   let productItemsView;
   if (!loading) {
-    if (checkdealsobject && homeitems && homeitems?.daily_deals?.length > 0) {
+    if (checkdealsobject && homeitems && homeitems?.new_arrivals?.length > 0) {
  
       const slideItems =
-        homeitems?.daily_deals?.length > 5
-          ? homeitems?.daily_deals?.map((item) => (
+        homeitems?.new_arrivals?.length > 5
+          ? homeitems?.new_arrivals?.map((item) => (
               <ProductDealOfDaySlider product={item} key={item.product_id} />
             ))
-          : homeitems?.daily_deals?.map((item) => (
+          : homeitems?.new_arrivals?.map((item) => (
               <ProductDealOfDay product={item} key={item.product_id} />
             ));
 
       productItemsView =
-        homeitems?.daily_deals?.length > 5 ? (
+        homeitems?.new_arrivals?.length > 5 ? (
           <Slider {...carouselStandard1} className="ps-carousel outside">
             {slideItems}
           </Slider>
