@@ -196,6 +196,7 @@ export function getProductsByKeyword(keyword) {
 }
 
 export function getProductsById(id) {
+  console.log("..action id...", id)
   return {
     type: actionTypes.GET_PRODUCT_BY_ID,
     id,

@@ -3,6 +3,9 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import { getCart } from "~/store/cart/action";
 import { Empty, notification, Popconfirm, Spin } from "antd";
 import Link from "next/link";
+import Axios from "axios";
+import { getDeviceId } from "~/utilities/common-helpers";
+import Repository, { baseUrl, serializeQuery, apibaseurl } from "~/repositories/Repository";
 import ProductRepository from "~/repositories/ProductRepository";
 import Router, { useRouter } from "next/router";
 import { getCustomerProfile } from "~/store/account/action";
@@ -55,8 +58,37 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
       isMounted = false;
     };
   }, [cart?.product]);
-
+  const getCartItem = (payload) => {
+  let userdata = localStorage.getItem("user");
+  let parsedata = JSON.parse(userdata);
+  let access_token = parsedata?.access_token;
+  const user_token = access_token;
+  console.log("....email...login.... ${apibaseurl}...",{apibaseurl})
+  console.log("....aaaaaaaaaaaaaaaa...",user_token)
+  console.log("....bbbbbbbbbbbbbbbb...",getDeviceId)
+  const data = Axios.post(
+    `${apibaseurl}/api/customer/cart`,
+    {
+      access_token: user_token,
+      lang_id: 1,
+      device_id: getDeviceId,
+      page_url: "http://localhost:3000/product/2",
+      os_type: "WEB",
+    })
+    .then((response) => response.data)
+    .then((data) => {
+      if (data.httpcode == 400 && data.status == "error") {
+      }
+      if (data.httpcode == 200 && data.status == "success") {
+        setCartdata(data.data)
+        return;
+      }
+    })
+    .catch((error) => {
+    });
+}
   useEffect(() => {
+    getCartItem()
     const checkLogin = () => {
       let userdata = localStorage.getItem("user");
       if (userdata === undefined || userdata === null) {
@@ -83,6 +115,8 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
   //METHODS
 
   async function handleIncreaseItemQty(product) {
+   // alert("hh")
+    console.log("....yyyy...product...",product)
     if (auth.isLoggedIn !== true) {
       notification["error"]({
         message: "Error",
@@ -94,18 +128,25 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
       setLoading(true);
 
       let payload = {
+        access_token:auth.access_token,
         product_id: product.product_id,
-        user_id: 1,
-        quantity: parseInt(1),
-        cart_type: "web",
-        access_token: auth.access_token,
-      };
+        quantity:1,
+        cart_type:"web",
+        prd_assign_id:"",
 
+        // product_id: product.product_id,
+        // user_id: 1,
+        // quantity: parseInt(1),
+        // cart_type: "web",
+        // access_token: auth.access_token,
+      };
+      console.log("....yyyy...product...payload..",payload)
       const responseData = await ProductRepository.addProductToCart(payload);
+      console.log("....yyyy...product...responseData..",responseData)
       if (responseData && responseData.httpcode === 200) {
         dispatch(getCart());
         setLoading(false);
-
+        getCartItem()
         notification["success"]({
           message: "Success",
           description: "Quantity Updated",
@@ -124,6 +165,7 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
   }
 
   async function handleDecreaseItemQty(product) {
+    console.log("5555555.....product...",product)
     if (!auth.isLoggedIn) {
       notification["error"]({
         message: "Error",
@@ -137,17 +179,29 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
         setLoading(true);
 
         let payload = {
-          product_id: product.product_id,
-          user_id: 1,
-          quantity: setqty,
-          cart_type: "web",
-          access_token: auth.access_token,
-        };
+          // access_token:auth.access_token,
+          // product_id: product.product_id,
+          // quantity:setqty,
+          // cart_type:"web",
+          // prd_assign_id:"",
 
+          access_token:auth.access_token,
+cart_id:product.cart_id,
+quantity:setqty,
+cart_type:"web",
+
+          // product_id: product.product_id,
+          // user_id: 1,
+          // quantity: setqty,
+          // cart_type: "web",
+          // access_token: auth.access_token,
+        };
+console.log("5555555.....55555...",payload)
         const responseData = await ProductRepository.changeQty(payload);
+        console.log("...2222222......",responseData)
         if (responseData && responseData.httpcode === 200) {
           dispatch(getCart());
-
+          getCartItem()
           setLoading(false);
           notification["success"]({
             message: "Success",
@@ -174,6 +228,7 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
   }
 
   async function handleRemoveCartItem(product) {
+    console.log("...8888...",product)
     if (!auth.isLoggedIn) {
       notification["error"]({
         message: "Error",
@@ -183,15 +238,15 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
       return false;
     } else {
       let payload = {
-        cart_id: [product.cart_id],
+        cart_id: product.cart_id,
         access_token: auth.access_token,
       };
-
+      console.log("...666...",payload)
       const responseData = await ProductRepository.deleteCart(payload);
-
+console.log("....999....",responseData)
       if (responseData && responseData.httpcode == "200") {
         dispatch(getCart());
-
+        getCartItem()
         notification["success"]({
           message: "Success",
           description: "Product Deleted",
@@ -321,7 +376,7 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
       }
     }
   }
-  console.log(cartdata);
+  console.log("---------------",cartdata);
   //METHODS END
   return (
     <div
@@ -347,15 +402,15 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
               {cartdata != null &&
                 cartdata?.product !== undefined &&
                 cartdata?.product?.length > 0 &&
-                cartdata?.product?.map((productItem, index) => {
+                cartdata?.product?.map((product, index) => {
                   return (
                     <div className="prdt-box" key={index}>
-                      <div className="stor-slct">
+                      {/* <div className="stor-slct">
                         <a className="stor-tit ml-5" href="">
                           {productItem.seller.seller}
                         </a>
-                      </div>
-                      {productItem.seller.products.map((product, index) => (
+                      </div> */}
+                      {/* {productItem.seller.products.map((product, index) => ( */}
                         <div className="prdt-det" key={index}>
                           <div className="prdt-det-inner">
                             <div className="prdct-innr">
@@ -511,8 +566,8 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
                             </div>
                           </div>
                         </div>
-                      ))}
-                      <DisplayCartVoucher product_seller={productItem.seller} />
+                      {/* // ))} */}
+                      {/* <DisplayCartVoucher product_seller={productItem.seller} /> */}
                     </div>
                   );
                 })}

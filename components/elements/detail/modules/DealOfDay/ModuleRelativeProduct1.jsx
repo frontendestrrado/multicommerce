@@ -10,18 +10,18 @@ import ThumbnailHelper from "../../thumbnail/ThumbnailHelper";
 import { Image } from "antd";
 import ProductThumbnail from "~/components/elements/common/ProductThumbnail";
 
-const ModuleDealOfDayCardProduct1 = ({ product }) => {
+const ModuleRelativeProduct1 = ({ product }) => {
   const priceView = homePageProductPriceHelper(product);
 
   return (
     <>
-      <Link href={`/shop?category=${product.id}`}>
+      <Link href="/product/[pid]" as={`/product/${product.product_id}`}>
         <a>
-          <ProductThumbnail imageLink={product.image} />
+          <ProductThumbnail imageLink={product.image.length> 1? product.image[0].thumbnail:''} />
         </a>
       </Link>
       <div className="ps-product__container text-truncate text-center">
-        <Link href={`/shop?category=${product.id}`}>
+        <Link href="/product/[pid]" as={`/product/${product.product_id}`}>
           <a
             className="ps-product__title text-capitalize"
             style={{
@@ -29,7 +29,7 @@ const ModuleDealOfDayCardProduct1 = ({ product }) => {
               fontWeight: "500",
             }}
           >
-            {product.category_name}
+            {product.product_name}
           </a>
         </Link>
 
@@ -51,4 +51,4 @@ const ModuleDealOfDayCardProduct1 = ({ product }) => {
     </>
   );
 };
-export default ModuleDealOfDayCardProduct1;
+export default ModuleRelativeProduct1;

@@ -45,6 +45,7 @@ const WidgetShopCategories = () => {
   }, []);
 
   const handleCategory = (category_id) => {
+    console.log("...category_id....",category_id)
     let filterpart = window.location.search;
     let pattern = "";
     if (category) {

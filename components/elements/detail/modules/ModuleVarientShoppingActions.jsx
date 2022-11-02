@@ -69,15 +69,16 @@ const ModuleVarientShoppingActions = React.memo(
     //Effects
     useEffect(() => {
       console.log("vvvvvvvvvvvvvvvv...........",product)
-      setAssociativeProd(product?.associative_products);
+      setAssociativeProd(product?.varaiants_list);
       let arrayVals = [
         ...new Map(
-          product?.associative_products?.map((item) => [
-            item["attr_value"],
+          product?.varaiants_list?.map((item) => [
+            item["combination"],
             item,
           ])
         ).values(),
       ];
+      console.log("vvvvvvvvvvvvvvvv.......arrayVals....",arrayVals)
       setUniqueAssociativeProd(arrayVals);
     }, [product]);
 
@@ -208,6 +209,8 @@ const ModuleVarientShoppingActions = React.memo(
     };
 
     const handleAddItemToCart = async (e) => {
+      console.log("....a............",product)
+      console.log("....b............",filterAssocProd)
       let userdata = localStorage.getItem("user");
       let parsedata = JSON.parse(userdata);
       let token = parsedata?.access_token;
@@ -226,7 +229,7 @@ const ModuleVarientShoppingActions = React.memo(
       ) {
         notification["error"]({
           message: "Error",
-          description: "Please Select Varient",
+          description: "Please Select Varient 1",
           duration: 1,
         });
         return false;
@@ -281,7 +284,7 @@ const ModuleVarientShoppingActions = React.memo(
       ) {
         notification["error"]({
           message: "Error",
-          description: "Please Select Varient",
+          description: "Please Select Varient 2",
           duration: 1,
         });
         return false;
@@ -447,7 +450,7 @@ const ModuleVarientShoppingActions = React.memo(
                     width: "20%",
                   }}
                 >
-                  {associativeProd[0]?.attr_name}
+                  {associativeProd[0]?.combination}
                 </td>
                 <td>
                   <Radio.Group
@@ -459,7 +462,7 @@ const ModuleVarientShoppingActions = React.memo(
                     {uniqueAssociativeProd?.map((attr, index) => {
                       return (
                         <Radio.Button
-                          value={attr.attr_value}
+                          value={attr.combination}
                           key={index}
                           className="mr-2"
                         >
@@ -499,8 +502,8 @@ const ModuleVarientShoppingActions = React.memo(
                         ?.map((attr) => attr.sub_attributes[0])
                         ?.map((values, index) => {
                           return (
-                            <Radio.Button value={values.attr_value} key={index}>
-                              {values.attr_value}
+                            <Radio.Button value={values.combination} key={index}>
+                              {values.combination}
                             </Radio.Button>
                           );
                         })}
@@ -616,7 +619,7 @@ const ModuleVarientShoppingActions = React.memo(
               className="ps-btn ps-btn--black"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              {loading1 ? <CircularProgress size={20} /> : "Add to cart"}
+              {loading1 ? <CircularProgress size={20} /> : "Add to cart7"}
             </a>
             <a className="ps-btn text-white" onClick={(e) => handleBuynow(e)}>
               {loading2 ? <CircularProgress size={20} /> : "Buy Now"}
@@ -684,7 +687,7 @@ const ModuleVarientShoppingActions = React.memo(
               href="#"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              Add to cart
+              Add to cart8
             </a>
             <div className="ps-product__actions">
               <a href="#" onClick={(e) => handleAddItemToWishlist(e)}>

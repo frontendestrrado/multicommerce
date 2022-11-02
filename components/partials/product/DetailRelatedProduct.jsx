@@ -16,6 +16,7 @@ const DetailRelatedProduct = ({ collectionSlug, boxed, layout, product }) => {
   async function getProducts() {
     setLoading(true);
     const responseData = await getProductsByCollectionHelper(collectionSlug);
+    console.log("....yyyyyy....",responseData)
     if (responseData) {
       //  setProductItems(responseData.items);
       setTimeout(

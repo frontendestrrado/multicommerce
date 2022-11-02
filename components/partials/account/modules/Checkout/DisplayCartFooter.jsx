@@ -19,7 +19,9 @@ const DisplayCartFooter = ({ cartdata }) => {
   });
 
   const getCheckoutInfo = async (payload) => {
+    console.log("...eeeeeeeee...",payload)
     const response = await ProductRepository.getCheckoutInfo(payload);
+    console.log("...ddddddddd..2333.",response)
     if (response.httpcode == 200) {
       setPaymentMethods(response.data.payment_methods);
       return true;

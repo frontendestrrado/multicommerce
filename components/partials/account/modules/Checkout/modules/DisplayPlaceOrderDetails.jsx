@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { notification } from "antd";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
+import Axios from "axios";
 import { useSelector } from "react-redux";
 import ProductRepository from "~/repositories/ProductRepository";
+import Repository, { baseUrl, serializeQuery, apibaseurl } from "~/repositories/Repository";
 import { clearCartSuccess, getCart } from "~/store/cart/action";
 import {
   returnTotalCommission,
@@ -15,6 +17,8 @@ import { getDeviceId, makePageUrl, osType } from "~/utilities/common-helpers";
 const DisplayPlaceOrderDetails = () => {
   const [loading1, setloading1] = useState(false);
   const Router = useRouter();
+  const [cartdata, setCartdata] = useState(null);
+  const [totalItems, setTotalItems] = useState(0);
   const dispatch = useDispatch();
 
   const { user_details, isLoggedIn, access_token } = useSelector(
@@ -33,16 +37,92 @@ const DisplayPlaceOrderDetails = () => {
   } = useSelector((state) => state.cart);
 
   useEffect(() => {
+    getCartItem()
     let isMounted = true;
     if (isMounted) {
     }
     return () => {
       isMounted = false;
     };
-  }, [cart?.product]);
 
+  }, [cart?.product]);
+  const getCartItem = (payload) => {
+      alert("7777767")
+    //alert("d")
+    let userdata = localStorage.getItem("user");
+    let parsedata = JSON.parse(userdata);
+    let access_token = parsedata?.access_token;
+    const user_token = access_token;
+    console.log("....email...login.... ${apibaseurl}...",{apibaseurl})
+    console.log("....aaaaaaaaaaaaaaaa...",user_token)
+    console.log("....bbbbbbbbbbbbbbbb...",getDeviceId)
+
+    const data = Axios.post(
+      `${apibaseurl}/api/customer/cart`,
+      {
+        access_token: user_token,
+        lang_id: 1,
+        device_id: getDeviceId,
+        page_url: "http://localhost:3000/product/2",
+        os_type: "WEB",
+      })
+      .then((response) => response.data)
+      .then((data) => {
+        console.log("...iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii.",data)
+    //    console.log("....email...login.... response...",response)
+        if (data.httpcode == 400 && data.status == "error") {
+          // notification["error"]({
+          //   message: data.message,
+          // });
+          // return;
+        }
+        if (data.httpcode == 200 && data.status == "success") {
+          setCartdata(data.data)
+          setTotalItems(data.data.cart_count)
+       //   alert("yes")
+        //  setOfferData(data.data)
+          // notification["success"]({
+          //   message: data.message,
+          // });
+         // localStorage.setItem("user", JSON.stringify(data.data));
+          return;
+        }
+      })
+      .catch((error) => {
+        // notification["error"]({
+        //   message: error,
+        // });
+      });
+
+
+     console.log("....bbbbb...bbb.ccccc..",getDeviceId)
+   // console.log("....bbbbb...bbb...",payload)
+    // let userdata = localStorage.getItem("user");
+    // let parsedata = JSON.parse(userdata);
+    // let access_token = parsedata?.access_token;
+    // const user_token = access_token;
+
+    // const response =  Repository.post(`${apibaseurl}/api/customer/cart`, {
+    //   access_token: user_token,
+    //   lang_id: 1,
+    //   device_id: getDeviceId,
+    //   page_url: "http://localhost:3000/product/2",
+    //   os_type: "WEB",
+    // })
+    // console.log("....bbbbb...bbb..444444444444.",response)
+    //   // .then((response) => {
+    //     if (response.data.httpcode == "200") {
+    //       return response.data;
+    //     }
+    //   //   return response.data;
+    //   // })
+    //   // .catch((error) => ({ error: JSON.stringify(error) }));
+    // return response;
+  }
   const placeOrderNew = async () => {
+  alert("checkout")
     if (!isLoggedIn) {
+      console.log("....1111.....")
       notification["error"]({
         message: "Error",
         description: "Please login first",
@@ -51,6 +131,7 @@ const DisplayPlaceOrderDetails = () => {
       return false;
     } else {
       if (selectedAddress.id == undefined || selectedAddress.id == null) {
+        console.log("....2222.....")
         notification["error"]({
           message: "Error",
           description: "Please Select Valid Address Detail",
@@ -140,46 +221,67 @@ const DisplayPlaceOrderDetails = () => {
 
       if (applied_platform_voucher.is_platform_coupon) {
         platform_coupon_payload = {
-          is_platform_coupon: applied_platform_voucher.is_platform_coupon,
-          platform_coupon_id: applied_platform_voucher.coupon_id,
-          platform_discount_type: applied_platform_voucher.offer_type,
+          is_coupon: applied_platform_voucher.is_platform_coupon,
+          coupon_id: applied_platform_voucher.coupon_id,
+          discount_type: applied_platform_voucher.offer_type,
           discount_amt: applied_platform_voucher.discount_amount,
         };
       } else {
         platform_coupon_payload = {
-          is_platform_coupon: applied_platform_voucher.is_platform_coupon,
-          is_platform_coupon: 0,
-          platform_coupon_id: "",
-          platform_discount_type: "",
+          is_coupon: applied_platform_voucher.is_platform_coupon,
+          is_coupon: 0,
+          coupon_id: "",
+          discount_type: "",
           discount_amt: 0,
         };
       }
+console.log("...cartdata....cartdata....cartdata....",cartdata)
+var a=cartdata.grand_total
+a=a.replace(/\,/g,''); // 1125, but a string, so convert it to number
+a=parseInt(a,10);
+var b=cartdata.total_cost
+b=b.replace(/\,/g,''); // 1125, but a string, so convert it to number
+b=parseInt(b,10);
 
       let payload = {
-        seller_array: { ...cart_payload },
+       // seller_array: { ...cart_payload },
         access_token,
         lang_id: "",
         ...platform_coupon_payload,
-        total_amt: cart.grand_total,
+        total_amt: a,
         e_money_amt: used_wallet_amount_detail.wallet_used
           ? used_wallet_amount_detail.wallet_balance
           : used_wallet_amount_detail.wallet_used,
         payment_type: selected_payment_option_by_user.payment_type,
         address_id: selectedAddress.id,
         reward_id: "",
-        commission: 0,
+       // commission: 0,
         reward_amt: "",
         device_id: getDeviceId,
         page_url: makePageUrl(Router.asPath),
         os_type: osType(),
+
+
+        total_cost: b,
+        total_tax: 0.0,
+        packing_charge: "0",
+        shipping_charge: "0",
+        message: "",
+        currency_code:"SAR",
+        invite_coupon_id:"",
+   //     total_amt:336.3,
+        branch_id:"0"
+    
       };
 
       // setloading1(false);
 
       // console.log(JSON.stringify(payload, null, 4));
       // return;
-
+      console.log("....1111...placeOrder...payload....",payload)
       const responseData = await ProductRepository.placeOrder(payload);
+  
+      console.log("....1111...placeOrder....",responseData)
       if (responseData && responseData.httpcode === 200) {
         setloading1(false);
         localStorage.setItem("order", responseData.data.order_id);

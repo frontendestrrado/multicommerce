@@ -44,11 +44,15 @@ const ModuleDetailShoppingActions = React.memo(
     const auth = useSelector((state) => state.auth);
 
     const handleAddItemToCart = async (e) => {
+      console.log("...111.....")
       let userdata = localStorage.getItem("user");
       let parsedata = JSON.parse(userdata);
       let token = parsedata?.access_token;
-
+      console.log("...111..userdata...",userdata)
+      console.log("...111...parsedata..",parsedata)
+      console.log("...111..token...",token)
       if (userdata === undefined || userdata === null) {
+        console.log("...111...222..")
         notification["error"]({
           message: "Error",
           description: "Please login first",
@@ -60,6 +64,7 @@ const ModuleDetailShoppingActions = React.memo(
         (filterAssocProd.assocValSel == "" ||
           filterAssocProd.assocValSizeSel == "")
       ) {
+        console.log("...111...555..")
         notification["error"]({
           message: "Error",
           description: "Please Select Varient",
@@ -67,15 +72,19 @@ const ModuleDetailShoppingActions = React.memo(
         });
         return false;
       } else {
+        console.log("...111..666...")
         setLoading1(true);
         let payload = {
-          user_id: 1,
+          // user_id: 1,
+          prd_assign_id:"",
           quantity: quantity,
           cart_type: "web",
           access_token: token,
         };
-
+        console.log("...111..777...")
         if (product?.product?.product_type == "config") {
+          
+
           payload = {
             ...payload,
             product_id: getProductId(filterAssocProd.assocValSizeSel),
@@ -85,6 +94,7 @@ const ModuleDetailShoppingActions = React.memo(
           );
 
           if (out_of_stock_selling === false && stock <= 0) {
+            console.log("...111..8888...")
             notification["error"]({
               message: "Error",
               description: "Product Out of Stock!",
@@ -95,6 +105,7 @@ const ModuleDetailShoppingActions = React.memo(
           }
           //condition for config end
         } else {
+          console.log("...111...999..")
           payload = {
             ...payload,
             product_id: product.product.product_id,
@@ -103,6 +114,7 @@ const ModuleDetailShoppingActions = React.memo(
             product.product.out_of_stock_selling === false &&
             product.product.stock <= 0
           ) {
+            console.log("...111..1111222...")
             notification["error"]({
               message: "Error",
               description: "Product Out of Stock!",
@@ -116,6 +128,7 @@ const ModuleDetailShoppingActions = React.memo(
 
         const responseData =
           payload?.access_token &&
+        
           (await ProductRepository.addProductToCart(payload));
 
         if (responseData && responseData.httpcode == "200") {
@@ -130,9 +143,9 @@ const ModuleDetailShoppingActions = React.memo(
             description: responseData.response,
             duration: 1,
           });
-          // setTimeout(function () {
-          //   Router.push("/account/shopping-cart");
-          // }, 200);
+          setTimeout(function () {
+            Router.push("/account/shopping-cart");
+          }, 200);
         } else {
           notification["error"]({
             message: "Error",
@@ -166,7 +179,8 @@ const ModuleDetailShoppingActions = React.memo(
       } else {
         setLoading2(true);
         let payload = {
-          user_id: 1,
+          // user_id: 1,
+          prd_assign_id:"",
           quantity: quantity,
           access_token: auth.access_token,
           cart_type: "web",
@@ -241,6 +255,7 @@ const ModuleDetailShoppingActions = React.memo(
     };
 
     const handleAddItemToWishlist = async (e) => {
+   
       let userdata = localStorage.getItem("user");
       let parsedata = JSON.parse(userdata);
       let token = parsedata?.access_token;
@@ -255,6 +270,7 @@ const ModuleDetailShoppingActions = React.memo(
         if (shockingsale == true) {
           dispatch(addShockingSaleItemToWishlist(product.product.product_id));
         } else {
+          console.log("lllll..........ll....",product.product.product_id)
           dispatch(addItemToWishlist(product.product.product_id));
         }
       }
@@ -533,7 +549,7 @@ const ModuleDetailShoppingActions = React.memo(
               className="ps-btn ps-btn--yellow"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              {loading1 ? <CircularProgress size={20} /> : "Add to cart"}
+              {loading1 ? <CircularProgress size={20} /> : "Add to cart1"}
             </a>
             <a className="ps-btn ps-btn--blu" onClick={(e) => handleBuynow(e)}>
               {loading2 ? <CircularProgress size={20} /> : "Buy Now"}
@@ -607,7 +623,7 @@ const ModuleDetailShoppingActions = React.memo(
               href="#"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              Add to cart
+              Add to cart2
             </a>
             <div className="ps-product__actions">
               <a href="#" onClick={(e) => handleAddItemToWishlist(e)}>

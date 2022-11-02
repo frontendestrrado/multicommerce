@@ -505,7 +505,7 @@ document.getElementById('registerId1').style.display='none'
                   value={first_name}
                   type="text"
                   placeholder="Enter Business Name"
-                  onChange={handleChange("business_name")}
+                  onChange={handleChange("first_name")}
                 />
               </Form.Item>
               <Form.Item
@@ -526,10 +526,10 @@ document.getElementById('registerId1').style.display='none'
                 ]}
               >
                 <Input
-                  value={first_name}
+                  value={last_name}
                   type="text"
                   placeholder="Enter Name"
-                  onChange={handleChange("first_name")}
+                  onChange={handleChange("last_name")}
                 />
               </Form.Item>
               {/* <Form.Item

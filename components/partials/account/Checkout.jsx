@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Empty, notification } from "antd";
 import Router from "next/router";
+import Repository, { baseUrl, serializeQuery, apibaseurl } from "~/repositories/Repository";
+import Axios from "axios";
+import { getDeviceId } from "~/utilities/common-helpers";
 import { useDispatch, useSelector } from "react-redux";
 import { getCustomerProfile, getCustomerAddress } from "~/store/account/action";
 import DisplayAddress from "./modules/Checkout/DisplayAddress";
@@ -15,9 +18,11 @@ const Checkout = () => {
   const { customer_address } = useSelector((state) => state.account);
   const { access_token } = useSelector((state) => state.auth);
 
-  const { cart } = useSelector((state) => state.cart);
+  //const { cart } = useSelector((state) => state.cart);
 
+  const [cartdata, setCartdata] = useState(useSelector((state) => state.cart));
   useEffect(() => {
+    console.log(".....kkkkkkkkk......",customer_address)
     let userdata = localStorage.getItem("user");
     if (userdata === undefined || userdata === null) {
       notification["error"]({
@@ -27,18 +32,49 @@ const Checkout = () => {
       });
       Router.push("/");
     } else {
+      alert("hjhgjrt")
+    
       dispatch(getCustomerProfile());
       dispatch(getCustomerAddress());
+      getCartItem()
     }
   }, [access_token]);
-
+  const getCartItem = (payload) => {
+    let userdata = localStorage.getItem("user");
+    let parsedata = JSON.parse(userdata);
+    let access_token = parsedata?.access_token;
+    const user_token = access_token;
+   // console.log("....email...login.... ${apibaseurl}...",{apibaseurl})
+    console.log("....aaaaaaaaaaaaaaaa...",user_token)
+    console.log("....bbbbbbbbbbbbbbbb...",getDeviceId)
+    const data = Axios.post(
+      `${apibaseurl}/api/customer/cart`,
+      {
+        access_token: user_token,
+        lang_id: 1,
+        device_id: getDeviceId,
+        page_url: "http://localhost:3000/product/2",
+        os_type: "WEB",
+      })
+      .then((response) => response.data)
+      .then((data) => {
+        if (data.httpcode == 400 && data.status == "error") {
+        }
+        if (data.httpcode == 200 && data.status == "success") {
+          setCartdata(data.data)
+          return;
+        }
+      })
+      .catch((error) => {
+      });
+  }
   return (
     <div className="ps-checkout ps-section--shopping ps-shopping-cart">
-      {cart != null &&
-      cart !== undefined &&
-      cart.errors !== "Cart is empty" &&
-      cart?.product?.length &&
-      cart?.product?.length !== 0 ? (
+      {cartdata != null &&
+      cartdata !== undefined &&
+      cartdata.errors !== "Cart is empty" &&
+      cartdata?.product?.length &&
+      cartdata?.product?.length !== 0 ? (
         <div className="container">
           <div
             className="ps-section__content"
@@ -52,13 +88,13 @@ const Checkout = () => {
               )}
             </div>
             <div className="ordered-product">
-              <DisplayOrders cartdata={cart} />
+              <DisplayOrders cartdata={cartdata} />
             </div>
             <div className="voucher-and-payment">
               <DisplayVoucher />
             </div>
             <div className="cart-footer">
-              <DisplayCartFooter cartdata={cart} />
+              <DisplayCartFooter cartdata={cartdata} />
             </div>
           </div>
         </div>

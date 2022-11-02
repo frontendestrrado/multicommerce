@@ -112,15 +112,15 @@ const DisplayOtherOptions = ({ productItem }) => {
       >
         <div className="p-2 flex-fill bd-highlight">
           <p className="float-right">
-            Order total({productItem.seller.products.length} item):
-            <span
+            Order total({productItem.length} item):
+            {/* <span
               className="prdt ml-4"
               style={{ color: "#ff0000", fontSize: "large" }}
             >
               {currencyHelperConvertToRinggit(
                 returnTotalOfCartValue(productItem.seller.products)
               )}
-            </span>
+            </span> */}
           </p>
         </div>
       </div>

@@ -114,6 +114,7 @@ class ProductRepository {
       payload
     )
       .then((response) => {
+        console.log("############",response)
         return {
           items: response.data.data.products,
           totalItems: response.data.data.total_products,
@@ -218,10 +219,15 @@ class ProductRepository {
   }
 
   async getProductsById(id) {
+    console.log("....dddddd..1..",id)
     let userdata = localStorage.getItem("user");
     let parsedata = JSON.parse(userdata);
     let access_token = parsedata?.access_token;
-
+    console.log("....dddddd..1.userdata.",userdata)
+    console.log("....dddddd..1..parsedata",parsedata)
+    console.log("....dddddd..1.access_token.",access_token)
+    console.log("....dddddd..1.getDeviceId.",getDeviceId)
+    console.log("....dddddd..1.access_token.",access_token)
     const response = await Repository.post(
       `${apibaseurl}/api/customer/product-detail`,
       {
@@ -234,6 +240,7 @@ class ProductRepository {
       }
     )
       .then((response) => {
+        console.log("....dddddd....",response)
         return response.data;
       })
       .catch((error) => ({ error: JSON.stringify(error) }));
@@ -333,6 +340,7 @@ class ProductRepository {
   }
 
   async addProductToCart(payload) {
+    console.log(".....56565656565656...",payload)
     const reponse = await Repository.post(
       `${apibaseurl}/api/customer/add-cart`,
       payload
@@ -356,6 +364,7 @@ class ProductRepository {
   }
 
   async placeOrder(payload) {
+    console.log("......3333333333.......",payload)
     const reponse = await Repository.post(
       `${apibaseurl}/api/customer/order/placeorder`,
       payload
@@ -368,6 +377,7 @@ class ProductRepository {
   }
 
   async getCart(payload) {
+    console.log("....aaaa....",payload)
     const reponse = await Repository.post(
       `${apibaseurl}/api/customer/cart`,
       payload
@@ -428,6 +438,8 @@ class ProductRepository {
   }
 
   async getCheckoutInfo(payload) {
+    console.log("...getCheckoutInfo... apyload..",payload)
+    console.log("...getCheckoutInfo... apibaseurl..",apibaseurl)
     const reponse = await Repository.post(
       `${apibaseurl}/api/customer/order/checkout-info`,
       payload
