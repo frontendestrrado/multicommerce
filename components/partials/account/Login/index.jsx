@@ -5,7 +5,7 @@ import Repository, { apibaseurl } from "~/repositories/Repository";
 import { Form, Input, notification, Modal, Select, Spin ,message} from "antd";
 import { connect, useDispatch } from "react-redux";
 import Axios from "axios";
-import $ from 'jquery'; 
+// import $ from 'jquery'; 
 import AccountRepository from "~/repositories/AccountRepository";
 import { v4 as uuidv4 } from "uuid";
 import { displayNotification } from "~/utilities/common-helpers";
@@ -376,7 +376,8 @@ document.getElementById('registerId1').style.display='none'
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
+        backgroundPosition: "left",
+        height: "calc(100vh - 50px)",
       }}
     >
       <nav
@@ -420,7 +421,7 @@ document.getElementById('registerId1').style.display='none'
                 <div className="logcard_header_inner">
                   <div className="logcard_header_title">Log In</div>
                 </div>
-                <div className="card-body">
+                <div className="card-body loginp">
                   {showLoginWithSMS ? <LoginWithSMS /> : <LoginWithEmail />}
                   <div className="forgt">
                      <a className="frgt_link" href="#"    onClick={() => forgot()} > 
@@ -959,7 +960,7 @@ document.getElementById('registerId1').style.display='none'
                 </Button> */}
                 <button
                   onClick={handleSubmit1}
-                  className="ps-btn ps-btn--fullwidth"
+                  className="log_btn"
                   // onClick={otpButton.registerBoxShow ? handleSubmit : undefined}
                 >
                   Change Password

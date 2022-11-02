@@ -123,10 +123,10 @@ const Shockingsale = ({ collectionSlug, homeitems, loading }) => {
   return (
     <div
       className="ps-deal-of-day shockingsale"
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundPosition: "bottom",
-      }}
+      // style={{
+      //   backgroundImage: `url(${background})`,
+      //   backgroundPosition: "bottom",
+      // }}
     >
       <div className="ps-container">
         <div className="ps-section__header">

@@ -6,7 +6,7 @@
 const withPlugins = require("next-compose-plugins");
 const withImages = require("next-images");
 const { v4: uuidv4 } = require("uuid");
-API_BASE_URL: "https://qa-bigbasket.estrradoweb.com";
+API_BASE_URL: "https://dev-bigbasket.estrradoweb.com";
 BASE_PATH: "https://dev-kangtao.vercel.app";
 const nextSettings = {
   env: {

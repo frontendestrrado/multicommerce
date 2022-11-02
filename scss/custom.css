@@ -21,6 +21,11 @@
   --chat-bubble-you: var(--colour-primary);
 }
 
+.ps-container {
+  max-width: 1475px;
+  padding: 0;
+}
+
 /* css for login page start */
 .log {
   background-color: #fff;
@@ -66,7 +71,7 @@
   }
 }
 .log1 {
-  min-height: 50rem;
+  min-height: 80vh;
   margin: 0 auto;
   width: 100%;
   -webkit-align-items: center;
@@ -84,7 +89,7 @@
   }
 }
 .log2 {
-  height: 50rem;
+  height: 80vh;
   width: 100%;
   -webkit-justify-content: flex-end;
   -moz-box-pack: end;
@@ -107,10 +112,10 @@
 .logcard1.logcard2 {
   width: 42rem;
   position: relative;
-  top: 50%;
+  /* top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  transform: translateY(-50%); */
 }
 @media screen and (max-width: 414px) {
   .logcard1.logcard2 {
@@ -198,6 +203,9 @@
 }
 .logcard.logcard1.logcard2 input{
   height: 45px;
+}
+.card-body.loginp .ant-input-group.ant-input-group-compact input{
+  height: 50px !important;
 }
 .logcard.logcard1.logcard2 #phone_number_countrycode{
   height: 50px;
@@ -572,13 +580,15 @@
 
 #homepage-1 .ps-home-banner .ps-container .ps-section__left {
   max-width: 100%;
-  min-height: 450px;
+  min-height: 600px;
   padding-right: 0;
-  max-height: 450px;
+  max-height: 600px;
 }
 
 #homepage-1 .ps-home-banner{
   background-color: #fff;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 #homepage-1 .ps-deal-of-day .ps-product .ps-product__price {

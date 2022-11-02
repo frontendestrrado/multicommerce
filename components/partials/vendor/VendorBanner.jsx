@@ -10,7 +10,7 @@ const VendorBanner = () => (
         <h2>Millions Of Shoppers Can’t Wait To See What You Have In Store</h2>
         <a
           className="ps-btn ps-btn--lg"
-          href="https://qa-bigbasket.estrradoweb.com/sellers/register"
+          href="https://dev-bigbasket.estrradoweb.com/sellers/register"
         >
           Start Selling
         </a>
