@@ -42,6 +42,8 @@ class AccountRepository {
   }
 
   async registerNewUser(payload) {
+    alert("d")
+    console.log("....555...",payload)
     const response = await Repository.post(
       `${apibaseurl}/api/customer/register`,
       payload

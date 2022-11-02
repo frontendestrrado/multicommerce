@@ -32,13 +32,13 @@ const DisplayOrders = ({ cartdata }) => {
                   padding: "0",
                 }}
               >
-                <a className="stor-tit ml-5" href="">
+                {/* <a className="stor-tit ml-5" href="">
                   {productItem.seller.seller}
-                </a>
+                </a> */}
               </div>
 
-              {productItem.seller.products.map((product, index) => {
-                return (
+              {/* {productItem.seller.products.map((product, index) => { */}
+                {/* return ( */}
                   <div
                     className="prdt-det"
                     key={index}
@@ -50,13 +50,13 @@ const DisplayOrders = ({ cartdata }) => {
                           <div className="prdt-img-innr">
                             <div className="prodct-imge">
                               <Link
-                                href={`/product/${product.product_id}`}
-                                as={`/product/${product.product_id}`}
+                                href={`/product/${productItem.product_id}`}
+                                as={`/product/${productItem.product_id}`}
                               >
                                 <a>
                                   <img
                                     src={
-                                      product?.image[0]?.image ||
+                                      productItem?.image[0]?.image ||
                                       "/static/img/not-found.jpg"
                                     }
                                     onError={(e) => {
@@ -64,7 +64,7 @@ const DisplayOrders = ({ cartdata }) => {
                                       e.target.src =
                                         "/static/img/vendor/store/vendor-150x150.jpg";
                                     }}
-                                    alt={product.brand_name}
+                                    alt={productItem.brand_name}
                                     height="80"
                                   />
                                   {/* <ThumbnailHelper
@@ -76,11 +76,11 @@ const DisplayOrders = ({ cartdata }) => {
                             </div>
                             <div className="prod-title">
                               <div className="prod-title-inner">
-                                {product.product_name}
-                                {product.attr_name1
-                                  ? ` (${product.attr_name1}${
-                                      product.attr_name2
-                                        ? ` ${product.attr_name2}`
+                                {productItem.product_name}
+                                {productItem.attr_name1
+                                  ? ` (${productItem.attr_name1}${
+                                    productItem.attr_name2
+                                        ? ` ${productItem.attr_name2}`
                                         : ""
                                     })`
                                   : ""}
@@ -92,13 +92,13 @@ const DisplayOrders = ({ cartdata }) => {
                         <div className="prdct-vari"></div>
                         <div className="prdct-unt-pric">
                           <div>
-                            {product.unit_discount_price == false ? (
+                            {productItem.unit_discount_price == false ? (
                               <span
                                 className="prdt"
                                 style={{ fontSize: "1.5rem" }}
                               >
                                 {currencyHelperConvertToRinggit(
-                                  product.unit_actual_price
+                                  productItem.unit_actual_price
                                 )}
                               </span>
                             ) : (
@@ -108,7 +108,7 @@ const DisplayOrders = ({ cartdata }) => {
                                   style={{ fontSize: "1.5rem" }}
                                 >
                                   {currencyHelperConvertToRinggit(
-                                    product.unit_actual_price
+                                    productItem.unit_actual_price
                                   )}
                                 </span>
                                 <span
@@ -116,7 +116,7 @@ const DisplayOrders = ({ cartdata }) => {
                                   style={{ fontSize: "1.5rem" }}
                                 >
                                   {currencyHelperConvertToRinggit(
-                                    product.unit_discount_price
+                                    productItem.unit_discount_price
                                   )}
                                 </span>
                               </>
@@ -126,7 +126,7 @@ const DisplayOrders = ({ cartdata }) => {
                         <div className="prdt-add">
                           <div className="prdt-qty">
                             <span style={{ fontSize: "1.5rem" }}>
-                              {product.quantity}
+                              {productItem.quantity}
                             </span>
                           </div>
                         </div>
@@ -134,19 +134,19 @@ const DisplayOrders = ({ cartdata }) => {
                         <div className="prdt-totl">
                           <span style={{ fontSize: "1.5rem" }}>
                             {currencyHelperConvertToRinggit(
-                              product.total_discount_price == false
-                                ? product.total_actual_price
-                                : product.total_discount_price
+                              productItem.total_discount_price == false
+                                ? productItem.total_actual_price
+                                : productItem.total_discount_price
                             )}
                           </span>
                         </div>
                       </div>
                     </div>
                   </div>
-                );
-              })}
-              <DisplayCartVoucher product_seller={productItem.seller} />
-              <DisplayOtherOptions productItem={productItem} />
+                {/* ); */}
+               {/* })} */}
+              {/* <DisplayCartVoucher product_seller={productItem.seller} />*/}
+              {/* <DisplayOtherOptions productItem={cartdata.product} />  */}
             </div>
           );
         })}

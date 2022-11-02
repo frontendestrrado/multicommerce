@@ -19,10 +19,10 @@ export function routeWithoutRefresh(routeLink) {
 }
 
 export function homePageProductPriceHelper(product) {
-  if (product.special_ofr_price !== false) {
+  if (product.offer_price !== false) {
     return (
       <p className="ps-product__price offer">
-        RM {product.special_ofr_price ? product.special_ofr_price : 0}
+        RM {product.offer_price ? product.offer_price : 0}
         <del className="ml-2">
           RM {product.actual_price ? product.actual_price : 0}
         </del>

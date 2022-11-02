@@ -36,6 +36,7 @@ export const calculateAmount = (obj) =>
     .toFixed(2);
 
 function* getCartSaga() {
+  alert("bbbbb")
   try {
     let userdata = localStorage.getItem("user");
     let parsedata = JSON.parse(userdata);
@@ -45,8 +46,10 @@ function* getCartSaga() {
       access_token,
       lang_id,
     };
-
+console.log("...getCartSaga..payload...",payload)
     const response = yield call(CartRepository.getCartItem, payload);
+    console.log("...getCartSaga..payload...",payload)
+    console.log("......abcd.....",response)
     yield put(getCartSuccess(response.data));
   } catch (err) {
     yield put(getCartError(err));
@@ -54,6 +57,7 @@ function* getCartSaga() {
 }
 
 function* addItemSaga({ payload }) {
+  alert("aaaaaaaaaaa")
   try {
     const response = yield call(CartRepository.addProductToCart, payload);
 
@@ -162,6 +166,7 @@ function* removeFromCartNewSaga({ payload }) {
 }
 
 export default function* rootSaga() {
+ // alert("cccc")
   yield all([takeEvery(actionTypes.GET_CART, getCartSaga)]);
   yield all([takeEvery(actionTypes.ADD_ITEM, addItemSaga)]);
   yield all([takeEvery(actionTypes.REMOVE_ITEM, removeItemSaga)]);

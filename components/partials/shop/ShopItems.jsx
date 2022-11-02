@@ -61,18 +61,35 @@ const ShopItems = ({ columns = 4, pageSize = 12 }) => {
   async function getProductsbyfilters() {
     setLoading(true);
     let payload = {
-      page: page === undefined ? 1 : page,
-      lang_id: 1,
-      category_id: category ? category : "",
-      subcategory_id: subcategory_id ? subcategory_id : "",
-      brand_id: brand ? brand : "",
-      max_price: price_lt ? price_lt : "",
-      min_price: price_gt ? price_gt : "",
-      low_to_high: low_to_high ? low_to_high : "",
-      high_to_low: high_to_low ? high_to_low : "",
-      latest: latest ? latest : "",
+      // page: page === undefined ? 1 : page,
+      // lang_id: 1,
+      // category_id:
+      // subcategory_id:
+      // brand_id:
+      // max_price: price_lt ? price_lt : "",
+      // min_price: price_gt ? price_gt : "",
+      // low_to_high:
+  
+ 
+      "lang_id": 1,
+      "access_token": "",
+      "device_id": "54655656fdf",
+      "page_url": "https://products/us/img",
+      "os_type": "web",
+      "limit": 10,
+      "offset": 0,
+      "category_id":  category ? category : "",
+      "subcategory_id": subcategory_id ? subcategory_id : "",
+      "brand_id":  brand ? brand : "",
+      "low_to_high": low_to_high ? low_to_high : "",
+      "high_to_low":  high_to_low ? high_to_low : "",
+      "latest":  latest ? latest : "",
+      "popular": ""
+
     };
+    console.log("....***********...payload......",payload)
     const responseData = await ProductRepository.getProductsbyFilter(payload);
+    console.log("....***********....responseData.....",responseData)
     if (responseData) {
       setProductItems(responseData.items);
       setTotal(responseData.totalItems);

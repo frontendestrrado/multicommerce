@@ -3,32 +3,58 @@ import { LocationOn } from "@material-ui/icons";
 import { useDispatch } from "react-redux";
 import { updateSelectedAddress } from "~/store/cart/action";
 import { Radio, Input, Space, Button, Modal } from "antd";
-
+import { useSelector } from "react-redux";
 import AddressModal from "./modal/AddressModal";
 
 const DisplayAddress = ({ address }) => {
   const dispatch = useDispatch();
-
+  const {
+    selectedAddress,
+  } = useSelector((state) => state.cart);
   const [selected_address, setSelectedAddress] = useState({});
   const [current_selected_address, setCurrentSelectedAddress] = useState({});
 
   const [changeAddress, setChangeAddress] = useState(false);
 
   const addressFilter = (is_default, address_id) => {
+    console.log("....333333.....",is_default)
+    console.log("....22222.....",address_id)
+    console.log("....111111.....",address)
     let address_select = address.filter(
       (address) =>
         address.is_default === is_default || address.id === address_id
     )[0];
+  
     return address_select;
+
   };
 
   useEffect(() => {
+    console.log("....00000.....",selectedAddress)
+
+  //  dispatch(updateSelectedAddress(selectedAddress));
+   // console.log("....444444.....",addressFilter(1, null))
+    // let address_default = addressFilter(1, null);
+    // setSelectedAddress(address_default);
+    // setCurrentSelectedAddress(address_default);
+    // dispatch(updateSelectedAddress(address_default));
     let isMounted = true;
     if (isMounted) {
+      alert("1")
       let address_default = addressFilter(1, null);
+      console.log("xxxxxxxx", address_default)
       setSelectedAddress(address_default);
       setCurrentSelectedAddress(address_default);
       dispatch(updateSelectedAddress(address_default));
+     // return true;
+   
+    }
+    else{
+      alert("2")
+      let address_default = addressFilter(1, null);
+      console.log("yyyyyyyyy", address_default)
+      dispatch(updateSelectedAddress(address_default));
+
     }
     return () => {
       isMounted = false;
@@ -42,6 +68,7 @@ const DisplayAddress = ({ address }) => {
   const onSelectAddress = (e) => {
     let radioAddress = address.filter((item) => item.id === e.target.value)[0];
     setSelectedAddress({ ...radioAddress });
+    console.log(".....fff...............",radioAddress)
   };
 
   return (

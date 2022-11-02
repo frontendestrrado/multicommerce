@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-
+import Repository, { apibaseurl } from "~/repositories/Repository";
 import { Input, Button, Modal, Form, message, Tooltip } from "antd";
 import { useRouter } from "next/router";
-
+import Axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import {
   appliedPlatformVoucher,
@@ -22,11 +22,43 @@ import {
 const DisplayPlatformVoucher = ({}) => {
   const Router = useRouter();
   const { access_token } = useSelector((state) => state.auth);
-
+  const [getCouponData, setCouponData] = useState([]);
   // useEffect(() => {
   //   dispatch(fetchPlatformVoucherAction());
   // }, []);
+  //  useEffect(() => {
+   // couponList()
+  //  }, []);
+   const couponList = () => {
+    console.log("....email...login.... ${apibaseurl}...",{apibaseurl})
 
+    const data = Axios.post(
+      `${apibaseurl}/api/customer/coupon-list`,
+      {
+        access_token: access_token,
+        lang_id: 1
+      })
+
+    // const data = Axios.post(
+    //   `${apibaseurl}/api/customer/coupon-list`)
+      .then((response) => response.data)
+      .then((data) => {
+        console.log("...4645757575.",data)
+        if (data.httpcode == 400 && data.status == "error") {
+          
+        }
+        if (data.httpcode == 200 && data.status == "success") {
+          setCouponData(data.coupon_list)
+          return;
+        }
+      })
+      .catch((error) => {
+        // notification["error"]({
+        //   message: error,
+        // });
+      });
+
+   }
   const dispatch = useDispatch();
   const { applied_platform_voucher, total_discount, cart } = useSelector(
     (state) => state.cart
@@ -39,6 +71,7 @@ const DisplayPlatformVoucher = ({}) => {
   const [applyButtonLoadin, setApplyButtonLoading] = useState(false);
 
   const showModal = (showVal) => {
+    couponList()
     setVisible(showVal);
   };
   const handleCancel = () => {
@@ -57,9 +90,9 @@ const DisplayPlatformVoucher = ({}) => {
       access_token,
       coupon_code: platformVoucherText,
     };
-
+console.log("...333....",payload)
     let response = await CartRepository.checkPlatformVoucher(payload);
-
+    console.log("...444....",response)
     if (response.httpcode == 200 && response.status == "success") {
       let coupon_data = response.data.coupon;
 
@@ -208,6 +241,13 @@ const DisplayPlatformVoucher = ({}) => {
               </div>
             </div>
           </div>
+         {getCouponData.map((obj, index) => ( 
+          <div>
+            <span>{obj.title}</span>
+            <span>{obj.desc}</span>
+            <button>Copy</button>
+          </div>
+         ))}
         </Form>
       </Modal>
     </>
