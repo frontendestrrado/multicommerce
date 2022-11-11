@@ -461,6 +461,23 @@
   background-image: url(../public/static/img/custom_images/home_page.jpg);
 }
 
+.header .header__left {
+  max-width: 400px;
+}
+
+.header .header__categ {
+  width: 60% !important;
+}
+
+.header .ofr {
+  width: 50% !important;
+  color: #fff;
+}
+
+.header .header__right {
+  max-width: 250px;
+}
+
 .navigation {
   background-color: #006fb4;
 }
@@ -743,6 +760,20 @@ Home New deals daily block
   border-radius: 50px;
   background-color: transparent;
 }
+.ps-deal-of-day.shockingsale .icon-chevron-right{
+  color: #d1c814;
+  border: 2px solid #FCF001;
+  padding: 12px;
+  border-radius: 50px;
+  background-color: transparent;
+}
+.ps-deal-of-day.newarrivals .icon-chevron-right{
+  color: #d1c814;
+  border: 2px solid #FCF001;
+  padding: 12px;
+  border-radius: 50px;
+  background-color: transparent;
+}
 .ps-carousel .slick-arrow:hover{
   /* color: #006fb4;
   border: 2px solid #006fb4;
@@ -765,6 +796,20 @@ Home New deals daily block
   background-color: transparent;
 }
 .ps-product-list.home-featureproducts.new .icon-chevron-left {
+  color: #d1c814;
+  border: 2px solid #FCF001;
+  padding: 12px;
+  border-radius: 50px;
+  background-color: transparent;
+}
+.ps-deal-of-day.shockingsale .icon-chevron-left {
+  color: #d1c814;
+  border: 2px solid #FCF001;
+  padding: 12px;
+  border-radius: 50px;
+  background-color: transparent;
+}
+.ps-deal-of-day.newarrivals .icon-chevron-left {
   color: #d1c814;
   border: 2px solid #FCF001;
   padding: 12px;
@@ -804,6 +849,12 @@ Home Shocking sale block
 .ps-deal-of-day.shockingsale,
 .ps-deal-of-day.home-auction {
   /* background-position: bottom; */
+}
+.shockingsale .ps-block--countdown-deal .ps-block__left h3 {
+  margin-right: 0;
+  font-size: 28px;
+  font-weight: 500;
+  color: #000;
 }
 .ps-product-list.home-featureproducts {
   background: #fff;
@@ -1032,6 +1083,39 @@ button.ps-btn {
 
 #homepage-1 .ps-deal-of-day.home-auction .slick-slide > div {
   min-height: 411px;
+}
+
+.zoom-in:hover img {
+  -webkit-transform: scale(1.045) rotate(.05deg);
+  transform: scale(1.045) rotate(.05deg);
+}
+
+.banner-thumb img {
+  width: 100%;
+}
+
+.zoom-in img {
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
+}
+
+.ps-deal-of-day .ps-section__header {
+  border-bottom: 0px solid #ccc;
+}
+
+.ps-deal-of-day.newarrivals{
+  padding-top: 50px;
+  padding-bottom: 50px !important;
+}
+
+.featurandrecent{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.ps-discount {
+  padding-top: 0px;
+  padding-bottom: 50px;
 }
 
 .prdt-box {
@@ -2650,71 +2734,36 @@ button.ps-btn {
 
 /* ----------------------------BottomCategory------------------------ */
 
-.offer-banner{
+.organic-food-fresh-banner{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: -30px;
+}
+.organic-food-fresh-banner .offer-banner{
   position: relative;
+  width: calc(33.33% - 30px);
+  margin-left: 30px;
 }
-.offer-banner a.banner-hover::before,
-.offer-banner a.banner-hover::after{
-  content: "";
-  position: relative;
-  top: 10px;
-  right: 10px;
-  bottom: 10px;
-  left: 10px;
-  z-index: 9;
-  opacity: 0;
-}
-.offer-banner a.banner-hover::before{
-  -webkit-transform: scale(1,0);
-  -o-transform: scale(1,0);
-  transform: scale(1,0);
-}
-.offer-banner a.banner-hover::after{
-  -webkit-transform: scale(0,1);
-  -o-transform: scale(0,1);
-  transform: scale(0,1);
-}
-.offer-banner a.banner-hover::before{
-  border-right: 1px solid #fff;
-  border-left: 1px solid #fff;
-}
-.offer-banner a.banner-hover::after{
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-}
-.offer-banner:hover a.banner-hover::before,
-.offer-banner:hover a.banner-hover::after{
-  opacity: 1;
-  -webkit-transform: scale(1);
-  -o-transform: scale(1);
-  transform: scale(1);
-}
-.offer-banner a.banner-hover::before,
-.offer-banner a.banner-hover::after,
-.offer-banner:hover a.banner-hover::before,
-.offer-banner:hover a.banner-hover::after{
-  -webkit-transition: all 0.4s ease-in-out 0s;
-  -o-transition: all 0.4s ease-in-out 0s;
-  transition: all 0.4s ease-in-out 0s;
-}
-.offer-banner a.banner-hover{
+.organic-food-fresh-banner .offer-banner a.banner-hover{
   display: block;
   position: relative;
   overflow: hidden;
 }
-.offer-banner:hover a.banner-hover img{
+.organic-food-fresh-banner .offer-banner:hover a.banner-hover img{
   -webkit-transform: scale(1.1);
   -o-transform: scale(1.1);
   transform: scale(1.1);
 }
-.offer-banner a.banner-hover img,
-.offer-banner:hover a.banner-hover img{
+.organic-food-fresh-banner .offer-banner a.banner-hover img,
+.organic-food-fresh-banner .offer-banner:hover a.banner-hover img{
   -webkit-transition: all 0.3s ease-in-out 0s;
   -o-transition: all 0.3s ease-in-out 0s;
   transition: all 0.3s ease-in-out 0s;
 }
-.offer-banner .banner-content{
-  position: relative;
+.organic-food-fresh-banner .offer-banner .banner-content{
+  position: absolute;
   top: 50px;
   right: 0px;
   left: 0px;
@@ -2723,28 +2772,49 @@ button.ps-btn {
   margin: 0 auto;
   text-align: center;
 }
-.offer-banner .banner-content span{
+.organic-food-fresh-banner .offer-banner .banner-content span{
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 600;
   line-height: 1;
   padding-bottom: 2px;
 }
-.offer-banner:nth-child(2) .banner-content span {
+.organic-food-fresh-banner .offer-banner:nth-child(2) .banner-content span {
   color: #7da63f;
   border-bottom: 1px solid #7da63f;
 }
-.offer-banner:last-child .banner-content span,
-.offer-banner:first-child .banner-content span {
+.organic-food-fresh-banner .offer-banner:last-child .banner-content span,
+.organic-food-fresh-banner .offer-banner:first-child .banner-content span {
   color: #d93d1a;
   border-bottom: 1px solid #d93d1a;
 }
-.offer-banner .banner-content h2{
+.organic-food-fresh-banner .offer-banner .banner-content h2{
   margin-top: 22px;
   font-size: 20px;
 }
-.offer-banner .banner-content a{
+.organic-food-fresh-banner .offer-banner .banner-content a{
   margin-top: 22px;
+}
+.btn-style2 {
+  background-color: #006fb4;
+  color: #fff !important;
+  font-size: 14px;
+  padding: 10px 30px;
+  font-weight: 500;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.offer-banner img{
+  max-width: 500px;
+  min-height: 490px;
+  overflow: hidden;
+}
+.ps-bottomcategory{
+  padding-top: 0px;
+  padding-bottom: 50px;
+}
+.product-thumbnail .first-img{
+  max-width: 120px;
 }
 
 /* ----------------------------BottomCategory------------------------ */

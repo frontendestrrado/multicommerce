@@ -57,7 +57,7 @@ console.log("...getCartSaga..payload...",payload)
 }
 
 function* addItemSaga({ payload }) {
-//  alert("aaaaaaaaaaa")
+
   try {
     const response = yield call(CartRepository.addProductToCart, payload);
 

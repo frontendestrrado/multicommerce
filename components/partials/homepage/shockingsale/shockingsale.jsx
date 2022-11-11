@@ -43,7 +43,7 @@ const Shockingsale = ({ collectionSlug, homeitems, loading }) => {
     arrows: true,
     infinite: true,
     speed: 750,
-    slidesToShow: 5,
+    slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -129,19 +129,12 @@ const Shockingsale = ({ collectionSlug, homeitems, loading }) => {
       // }}
     >
       <div className="ps-container">
-        <div className="ps-section__header">
+        <div className="ps-section__header justify-content-center d-flex">
           <div className="ps-block--countdown-deal">
-            <div className="ps-block__left">
-              <h3
-                style={{
-                  fontWeight: "600",
-                  fontStyle: "italic",
-                  paddingLeft: "13px",
-                }}
-              >
-                Shocking Sale
-              </h3>
-            </div>
+          <div class="ps-block__left">
+            <h3 className="text-center">Shocking Sale</h3>
+            <p className="text-center p-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          </div>
             {/* <div className="ps-block__right">
               {shocking_endtime !== "" && (
                 <figure>

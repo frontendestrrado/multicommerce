@@ -53,8 +53,6 @@ const MiniCart = React.memo(({ cart }) => {
   // async getCartItem(payload) {
 
     const getCartItem = (payload) => {
-   //   alert("7777767")
-    //alert("d")
     let userdata = localStorage.getItem("user");
     let parsedata = JSON.parse(userdata);
     let access_token = parsedata?.access_token;

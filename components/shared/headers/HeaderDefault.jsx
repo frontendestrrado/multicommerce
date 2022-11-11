@@ -7,7 +7,7 @@ import NavigationDefault from "~/components/shared/navigation/NavigationDefault"
 import HeaderActions from "~/components/shared/headers/modules/HeaderActions";
 import { stickyHeader } from "~/utilities/common-helpers";
 import MenuCategoriesDropdown from "~/components/shared/menus/MenuCategoriesDropdown";
-import Dropdown from 'react-bootstrap/Dropdown';
+// import Dropdown from 'react-bootstrap/Dropdown';
 
 const HeaderDefault = () => {
   useEffect(() => {
@@ -72,7 +72,7 @@ window.location.reload();
           <div className="header__categ">
             <MenuCategoriesDropdown />
           </div>
-          <div className="d-flex justify-content-center align-items-center">
+          <div className="d-flex justify-content-center align-items-center ofr">
             <a href="">Offer Zone</a>
           </div>
           <div className="header__center">

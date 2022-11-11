@@ -10,7 +10,7 @@ const ProductShockingSaleSlide = ({ product }) => {
   return (
     <>
       <Card bordered={false} className=" text-capitalize">
-        <div className="ps-block--countdown-deal mb-3">
+        <div className="ps-block--countdown-deal d-flex justify-content-center mb-3">
           <figure className="figure-timer--font">
             <figcaption>End in:</figcaption>
             <CountDownSimpleDiff
