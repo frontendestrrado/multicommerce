@@ -45,7 +45,7 @@ const ModulePaymentOrderSummary = ({ shipping, amount, cartItems }) => {
             <span>x{product.quantity}</span>
           </strong>
           <small>
-            RM{" "}
+          SAR{" "}
             {product.total_discount_price === 0
               ? product.total_actual_price
               : product.total_discount_price}
@@ -61,7 +61,7 @@ const ModulePaymentOrderSummary = ({ shipping, amount, cartItems }) => {
       <figure>
         <figcaption>
           <strong>Shipping Fee</strong>
-          <small>RM 20.00</small>
+          <small>SAR 20.00</small>
         </figcaption>
       </figure>
     );
@@ -69,7 +69,7 @@ const ModulePaymentOrderSummary = ({ shipping, amount, cartItems }) => {
       <figure className="ps-block__total">
         <h3>
           Total
-          <strong>RM {cartdata != null && cartdata.grand_total}</strong>
+          <strong>SAR {cartdata != null && cartdata.grand_total}</strong>
         </h3>
       </figure>
     );
@@ -78,7 +78,7 @@ const ModulePaymentOrderSummary = ({ shipping, amount, cartItems }) => {
       <figure className="ps-block__total">
         <h3>
           Total
-          <strong>RM {cartdata != null && cartdata.grand_total}</strong>
+          <strong>SAR {cartdata != null && cartdata.grand_total}</strong>
         </h3>
       </figure>
     );
@@ -96,7 +96,7 @@ const ModulePaymentOrderSummary = ({ shipping, amount, cartItems }) => {
         <figure>
           <figcaption>
             <strong>Subtotal</strong>
-            <small>RM {cartdata != null && cartdata.total_cost}</small>
+            <small>SAR {cartdata != null && cartdata.total_cost}</small>
           </figcaption>
         </figure>
         {/* {shippingView} */}

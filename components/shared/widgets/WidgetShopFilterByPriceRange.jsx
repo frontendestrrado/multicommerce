@@ -119,7 +119,7 @@ const WidgetShopFilterByPriceRange = () => {
           // onAfterChange={(e) => setKeyword(e)}
         />
         <p>
-          Price: RM {price_gt ? price_gt : 0} - RM {price_lt ? price_lt : 2000}
+          Price: SAR {price_gt ? price_gt : 0} - SAR {price_lt ? price_lt : 2000}
         </p>
       </figure>
       <span

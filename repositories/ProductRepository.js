@@ -28,6 +28,7 @@ class ProductRepository {
       }
     )
       .then((response) => {
+        console.log("...9999...",response)
         return {
           items: response.data.data.products,
           totalItems: response.data.data.no_of_products,
@@ -42,7 +43,7 @@ class ProductRepository {
     const reponse = await Repository.post(
       `${apibaseurl}/api/customer/product-list?page=` + params.page,
       {
-        lang_id: 1,
+        lang_id: localStorage.getItem("langId"),
         access_token: "",
         device_id: getDeviceId,
         page_url: "https://abc.com/products/us/img",
@@ -50,6 +51,7 @@ class ProductRepository {
       }
     )
       .then((response) => {
+        console.log("...888...",response)
         return {
           items: response.data.data.products,
           totalItems: response.data.data.total_products,
@@ -200,7 +202,9 @@ class ProductRepository {
   async getProductCategories() {
     // const reponse = await Repository.get(`${baseUrl}/product-categories`)
     const reponse = await Repository.post(
-      `${apibaseurl}/api/customer/cat-subcat`
+      `${apibaseurl}/api/customer/cat-subcat`,{
+      lang_id:localStorage.getItem("langId")}
+      
     )
       .then((response) => {
         return response.data;
@@ -233,7 +237,7 @@ class ProductRepository {
       {
         access_token,
         id,
-        lang_id: 1,
+        lang_id:localStorage.getItem("langId"),
         device_id: getDeviceId,
         page_url: `${basePathUrl}/product/${id}`,
         os_type: osType(),

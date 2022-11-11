@@ -20,7 +20,7 @@ const MyOrder = () => {
   useEffect(() => {
     let payload = {
       access_token,
-      lang_id: 1,
+      lang_id:localStorage.getItem("langId"),
       year:
         user_purchase_years && user_purchase_years?.length > 0
           ? user_purchase_years[0]
@@ -35,7 +35,7 @@ const MyOrder = () => {
   useEffect(() => {
     let payload = {
       access_token,
-      lang_id: 1,
+      lang_id: localStorage.getItem("langId"),
       year:
         user_purchase_years && user_purchase_years?.length > 0
           ? user_purchase_years[0]
@@ -49,7 +49,7 @@ const MyOrder = () => {
   useEffect(() => {
     let payload = {
       access_token,
-      lang_id: 1,
+      lang_id:localStorage.getItem("langId"),
       year: selectedYear,
       order_status: selectedType,
       search: searchValue,

@@ -52,10 +52,10 @@ const ProductShockingSale = ({ product }) => {
                 fontWeight: "lighter",
               }}
             >
-              RM {product.offer_price !== false ? product.offer_price : ""}
+              SAR {product.offer_price !== false ? product.offer_price : ""}
               <small>
                 <del className="ml-2">
-                  RM {product.actual_price ? product.actual_price : ""}
+                SAR {product.actual_price ? product.actual_price : ""}
                 </del>
               </small>
               <small style={{ color: "red" }} className="ml-2">

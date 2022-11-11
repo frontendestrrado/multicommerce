@@ -7,14 +7,14 @@ const ModuleSellerTopInformation = ({ product }) => {
   if (product.actual_price > product.sale_price) {
     priceView = (
       <h4 className="ps-product__price sale">
-        <del className="mr-2">RM{product.sale_price}</del>
-        RM
+        <del className="mr-2">SAR{product.sale_price}</del>
+        SAR
         {product.sale_price}
       </h4>
     );
   } else {
     priceView = (
-      <h4 className="ps-product__price">RM {product.actual_price}</h4>
+      <h4 className="ps-product__price">SAR {product.actual_price}</h4>
     );
   }
   return (

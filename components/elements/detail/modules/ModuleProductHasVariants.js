@@ -269,7 +269,7 @@ class ModuleProductHasVariants extends Component {
                             className="ps-btn ps-btn--black"
                             href="#"
                             onClick={this.handleAddItemToCart.bind(this)}>
-                            Add to cart4
+                            Add to cart
                         </a>
                         <a
                             className="ps-btn"
@@ -301,7 +301,7 @@ class ModuleProductHasVariants extends Component {
                             className="ps-btn ps-btn--black"
                             href="#"
                             onClick={this.handleAddItemToCart.bind(this)}>
-                            Add to cart5
+                            Add to cart
                         </a>
                         <a
                             className="ps-btn"

@@ -184,7 +184,7 @@ const ModuleVarientActionMobile = ({ product }) => {
         className="ps-btn ps-btn--black"
         onClick={(e) => handleAddItemToCart(e)}
       >
-        Add to cart6
+        Add to cart
       </a>
       <a className="ps-btn" onClick={(e) => handleBuynow(e)}>
         Buy Now

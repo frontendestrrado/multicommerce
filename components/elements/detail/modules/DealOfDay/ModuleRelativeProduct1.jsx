@@ -17,7 +17,7 @@ const ModuleRelativeProduct1 = ({ product }) => {
     <>
       <Link href="/product/[pid]" as={`/product/${product.product_id}`}>
         <a>
-          <ProductThumbnail imageLink={product.image.length> 1? product.image[0].thumbnail:''} />
+          <ProductThumbnail imageLink={product.image.length > 0? product.image[0].thumbnail:''} />
         </a>
       </Link>
       <div className="ps-product__container text-truncate text-center">

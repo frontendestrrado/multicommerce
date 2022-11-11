@@ -47,7 +47,7 @@ const DisplayPlaceOrderDetails = () => {
 
   }, [cart?.product]);
   const getCartItem = (payload) => {
-      alert("7777767")
+     // alert("7777767")
     //alert("d")
     let userdata = localStorage.getItem("user");
     let parsedata = JSON.parse(userdata);
@@ -61,7 +61,7 @@ const DisplayPlaceOrderDetails = () => {
       `${apibaseurl}/api/customer/cart`,
       {
         access_token: user_token,
-        lang_id: 1,
+        lang_id:localStorage.getItem("langId"),
         device_id: getDeviceId,
         page_url: "http://localhost:3000/product/2",
         os_type: "WEB",
@@ -246,7 +246,7 @@ b=parseInt(b,10);
       let payload = {
        // seller_array: { ...cart_payload },
         access_token,
-        lang_id: "",
+        lang_id: localStorage.getItem("langId"),
         ...platform_coupon_payload,
         total_amt: a,
         e_money_amt: used_wallet_amount_detail.wallet_used

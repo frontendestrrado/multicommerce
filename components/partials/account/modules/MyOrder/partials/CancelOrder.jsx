@@ -52,11 +52,11 @@ const CancelOrder = ({ cancel_order_detail, saleId = null, paymentMode }) => {
       message.success(response.message);
       form.resetFields();
       setTimeout(() => {
-        dispatch(getMyOrders({ access_token, lang_id: 1 }));
+        dispatch(getMyOrders({ access_token, lang_id:localStorage.getItem("langId") }));
         if (saleId !== null) {
           let payload = {
             access_token,
-            lang_id: 1,
+            lang_id:localStorage.getItem("langId"),
             sale_id: saleId,
           };
           dispatch(getOrderDetails(payload));

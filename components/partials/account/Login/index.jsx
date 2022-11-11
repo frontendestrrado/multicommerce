@@ -77,6 +77,7 @@ console.log("....register submit...finale...",values)
     }
   };
   const handleSubmit = async () => {
+    alert("register")
     let payload = {
       first_name: user.first_name,
       last_name: user.last_name,
@@ -86,7 +87,7 @@ console.log("....register submit...finale...",values)
       password: user.password,
       password_confirmation: user.password_confirmation,
     };
-
+    console.log("....register submit.. payload....",payload)
     try {
       const values = await AccountRepository.registerNewUser(user);
       console.log("....register submit.. user....",user)
@@ -417,7 +418,7 @@ document.getElementById('registerId1').style.display='none'
               }}
             >
 
-              <div className="card-body" style={{display:'none'}} id="loginId">  
+              <div className="card-body" style={{display:'block'}} id="loginId">  
                 <div className="logcard_header_inner">
                   <div className="logcard_header_title">Log In</div>
                 </div>
@@ -462,7 +463,7 @@ document.getElementById('registerId1').style.display='none'
           form={form}
           className="ps-form--account"
           onFinish={otpButton.registerBoxShow ? handleSubmit : undefined}
-          style={{ paddingTop: "10px" , display:'block'}}
+          style={{ paddingTop: "10px" , display:'none'}}
           id="registerId"
           size="large"
           layout="vertical"
@@ -770,7 +771,7 @@ document.getElementById('registerId1').style.display='none'
         <Form
           form={form}
           className="ps-form--account"
-          onFinish={otpButton.registerBoxShow ? handleSubmit1 : undefined}
+          onFinish={otpButton.registerBoxShow ? handleSubmit : undefined}
           style={{ paddingTop: "10px" , display:'none'}}
           id="registerId1"
           size="large"

@@ -97,7 +97,7 @@ const DisplayOtherOptions = ({ productItem }) => {
           <div className="col">
             <div>
               <span style={{ color: "rgb(255, 0, 0)" }}>Change</span>
-              <span className="float-right mr-5">RM 0.00</span>
+              <span className="float-right mr-5">SAR 0.00</span>
             </div>
           </div>
         </div>

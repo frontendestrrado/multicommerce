@@ -227,7 +227,7 @@ const SearchHeader = () => {
           className="form-control"
           type="text"
           value={keyword}
-          placeholder="I'm shopping for..."
+          placeholder="What are you looking for...?"
           onChange={(e) => setKeyword(e.target.value)}
         />
         {clearTextView}

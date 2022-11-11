@@ -42,7 +42,7 @@ class AccountRepository {
   }
 
   async registerNewUser(payload) {
-    alert("d")
+   // alert("d")
     console.log("....555...",payload)
     const response = await Repository.post(
       `${apibaseurl}/api/customer/register`,
@@ -204,7 +204,7 @@ class AccountRepository {
 
     const reponse = await Repository.post(
       `${apibaseurl}/api/customer/profile`,
-      { access_token, lang_id: 1 }
+      { access_token, lang_id: localStorage.getItem("langId")}
     )
       .then((response) => {
         return response.data;
@@ -232,7 +232,7 @@ class AccountRepository {
 
     const reponse = await Repository.post(
       `${apibaseurl}/api/customer/recent/views`,
-      { access_token, lang_id: 1 }
+      { access_token, lang_id: localStorage.getItem("langId") }
     )
       .then((response) => {
         return response.data;

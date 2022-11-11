@@ -48,6 +48,13 @@ const ModuleVarientShoppingActions = React.memo(
     const [uniqueAssociativeProd, setUniqueAssociativeProd] = useState([]);
 
     const [subAttrCheck, setSubAttrCheck] = useState(null);
+
+    const [getActualPrice, setActualPrice] = useState('');
+    const [getOfferPrice, setOfferPrice] = useState('');
+    const [getOffer, setOffer] = useState('');
+    const [getProductName, setProductName] = useState('');
+    const [getProduct, setProduct] = useState('');
+    const [getProductIdFromDropDown, setProductIdFromDropDown] = useState('');
     const [filterAssocProd, setFilterAssocProd] = useState({
       assocVal: "",
       assocValSel: "",
@@ -68,7 +75,7 @@ const ModuleVarientShoppingActions = React.memo(
 
     //Effects
     useEffect(() => {
-      console.log("vvvvvvvvvvvvvvvv...........",product)
+      console.log("vvvvvvvvvvvvvvvv...........",product.varaiants_list)
       setAssociativeProd(product?.varaiants_list);
       let arrayVals = [
         ...new Map(
@@ -222,26 +229,33 @@ const ModuleVarientShoppingActions = React.memo(
           duration: 1,
         });
         return false;
-      } else if (
-        product?.product?.product_type == "config" &&
-        (filterAssocProd.assocValSel == "" ||
-          filterAssocProd.assocValSizeSel == "")
-      ) {
-        notification["error"]({
-          message: "Error",
-          description: "Please Select Varient 1",
-          duration: 1,
-        });
-        return false;
-      } else {
+      } 
+      // else if (
+      //   product?.product?.product_type == "config" &&
+      //   (filterAssocProd.assocValSel == "" ||
+      //     filterAssocProd.assocValSizeSel == "")
+      // ) {
+      //   notification["error"]({
+      //     message: "Error",
+      //     description: "Please Select Varient 1",
+      //     duration: 1,
+      //   });
+      //   return false;
+      // } 
+      else {
         setLoading1(true);
         let payload = makePayload(token);
-
+     
+        console.log("..v..v..v.v.v.v.v.v.v.....1....",payload)
         if (payload) {
+          payload = {
+            ...payload,
+            product_id: getProductIdFromDropDown,
+          };
           const responseData =
             payload?.access_token &&
             (await ProductRepository.addProductToCart(payload));
-
+console.log("..v..v..v.v.v.v.v.v.v.....2....",responseData)
           if (responseData && responseData.httpcode == "200") {
             let tmp = product;
             tmp.quantity = quantity;
@@ -379,6 +393,25 @@ const ModuleVarientShoppingActions = React.memo(
       }, 1000);
     };
 
+    const changeProduct = (e) => {
+      //{obj.combination +","+ obj.actual_price+","+ obj.offer+","+ obj.offer_price+","+ obj.pro_id+","+ obj.stock}
+      console.log(e.target.value)
+    var changeProductDetailArray = (e.target.value).split(',')
+    console.log(changeProductDetailArray.length)
+     // setProduct(e.target.value);
+      // const [getActualPrice, setActualPrice] = useState('');
+      // const [getOfferPrice, setOfferPrice] = useState('');
+      // const [getOffer, setOffer] = useState('');
+      // const [getProductName, setProductName] = useState('');
+      setProduct(e.target.value)
+      setProductName(changeProductDetailArray[0])
+      setActualPrice(changeProductDetailArray[1])
+      setOffer(changeProductDetailArray[2])
+      setOfferPrice(changeProductDetailArray[3])
+      setProductIdFromDropDown(changeProductDetailArray[4])
+  //    const [getProduct, setProduct] = useState(e.target.value);
+    };
+
     const handleChangeAttrSize = (e) => {
       setFilterAssocProd({
         ...filterAssocProd,
@@ -450,9 +483,11 @@ const ModuleVarientShoppingActions = React.memo(
                     width: "20%",
                   }}
                 >
-                  {associativeProd[0]?.combination}
+                  {/* {uniqueAssociativeProd[0].combination} */}
+                  {getProductName}
                 </td>
-                <td>
+                {/* --colour box--- */}
+                {/* <td>
                   <Radio.Group
                     size="large"
                     className="ml-4"
@@ -471,10 +506,34 @@ const ModuleVarientShoppingActions = React.memo(
                       );
                     })}
                   </Radio.Group>
+                </td> */}
+                
+              </tr>
+              <tr>
+                <td>
+               
+   
+                <select 
+                 onChange={changeProduct}
+                 value={getProduct}
+                 >
+                {uniqueAssociativeProd.map((obj) => (
+          <option value={obj.combination +","+ obj.actual_price+","+ obj.offer+","+ obj.offer_price+","+ obj.pro_id+","+ obj.stock}>{obj.combination}</option>
+        ))}
+{/*         
+                uniqueAssociativeProd.map((obj, index) => { 
+  <option>{uniqueAssociativeProd[0].combination}</option>
+                 }) */}
+</select>
                 </td>
               </tr>
               <tr>
-                <td></td>
+                <td>
+        
+               <span>{getActualPrice}</span>  <span>{getOffer}</span>  <span>{getOfferPrice}</span>
+
+              
+                </td>
               </tr>
               {filterAssocProd.assocValSel && subAttrCheck > 0 ? (
                 <tr>
@@ -491,7 +550,7 @@ const ModuleVarientShoppingActions = React.memo(
                     <Radio.Group
                       size="large"
                       className="ml-4"
-                      onChange={handleChangeAttrSize}
+                      onChange={handleChangeAttrSize}  
                     >
                       {associativeProd
                         ?.filter(
@@ -619,7 +678,7 @@ const ModuleVarientShoppingActions = React.memo(
               className="ps-btn ps-btn--black"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              {loading1 ? <CircularProgress size={20} /> : "Add to cart7"}
+              {loading1 ? <CircularProgress size={20} /> : "Add to cart"}
             </a>
             <a className="ps-btn text-white" onClick={(e) => handleBuynow(e)}>
               {loading2 ? <CircularProgress size={20} /> : "Buy Now"}
@@ -687,7 +746,7 @@ const ModuleVarientShoppingActions = React.memo(
               href="#"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              Add to cart8
+              Add to cart
             </a>
             <div className="ps-product__actions">
               <a href="#" onClick={(e) => handleAddItemToWishlist(e)}>

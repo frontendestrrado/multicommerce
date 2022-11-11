@@ -71,14 +71,14 @@ const Wishlist = ({ wishlist, auth }) => {
               {/* {featureproductprice(product)} */}
               {product.sale_price !== false ? (
                 <p className="ps-product__price">
-                  RM {product.sale_price}{" "}
+                  SAR {product.sale_price}{" "}
                   <span className="lin-prdt">
-                    RM {product.price || product.actual_price}
+                  SAR {product.price || product.actual_price}
                   </span>
                 </p>
               ) : (
                 <p className="ps-product__price">
-                  RM {product.price || product.actual_price}
+                  SAR {product.price || product.actual_price}
                 </p>
               )}
 

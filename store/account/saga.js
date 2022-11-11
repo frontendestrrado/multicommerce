@@ -223,7 +223,7 @@ function* cancelOrderRequestSaga({ payload }) {
     const response = yield call(AccountRepository.cancelOrderRequest, payload);
     let data_payload = {
       access_token: payload.access_token,
-      lang_id: "1",
+      lang_id:localStorage.getItem("langId"),
     };
     yield put(getMyOrders(data_payload));
   } catch (err) {

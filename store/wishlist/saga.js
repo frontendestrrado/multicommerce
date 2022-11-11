@@ -46,7 +46,7 @@ function* getWishlistListSaga() {
     let userdata = localStorage.getItem("user");
     let parsedata = JSON.parse(userdata);
     let access_token = parsedata?.access_token;
-    let lang_id = 1;
+    let lang_id = localStorage.getItem("langId");
     let payload = {
       access_token,
       lang_id,

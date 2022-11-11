@@ -142,7 +142,7 @@ class Payment extends Component {
                   <div className="ps-block__panel">
                     <figure>
                       <small>International Shipping</small>
-                      <strong>RM 0.00</strong>
+                      <strong>SAR 0.00</strong>
                     </figure>
                   </div>
                   <h4>Payment Methods</h4>

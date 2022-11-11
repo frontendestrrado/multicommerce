@@ -53,15 +53,15 @@ const ProductAuctionSlide = ({ product }) => {
               className="ps-product__price"
               style={{ fontWeight: "bold", fontSize: "large" }}
             >
-              RM {product.sale_price}
-              <del className="ml-2">RM {product.price}</del>
+              SAR {product.sale_price}
+              <del className="ml-2">SAR {product.price}</del>
             </p>
           ) : (
             <p
               className="ps-product__price"
               style={{ fontWeight: "bold", fontSize: "large" }}
             >
-              RM {product.price}
+              SAR {product.price}
             </p>
           )}
           <div className="ps-product__content">

@@ -42,11 +42,11 @@ const ProductSearchResult = ({ product }) => {
         </div>
         {product.sale_price > 0 ? (
           <p className="ps-product__price sale">
-            RM {product.sale_price}
-            <del className="ml-2">RM {product.actual_price}</del>
+            SAR {product.sale_price}
+            <del className="ml-2">SAR {product.actual_price}</del>
           </p>
         ) : (
-          <p className="ps-product__price sale">RM {product.actual_price}</p>
+          <p className="ps-product__price sale">SAR {product.actual_price}</p>
         )}
       </div>
     </div>

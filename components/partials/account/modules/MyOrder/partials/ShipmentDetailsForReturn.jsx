@@ -86,7 +86,7 @@ const ShipmentDetailsForReturn = ({ return_id }) => {
       message.success(response.message);
       form.resetFields();
       setTimeout(() => {
-        dispatch(getMyOrders({ access_token, lang_id: 1 }));
+        dispatch(getMyOrders({ access_token, lang_id: localStorage.getItem("langId") }));
       }, 1000);
     } else if (response.httpcode == 400) {
       form.resetFields();

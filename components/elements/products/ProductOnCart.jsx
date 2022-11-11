@@ -72,7 +72,7 @@ const ProductOnCart = ({ product }) => {
         </Link>
         <p>
           <small>
-            RM{" "}
+          SAR{" "}
             {product.unit_discount_price !== false ? (
               <>
                 {" "}

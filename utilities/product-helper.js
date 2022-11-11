@@ -22,9 +22,9 @@ export function homePageProductPriceHelper(product) {
   if (product.offer_price !== false) {
     return (
       <p className="ps-product__price offer">
-        RM {product.offer_price ? product.offer_price : 0}
+        SAR {product.offer_price ? product.offer_price : 0}
         <del className="ml-2">
-          RM {product.actual_price ? product.actual_price : 0}
+        SAR {product.actual_price ? product.actual_price : 0}
         </del>
       </p>
     );
@@ -32,9 +32,9 @@ export function homePageProductPriceHelper(product) {
   if (product.shock_sale_price !== false) {
     return (
       <p className="ps-product__price offer">
-        RM {product.shock_sale_price}
+        SAR {product.shock_sale_price}
         <del className="ml-2">
-          RM {product.actual_price ? product.actual_price : 0}
+        SAR {product.actual_price ? product.actual_price : 0}
         </del>
       </p>
     );
@@ -42,16 +42,16 @@ export function homePageProductPriceHelper(product) {
   if (product.sale_price !== false) {
     return (
       <p className="ps-product__price offer">
-        RM {product.sale_price}
+        SAR {product.sale_price}
         <del className="ml-2">
-          RM {product.actual_price ? product.actual_price : 0}
+        SAR {product.actual_price ? product.actual_price : 0}
         </del>
       </p>
     );
   }
   return (
     <p className="ps-product__price">
-      RM {product.actual_price ? product.actual_price : 0}
+      SAR {product.actual_price ? product.actual_price : 0}
     </p>
   );
 }
@@ -214,13 +214,13 @@ export function StrapiProductPrice(product) {
   if (product.is_sale === true) {
     view = (
       <p className="ps-product__price sale">
-        RM {formatCurrency(product.price)}
-        <del className="ml-2">RM {formatCurrency(product.sale_price)}</del>
+        SAR {formatCurrency(product.price)}
+        <del className="ml-2">SAR {formatCurrency(product.sale_price)}</del>
       </p>
     );
   } else {
     view = (
-      <p className="ps-product__price">RM {formatCurrency(product.price)}</p>
+      <p className="ps-product__price">SAR {formatCurrency(product.price)}</p>
     );
   }
   return view;
@@ -231,12 +231,12 @@ export function StrapiProductPrice_New(product) {
   if (product.sale_price !== false) {
     view = (
       <p className="ps-product__price sale">
-        RM {product.sale_price}
-        <del className="ml-2">RM {product.actual_price}</del>
+        SAR {product.sale_price}
+        <del className="ml-2">SAR {product.actual_price}</del>
       </p>
     );
   } else {
-    view = <p className="ps-product__price">RM {product.actual_price}</p>;
+    view = <p className="ps-product__price">SAR {product.actual_price}</p>;
   }
   return view;
 }
@@ -246,18 +246,18 @@ export function featureproductprice(product) {
   if (product.is_sale === true) {
     view = (
       <p className="ps-product__price">
-        RM {formatCurrency(product.sale_price)}{" "}
+        SAR {formatCurrency(product.sale_price)}{" "}
         <span className="lin-prdt">
-          RM {formatCurrency(product.actual_price)}
+        SAR {formatCurrency(product.actual_price)}
         </span>
       </p>
     );
   } else {
     view = (
       <p className="ps-product__price">
-        RM {formatCurrency(product.sale_price)}{" "}
+        SAR {formatCurrency(product.sale_price)}{" "}
         <span className="lin-prdt">
-          RM {formatCurrency(product.actual_price)}
+        SAR {formatCurrency(product.actual_price)}
         </span>
       </p>
     );
@@ -270,14 +270,14 @@ export function StrapiProductPriceExpanded(product) {
   if (product.is_sale === true) {
     view = (
       <p className="ps-product__price sale">
-        RM {formatCurrency(product.price)}
-        <del className="ml-2">RM {formatCurrency(product.sale_price)}</del>
+        SAR {formatCurrency(product.price)}
+        <del className="ml-2">SAR {formatCurrency(product.sale_price)}</del>
         <small>18% off</small>
       </p>
     );
   } else {
     view = (
-      <p className="ps-product__price">RM {formatCurrency(product.price)}</p>
+      <p className="ps-product__price">SAR {formatCurrency(product.price)}</p>
     );
   }
   return view;
@@ -288,9 +288,9 @@ export function StrapiProductPriceExpandedOther(product) {
 
   view = (
     <p className="ps-product__price">
-      RM {formatCurrency(product.offer_price ? product.offer_price : 0)}
+      SAR {formatCurrency(product.offer_price ? product.offer_price : 0)}
       <del className="ml-2">
-        RM {formatCurrency(product.actual_price ? product.actual_price : 0)}
+      SAR {formatCurrency(product.actual_price ? product.actual_price : 0)}
       </del>
       <small>{product.offer ? product.offer : 0}</small>
     </p>
@@ -303,9 +303,9 @@ export function StrapiProductPriceExpandedOther1(product) {
 
   view = (
     <p className="ps-product__price">
-      RM {formatCurrency(product.sale_price ? product.sale_price : 0)}
+      SAR {formatCurrency(product.sale_price ? product.sale_price : 0)}
       <del className="ml-2">
-        RM {formatCurrency(product.price ? product.price : 0)}
+      SAR {formatCurrency(product.price ? product.price : 0)}
       </del>
       <small>{product.offer ? product.offer : 0}</small>
     </p>

@@ -63,7 +63,7 @@ const Shipping = () => {
                 <div className="ps-block__panel">
                   <figure>
                     <small>International Shipping</small>
-                    <strong>RM 0.00</strong>
+                    <strong>SAR 0.00</strong>
                   </figure>
                 </div>
                 <div className="ps-block__footer">

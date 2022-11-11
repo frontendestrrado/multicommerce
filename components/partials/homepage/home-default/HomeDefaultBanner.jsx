@@ -62,7 +62,7 @@ const HomeDefaultBanner = ({ homeitems, loading }) => {
   }
 
   const carouselSetting = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 750,
     fade: true,
@@ -73,8 +73,8 @@ const HomeDefaultBanner = ({ homeitems, loading }) => {
   };
 
   const carouselStandard = {
-    dots: false,
-    arrows: true,
+    dots: true,
+    arrows: false,
     infinite: true,
     speed: 750,
     slidesToShow: 1,
@@ -88,7 +88,7 @@ const HomeDefaultBanner = ({ homeitems, loading }) => {
           slidesToShow: 1,
           slidesToScroll: 1,
           infinite: true,
-          dots: false,
+          dots: true,
         },
       },
       {

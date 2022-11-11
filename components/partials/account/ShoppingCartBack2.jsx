@@ -381,7 +381,7 @@ class ShoppingCart extends Component {
                                     class="prdt"
                                     style={{ fontSize: "1.5rem" }}
                                   >
-                                    RM {product.unit_actual_price}
+                                    SAR {product.unit_actual_price}
                                   </span>
                                 ) : (
                                   <>
@@ -389,13 +389,13 @@ class ShoppingCart extends Component {
                                       class="lin-prdt"
                                       style={{ fontSize: "1.5rem" }}
                                     >
-                                      RM {product.unit_actual_price}
+                                      SAR {product.unit_actual_price}
                                     </span>
                                     <span
                                       class="prdt"
                                       style={{ fontSize: "1.5rem" }}
                                     >
-                                      RM {product.unit_discount_price}
+                                      SAR {product.unit_discount_price}
                                     </span>
                                   </>
                                 )}
@@ -430,7 +430,7 @@ class ShoppingCart extends Component {
                             </div>
                             <div class="prdt-totl">
                               <span style={{ fontSize: "1.5rem" }}>
-                                RM{" "}
+                              SAR{" "}
                                 {product.total_discount_price === 0
                                   ? product.total_actual_price
                                   : product.total_discount_price}
@@ -533,7 +533,7 @@ class ShoppingCart extends Component {
                         </div>
 
                         <div class="ttl-prc">
-                          RM{" "}
+                        SAR{" "}
                           {this.state.cartdata != null &&
                             this.state.cartdata.grand_total}
                         </div>

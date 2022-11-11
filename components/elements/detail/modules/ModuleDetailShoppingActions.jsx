@@ -549,7 +549,7 @@ const ModuleDetailShoppingActions = React.memo(
               className="ps-btn ps-btn--yellow"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              {loading1 ? <CircularProgress size={20} /> : "Add to cart1"}
+              {loading1 ? <CircularProgress size={20} /> : "Add to cart"}
             </a>
             <a className="ps-btn ps-btn--blu" onClick={(e) => handleBuynow(e)}>
               {loading2 ? <CircularProgress size={20} /> : "Buy Now"}
@@ -623,7 +623,7 @@ const ModuleDetailShoppingActions = React.memo(
               href="#"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              Add to cart2
+              Add to cart
             </a>
             <div className="ps-product__actions">
               <a href="#" onClick={(e) => handleAddItemToWishlist(e)}>

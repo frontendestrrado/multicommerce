@@ -49,7 +49,7 @@ const ShopItemsNewDeals = ({ columns = 4, pageSize = 12 }) => {
     };
 
     let payload = {
-      lang_id: 1,
+      lang_id: localStorage.getItem("langId"),
       access_token: "",
       max_price: "",
       min_price: "",
@@ -82,7 +82,7 @@ const ShopItemsNewDeals = ({ columns = 4, pageSize = 12 }) => {
     setLoading(true);
     let payload = {
       page: page === undefined ? 1 : page,
-      lang_id: 1,
+      lang_id: localStorage.getItem("langId"),
       category_id: category ? category : "",
       subcategory_id: subcategory_id ? subcategory_id : "",
       brand_id: brand ? brand : "",

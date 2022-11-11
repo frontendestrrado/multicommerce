@@ -18,7 +18,7 @@ const MyAuctionPage = () => {
   useEffect(() => {
     let payload = {
       access_token,
-      lang_id: 1,
+      lang_id: localStorage.getItem("langId"),
       device_id: getDeviceId,
       page_url: makePageUrl(Router.asPath),
       os_type: osType(),
@@ -31,7 +31,7 @@ const MyAuctionPage = () => {
   function handleSelectAuctionTypeChange(value) {
     let payload = {
       access_token,
-      lang_id: 1,
+      lang_id: localStorage.getItem("langId"),
       device_id: getDeviceId,
       page_url: makePageUrl(Router.asPath),
       os_type: osType(),

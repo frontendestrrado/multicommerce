@@ -112,7 +112,7 @@ const AuctionDetail = ({ auction_order_list }) => {
               </div>
               <div className="col-md-3">
                 <div className="bid">Bid Price</div>
-                <div className="rin">RM 1234</div>
+                <div className="rin">SAR 1234</div>
                 <button className="updtbtn mt-2">Inprogress</button>
               </div>
             </div>
@@ -144,7 +144,7 @@ const AuctionDetail = ({ auction_order_list }) => {
               </div>
               <div className="col-md-3">
                 <div className="bid">Bid Price</div>
-                <div className="rin">RM 1234</div>
+                <div className="rin">SAR 1234</div>
                 <button className="updtbtn rej mt-2">Rejected</button>
               </div>
             </div>
@@ -176,7 +176,7 @@ const AuctionDetail = ({ auction_order_list }) => {
               </div>
               <div className="col-md-3">
                 <div className="bid">Bid Price</div>
-                <div className="rin">RM 1234</div>
+                <div className="rin">SAR 1234</div>
                 <button className="updtbtn adto mt-2">Added To Cart</button>
               </div>
             </div>

@@ -40,7 +40,7 @@ const DisplayAddress = ({ address }) => {
     // dispatch(updateSelectedAddress(address_default));
     let isMounted = true;
     if (isMounted) {
-      alert("1")
+     // alert("1")
       let address_default = addressFilter(1, null);
       console.log("xxxxxxxx", address_default)
       setSelectedAddress(address_default);
@@ -50,7 +50,7 @@ const DisplayAddress = ({ address }) => {
    
     }
     else{
-      alert("2")
+   //   alert("2")
       let address_default = addressFilter(1, null);
       console.log("yyyyyyyyy", address_default)
       dispatch(updateSelectedAddress(address_default));

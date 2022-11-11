@@ -71,7 +71,7 @@ const ShopItems = ({ columns = 4, pageSize = 12 }) => {
       // low_to_high:
   
  
-      "lang_id": 1,
+      "lang_id":localStorage.getItem("langId"),
       "access_token": "",
       "device_id": "54655656fdf",
       "page_url": "https://products/us/img",

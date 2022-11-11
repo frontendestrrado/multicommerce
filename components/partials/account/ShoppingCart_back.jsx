@@ -329,9 +329,9 @@ class ShoppingCart extends Component {
                             </td>
                             <td className="price">
                               <span className="strike_text">
-                                RM{product.unit_actual_price}{" "}
+                              SAR{product.unit_actual_price}{" "}
                               </span>
-                              RM
+                              SAR
                               {product.unit_discount_price}
                             </td>
                             <td>
@@ -364,7 +364,7 @@ class ShoppingCart extends Component {
                               </div>
                             </td>
                             <td>
-                              RM{product.quantity * product.unit_discount_price}
+                            SAR{product.quantity * product.unit_discount_price}
                             </td>
                             <td>
                               <a
@@ -447,7 +447,7 @@ class ShoppingCart extends Component {
                       Total (
                       {this.state.cartdata != null &&
                         this.state.cartdata.products.length + " "}
-                      Items) RM{" "}
+                      Items) SAR{" "}
                       {this.state.cartdata != null &&
                         this.state.cartdata.grand_total}
                     </div>

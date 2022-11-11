@@ -92,7 +92,7 @@ const DisplayAuctionCheckoutFooter = ({ auctiondata }) => {
 
     let payload = {
       access_token,
-      lang_id: 1,
+      lang_id:localStorage.getItem("langId"),
       device_id: getDeviceId,
       page_url: makePageUrl(Router.asPath),
       os_type: osType(),

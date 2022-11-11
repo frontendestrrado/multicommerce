@@ -50,11 +50,11 @@ const ShockingProduct = ({ product }) => {
               fontWeight: "lighter",
             }}
           >
-            RM {product.offer_price !== false ? product.offer_price : ""}
+            SAR {product.offer_price !== false ? product.offer_price : ""}
             <br />
             <small>
               <del className="">
-                RM {product.actual_price ? product.actual_price : ""}
+              SAR {product.actual_price ? product.actual_price : ""}
               </del>
             </small>
             <small style={{ color: "red" }} className="ml-2">

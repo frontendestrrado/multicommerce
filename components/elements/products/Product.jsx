@@ -49,7 +49,7 @@ const Product = ({ product }) => {
             {/* <span>02</span> */}
           </div>
           {/* {priceView} */}
-          RM {product.actual_price}
+          SAR {product.actual_price}
         </div>
         {/* <div className="ps-product__content hover">
           <Link href="/product/[pid]" as={`/product/${product.id}`}>

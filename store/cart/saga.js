@@ -36,12 +36,12 @@ export const calculateAmount = (obj) =>
     .toFixed(2);
 
 function* getCartSaga() {
-  alert("bbbbb")
+ // alert("bbbbb")
   try {
     let userdata = localStorage.getItem("user");
     let parsedata = JSON.parse(userdata);
     let access_token = parsedata?.access_token;
-    let lang_id = 1;
+    let lang_id = (localStorage.getItem("langId"));
     let payload = {
       access_token,
       lang_id,
@@ -57,7 +57,7 @@ console.log("...getCartSaga..payload...",payload)
 }
 
 function* addItemSaga({ payload }) {
-  alert("aaaaaaaaaaa")
+//  alert("aaaaaaaaaaa")
   try {
     const response = yield call(CartRepository.addProductToCart, payload);
 

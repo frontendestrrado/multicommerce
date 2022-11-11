@@ -25,7 +25,7 @@ const EditAddressDefault = () => {
     } else if (access_token) {
       let payload = {
         access_token,
-        lang_id: 1,
+        lang_id:localStorage.getItem("langId"),
         sale_id: pid,
       };
       dispatch(getOrderDetails(payload));

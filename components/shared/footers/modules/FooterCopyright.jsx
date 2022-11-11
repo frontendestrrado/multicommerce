@@ -98,7 +98,7 @@ const FooterCopyright = () => (
                           <form className="form-inline position-relative"
                               action="/page/blank"
                               target="_blank" method="post">
-                              {/* <input className="form-control" type="text" placeholder="Your email address"> */}
+                              <input className="form-control" type="text" placeholder="Your email address"/>
                               <button className="btn nletter-btn text-capitalize" type="submit">Sign
                                   up</button>
                           </form>

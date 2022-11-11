@@ -11,7 +11,8 @@ const MenuCategoriesDropdown = () => {
   const fetchMenuDataFromServer = async () => {
     try {
       const response = await Axios.post(
-        `${apibaseurl}/api/customer/cat-subcat`
+        `${apibaseurl}/api/customer/cat-subcat`,{
+          lang_id:localStorage.getItem("langId")}
       );
       setMenuDataFromServer(response.data);
     } catch (error) {
@@ -35,7 +36,7 @@ const MenuCategoriesDropdown = () => {
     <div className="menu--product-categories">
       <div className="menu__toggle">
         <i className="icon-menu"></i>
-        <span>Shop by Category</span>
+        <span>Categories</span>
       </div>
       <div className="menu__content">
         <MenuShopBy

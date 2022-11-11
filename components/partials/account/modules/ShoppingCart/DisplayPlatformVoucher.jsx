@@ -36,7 +36,7 @@ const DisplayPlatformVoucher = ({}) => {
       `${apibaseurl}/api/customer/coupon-list`,
       {
         access_token: access_token,
-        lang_id: 1
+        lang_id:localStorage.getItem("langId")
       })
 
     // const data = Axios.post(

@@ -70,7 +70,7 @@ const ShoppingCart = ({ cartItems, cart, total_discount }) => {
     `${apibaseurl}/api/customer/cart`,
     {
       access_token: user_token,
-      lang_id: 1,
+      lang_id: localStorage.getItem("langId"),
       device_id: getDeviceId,
       page_url: "http://localhost:3000/product/2",
       os_type: "WEB",

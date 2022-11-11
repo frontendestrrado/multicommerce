@@ -51,10 +51,10 @@ const ProductShockingSaleSlide = ({ product }) => {
                 fontWeight: "lighter",
               }}
             >
-              RM {product.offer_price ? product.offer_price : 0}
+              SAR {product.offer_price ? product.offer_price : 0}
               <small>
                 <del className="ml-2">
-                  RM {product.actual_price ? product.actual_price : 0}
+                SAR {product.actual_price ? product.actual_price : 0}
                 </del>
               </small>
               <small style={{ color: "red" }} className="ml-2">

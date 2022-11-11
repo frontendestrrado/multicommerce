@@ -13,7 +13,7 @@ const FeatureAndRecent = ({ homeitems, loading }) => {
     //   <div key={index}>{mainBannerMedia(item)}</div>
     // ));
     mainCarouselView = (
-        homeitems.featured_products.slice(5, 8).map((item, index) => (
+        homeitems.featured_products.slice(0, 3).map((item, index) => (
         <div className="product-list mb-30">
         <div className="card product-card border-0">
             <div className="card-body p-0">
@@ -30,7 +30,7 @@ const FeatureAndRecent = ({ homeitems, loading }) => {
                         <div className="product-desc">
                             <h3 className="title"><a href="shop-grid-4-column.html">{item.product_name}</a></h3>
                             <div className="d-flex align-items-center justify-content-between">
-                                <h6 className="product-price">${item.actual_price}</h6>
+                                <h6 className="product-price">SAR {item.actual_price}</h6>
                             </div>
                         </div>
                     </div>
