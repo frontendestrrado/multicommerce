@@ -11,16 +11,17 @@ import DisplayOrders from "./modules/Checkout/DisplayOrders";
 import DisplayVoucher from "./modules/Checkout/DisplayVoucher";
 import DisplayCartFooter from "./modules/Checkout/DisplayCartFooter";
 import DisplayAddAddress from "./modules/Checkout/DisplayAddAddress";
-
 const Checkout = () => {
   const dispatch = useDispatch();
 
   const { customer_address } = useSelector((state) => state.account);
   const { access_token } = useSelector((state) => state.auth);
+  const [loading, setLoading] = useState(true);
 
   //const { cart } = useSelector((state) => state.cart);
 
-  const [cartdata, setCartdata] = useState(useSelector((state) => state.cart));
+ // const [cartdata, setCartdata] = useState(useSelector((state) => state.cart));
+  const [cartdata, setCartdata] = useState([]);
   useEffect(() => {
     console.log(".....kkkkkkkkk......",customer_address)
     let userdata = localStorage.getItem("user");
@@ -37,6 +38,7 @@ const Checkout = () => {
       dispatch(getCustomerProfile());
       dispatch(getCustomerAddress());
       getCartItem()
+
     }
   }, [access_token]);
   const getCartItem = (payload) => {
@@ -62,19 +64,26 @@ const Checkout = () => {
         }
         if (data.httpcode == 200 && data.status == "success") {
           setCartdata(data.data)
+    
           return;
         }
+      
+        
+        setLoading(false);
       })
       .catch((error) => {
       });
   }
   return (
+    
     <div className="ps-checkout ps-section--shopping ps-shopping-cart">
       {cartdata != null &&
       cartdata !== undefined &&
       cartdata.errors !== "Cart is empty" &&
       cartdata?.product?.length &&
-      cartdata?.product?.length !== 0 ? (
+      cartdata?.product?.length !== 0 
+    
+       ? (
         <div className="container">
           <div
             className="ps-section__content"
@@ -99,11 +108,15 @@ const Checkout = () => {
           </div>
         </div>
       ) : (
-        <div className="container">
-          <Empty description={<span>Cart is empty!</span>} />
-        </div>
+        <div>
+        {  loading === false ?(
+          <div className="container">
+          {/* <Empty description={<span>Cart is empty!</span>} /> */}
+        </div>):(<span> </span>) }
+          </div>
       )}
     </div>
+
   );
 };
 
