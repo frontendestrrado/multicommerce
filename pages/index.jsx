@@ -249,6 +249,7 @@ newArrailval()
         <Discount getOfferData={getOfferData} loading={loading}/>
         <BottomCategory homeitems={homeitems} loading={loading}/>
         <Brand homeitems={homeitems} loading={loading}/>
+        
         {/* {!loading && homeitems && homeitems?.auction?.length > 0 && (
           <Homeauction homeitems={homeitems} />
         )} */}
