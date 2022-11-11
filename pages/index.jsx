@@ -6,6 +6,7 @@ import ContainerHomeDefault from "~/components/layouts/ContainerHomeDefault";
 import FeatureAndRecent from "~/components/partials/homepage/home-default/FeatureAndRecent";
 import Advert from "~/components/partials/homepage/home-default/Advert";
 import Discount from "~/components/partials/homepage/home-default/Discount";
+import { getDeviceId } from "~/utilities/common-helpers";
 import Brand from "~/components/partials/homepage/home-default/Brand";
 import BottomCategory from "~/components/partials/homepage/home-default/BottomCategory";
 import HomeDefaultBanner from "~/components/partials/homepage/home-default/HomeDefaultBanner";
@@ -27,6 +28,8 @@ import { Spin } from "antd";
 
 const HomepageDefaultPage = () => {
   const [homeitems, setHomeitems] = useState([]);
+  const [getFeatureProduct, setFeatureProduct] = useState([]);
+  const [getNewArrData, setNewArrData] = useState([]);
   const [getOfferData, setOfferData] = useState([]);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
@@ -42,6 +45,118 @@ const HomepageDefaultPage = () => {
       setLoading(false);
     }, 250);
   }
+//  dev-bigbasket.estrradoweb.com/api/customer/product-featured
+
+const featuredProduct = () => {
+  let userdata = localStorage.getItem("user");
+  let parsedata = JSON.parse(userdata);
+  let access_token = parsedata?.access_token;
+  const user_token = access_token;
+  console.log("....email...login.... ${apibaseurl}...",{apibaseurl})
+  const data = Axios.post(
+    `${apibaseurl}/api/customer/product-featured`,
+    {
+
+      
+        lang_id:1,
+        category_id:"",
+        subcategory_id:"",
+        brand_id: "",
+    featured:1,
+        limit:10,
+        offset:0,
+        device_id:getDeviceId,
+        page_url:"products/us/img",
+        os_type:"WEB",
+        access_token:user_token,
+        max_price:"",
+        min_price:""
+    
+    
+      // access_token: user_token,
+      // lang_id: 1,
+      // device_id: getDeviceId,
+      // page_url: "http://localhost:3000/product/2",
+      // os_type: "WEB",
+    })
+    .then((response) => response.data)
+    .then((data) => {
+      console.log("...featured.....",data)
+  //    console.log("....email...login.... response...",response)
+      if (data.httpcode == 400 && data.status == "error") {
+        // notification["error"]({
+        //   message: data.message,
+        // });
+        // return;
+      }
+      if (data.httpcode == 200 && data.status == "success") {
+        setFeatureProduct(data.data)
+        // notification["success"]({
+        //   message: data.message,
+        // });
+       // localStorage.setItem("user", JSON.stringify(data.data));
+        return;
+      }
+    })
+    .catch((error) => {
+      notification["error"]({
+        message: error,
+      });
+    });
+};
+const newArrailval = () => {
+  console.log("....email...login.... ${apibaseurl}...",{apibaseurl})
+  const data = Axios.post(
+    `${apibaseurl}/api/customer/products-latest`,
+    {
+
+      
+      category_id: "", 
+      page_url: "https://products/us/img", 
+      low_to_high: "0", 
+      limit: 10, 
+      subcategory_id: "0",
+       brand_id: "0",
+        device_id: getDeviceId,
+         latest: "0", 
+         os_type: "web", 
+         access_token: "",
+          high_to_low: "0", 
+          lang_id: 1, 
+          popular: "0",
+          offset: 0
+    
+      // access_token: user_token,
+      // lang_id: 1,
+      // device_id: getDeviceId,
+      // page_url: "http://localhost:3000/product/2",
+      // os_type: "WEB",
+    })
+    .then((response) => response.data)
+    .then((data) => {
+      console.log("...newArrailval.",data)
+  //    console.log("....email...login.... response...",response)
+      if (data.httpcode == 400 && data.status == "error") {
+        // notification["error"]({
+        //   message: data.message,
+        // });
+        // return;
+      }
+      if (data.httpcode == 200 && data.status == "success") {
+       setNewArrData(data.data)
+        // notification["success"]({
+        //   message: data.message,
+        // });
+       // localStorage.setItem("user", JSON.stringify(data.data));
+        return;
+      }
+    })
+    .catch((error) => {
+      // notification["error"]({
+      //   message: error,
+      // });
+    });
+};
   const offer = () => {
     console.log("....email...login.... ${apibaseurl}...",{apibaseurl})
     const data = Axios.post(
@@ -84,6 +199,8 @@ const HomepageDefaultPage = () => {
     }
 
 offer()
+featuredProduct()
+newArrailval()
   }, [homedata]);
 
   return (
@@ -116,7 +233,7 @@ offer()
            {!loading && homeitems && homeitems?.new_arrivals?.length > 0 && (
           <NewDealsDaily
             collectionSlug="deal-of-the-day"
-            homeitems={homeitems}
+            homeitems={getNewArrData}
             loading={loading}
           />
         )}
@@ -128,8 +245,8 @@ offer()
             loading={loading}
           />
         )} */}
-        <FeatureAndRecent homeitems={homeitems} loading={loading}/>
-        {/* <Discount getOfferData={getOfferData} loading={loading}/> */}
+        <FeatureAndRecent homeitems={homeitems} getFeatureProduct={getFeatureProduct} loading={loading}/>
+        <Discount getOfferData={getOfferData} loading={loading}/>
         <BottomCategory homeitems={homeitems} loading={loading}/>
         {/* <Brand homeitems={homeitems} loading={loading}/> */}
         {/* {!loading && homeitems && homeitems?.auction?.length > 0 && (

@@ -96,7 +96,7 @@ export function fetchPlatformVoucherActionSuccess(payload) {
 }
 
 export function getCart() {
-  alert("getCart")
+ // alert("getCart")
   return { type: actionTypes.GET_CART };
 }
 
@@ -115,7 +115,7 @@ export function getCartError(error) {
 }
 
 export function updateSelectedAddress(payload) {
-  alert("call")
+ // alert("call")
   console.log("..555555....",payload)
 
   return {

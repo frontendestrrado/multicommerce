@@ -36,7 +36,7 @@ export const calculateAmount = (obj) =>
     .toFixed(2);
 
 function* getCartSaga() {
-  alert("bbbbb")
+ // alert("bbbbb")
   try {
     let userdata = localStorage.getItem("user");
     let parsedata = JSON.parse(userdata);
@@ -57,7 +57,7 @@ console.log("...getCartSaga..payload...",payload)
 }
 
 function* addItemSaga({ payload }) {
-  alert("aaaaaaaaaaa")
+ // alert("aaaaaaaaaaa")
   try {
     const response = yield call(CartRepository.addProductToCart, payload);
 

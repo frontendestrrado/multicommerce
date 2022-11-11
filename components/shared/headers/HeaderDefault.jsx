@@ -48,7 +48,7 @@ const HeaderDefault = () => {
           <div className="header__categ">
             <MenuCategoriesDropdown />
           </div>
-          <div className="d-flex justify-content-center align-items-center">
+          <div className="d-flex justify-content-center align-items-center ofr">
             <a href="">Offer Zone</a>
           </div>
           <div className="header__center">

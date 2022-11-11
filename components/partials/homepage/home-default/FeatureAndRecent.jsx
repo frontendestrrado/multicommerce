@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-const FeatureAndRecent = ({ homeitems, loading }) => {
+const FeatureAndRecent = ({ homeitems, getFeatureProduct, loading }) => {
 
   useEffect(() => {
 
-   
+   console.log(".....f....",getFeatureProduct)
   }, []);
 
   let mainCarouselView;
-  if (!loading && homeitems?.featured_products?.length > 0) {
+  if (!loading && getFeatureProduct?.products?.length > 0) {
     // const carouseItems = homeitems.main_banner.map((item, index) => (
     //   <div key={index}>{mainBannerMedia(item)}</div>
     // ));
     mainCarouselView = (
-        homeitems.featured_products.slice(5, 8).map((item, index) => (
+        getFeatureProduct.products.slice(0, 4).map((item, index) => (
         <div className="product-list mb-30">
         <div className="card product-card border-0">
             <div className="card-body p-0">

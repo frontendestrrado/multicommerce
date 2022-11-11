@@ -32,7 +32,7 @@ const Checkout = () => {
       });
       Router.push("/");
     } else {
-      alert("hjhgjrt")
+     // alert("hjhgjrt")
     
       dispatch(getCustomerProfile());
       dispatch(getCustomerAddress());

@@ -13,8 +13,9 @@ import { getProductsByCollectionHelper } from "~/utilities/strapi-fetch-data-hel
 
 const Newdealsdaily = ({ homeitems, loading }) => {
   // Views
+  console.log("...kkkkkkkk....",homeitems)
   const checkdealsobject = (homeitems) => {
-    if ("new_arrivals" in homeitems) {
+    if ("products" in homeitems) {
       return true;
     } else {
       return false;
@@ -22,19 +23,19 @@ const Newdealsdaily = ({ homeitems, loading }) => {
   };
   let productItemsView;
   if (!loading) {
-    if (checkdealsobject && homeitems && homeitems?.new_arrivals?.length > 0) {
+    if (checkdealsobject && homeitems && homeitems?.products?.length > 0) {
  
       const slideItems =
-        homeitems?.new_arrivals?.length > 5
-          ? homeitems?.new_arrivals?.map((item) => (
+        homeitems?.products?.length > 5
+          ? homeitems?.products?.map((item) => (
               <ProductDealOfDaySlider product={item} key={item.product_id} />
             ))
-          : homeitems?.new_arrivals?.map((item) => (
+          : homeitems?.products?.map((item) => (
               <ProductDealOfDay product={item} key={item.product_id} />
             ));
 
       productItemsView =
-        homeitems?.new_arrivals?.length > 5 ? (
+        homeitems?.products?.length > 5 ? (
           <Slider {...carouselStandard1} className="ps-carousel outside">
             {slideItems}
           </Slider>
@@ -54,7 +55,7 @@ const Newdealsdaily = ({ homeitems, loading }) => {
   }
 
   return (
-    <div className="ps-deal-of-day newdealsdaily shock">
+    <div className="ps-deal-of-day newarrivals">
       <div className="ps-container">
       <div className="ps-section__header justify-content-center">
           <div className="ps-block--countdown-deal">
