@@ -18,7 +18,7 @@ const ProductDetailFullwidth = React.memo(({ product }) => {
         <ThumbnailDefault product={product} />
         <div className="ps-product__info">
           <ModuleDetailTopInformation product={product} />
-          <ModuleProductDetailDescription product={product} />
+          {/* <ModuleProductDetailDescription product={product} /> */}
 
           {/* {product?.product?.service_status == 1 &&
           (product?.product?.is_out_of_stock == false ||

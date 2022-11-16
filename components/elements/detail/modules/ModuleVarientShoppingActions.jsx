@@ -87,6 +87,9 @@ const ModuleVarientShoppingActions = React.memo(
       ];
       console.log("vvvvvvvvvvvvvvvv.......arrayVals....",arrayVals)
       setUniqueAssociativeProd(arrayVals);
+      
+      setProductIdFromDropDown(arrayVals[0].pro_id)
+
     }, [product]);
 
     useEffect(() => {

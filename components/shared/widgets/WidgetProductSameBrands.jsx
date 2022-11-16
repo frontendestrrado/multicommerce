@@ -44,6 +44,7 @@ const WidgetProductSameBrands = ({ collectionSlug, product }) => {
     //   product !== null && product.brand_products.length > 3
     //     ? product.brand_products.slice(0, 3)
     //     : product.brand_products;
+    console.log("..ffff...brand..",product)
     if (product && product?.brand_products?.length > 0) {
       productItemsView = (
         <Slider {...carouselSingle} className="ps-carousel outside">

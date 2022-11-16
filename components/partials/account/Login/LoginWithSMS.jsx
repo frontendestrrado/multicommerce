@@ -250,7 +250,7 @@ const LoginWithSMS = () => {
               >
                 <Input
                   type="text"
-                  placeholder="Enter Phone Number"
+                  placeholder="Mobile Number "
                   onChange={handleChange("phone_number")}
                   style={{ width: "70%" }}
                 />

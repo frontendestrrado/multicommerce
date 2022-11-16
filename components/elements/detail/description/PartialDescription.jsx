@@ -2,6 +2,7 @@ import React from "react";
 import DOMPurify from "dompurify";
 
 const PartialDescription = ({ product }) => {
+  console.log("...content....",product)
   const createMarkup = (html) => {
     return {
       __html: DOMPurify.sanitize(html),

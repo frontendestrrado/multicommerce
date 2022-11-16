@@ -13,7 +13,7 @@ const ProductDetailVideoFeatured = ({ product }) => (
             <ThumbnailVideoFeatured />
             <div className="ps-product__info">
                 <ModuleDetailTopInformation product={product} />
-                <ModuleProductDetailDescription product={product} />
+                {/* <ModuleProductDetailDescription product={product} /> */}
                 <ModuleDetailShoppingActions product={product} />
                 <ModuleProductDetailSpecification />
                 <ModuleProductDetailSharing />

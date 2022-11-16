@@ -17,7 +17,7 @@ const ShockSaleProductDetail = ({ product }) => {
         <div className="ps-product__info">
           {/* <ModuleDetailTopInformation product={product} /> */}
           <ModuleShockingSaleDetailTopInformation product={product} />
-          <ModuleProductDetailDescription product={product} />
+          {/* <ModuleProductDetailDescription product={product} /> */}
           <ModuleDetailShoppingActions product={product} shockingsale={true} />
           {/* <ModuleProductDetailSpecification product={product} /> */}
           <ModuleProductDetailSharing />

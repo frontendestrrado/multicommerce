@@ -130,7 +130,9 @@ const ModuleDetailShoppingActions = React.memo(
           payload?.access_token &&
         
           (await ProductRepository.addProductToCart(payload));
+          console.log("...?????????????...1.....",payload)
 
+  console.log("...?????????????.....2...",responseData)
         if (responseData && responseData.httpcode == "200") {
           let tmp = product;
           tmp.quantity = quantity;
@@ -143,9 +145,9 @@ const ModuleDetailShoppingActions = React.memo(
             description: responseData.response,
             duration: 1,
           });
-          setTimeout(function () {
-            Router.push("/account/shopping-cart");
-          }, 200);
+          // setTimeout(function () {
+          //   Router.push("/account/shopping-cart");
+          // }, 200);
         } else {
           notification["error"]({
             message: "Error",
@@ -300,7 +302,7 @@ const ModuleDetailShoppingActions = React.memo(
 
     const handleIncreaseItemQty = (e) => {
       setQuantity(quantity + 1);
-      dispatch(setProductQuantityAction(quantity + 1));
+      (dispatchsetProductQuantityAction(quantity + 1));
     };
 
     const handleDecreaseItemQty = (e) => {
@@ -322,6 +324,9 @@ const ModuleDetailShoppingActions = React.memo(
     });
 
     useEffect(() => {
+      console.log(">..<<<<<<<<<<<<<<<<<<<<<<<<<",product)
+      setQuantity(product.product.minimum_quantity)
+      // (dispatchsetProductQuantityAction(product.product.minimum_quantity));
       setAssociativeProd(product?.associative_products);
       let arrayVals = [
         ...new Map(
@@ -523,7 +528,7 @@ const ModuleDetailShoppingActions = React.memo(
 
           <div className="ps-product__shopping">
             <figure>
-              <figcaption>Quantity</figcaption>
+              <figcaption>Quantity1</figcaption>
               <div className="form-group--number">
                 <button
                   className="up"
@@ -596,7 +601,7 @@ const ModuleDetailShoppingActions = React.memo(
         <div className="ps-product__shopping extend">
           <div className="ps-product__btn-group">
             <figure>
-              <figcaption>Quantity</figcaption>
+              <figcaption>Quantity2</figcaption>
               <div className="form-group--number">
                 <button
                   className="up"

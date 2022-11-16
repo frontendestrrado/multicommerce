@@ -8,8 +8,8 @@ const ProductWidgets = ({ product }) => {
   return (
     <section>
       <WidgetProductFeatures />
-      <WidgetSaleOnSite />
-      <WidgetShopAds />
+      {/* <WidgetSaleOnSite /> */}
+      {/* <WidgetShopAds /> */}
       <WidgetProductSameBrands
         collectionSlug="shop-same-brand"
         product={product}

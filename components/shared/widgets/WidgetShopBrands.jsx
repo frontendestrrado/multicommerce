@@ -97,11 +97,12 @@ const WidgetShopBrands = () => {
       brands.length > 10 ? brands.slice(0, brandlimit) : brands;
     if (brandylist && brandylist.length > 0) {
       const items = brandylist.map((item) => (
-        <li
+          <li
           key={item.value}
           className={item.id == brand ? "cat_item--brand active" : "cat_item"}
           onClick={() => handleBrand(item.id)}
         >
+          <input type="radio" name="age"  key={item.value}/>
           {item.value}
         </li>
       ));

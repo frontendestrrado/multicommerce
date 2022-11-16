@@ -6,16 +6,16 @@ const ModuleProductDetailDescription = ({ product }) => {
     <>
       <div className="ps-product__desc">
         <p>
-          Sold By:
+          {/* Sold By:
           <Link href={`/seller/${product?.product?.seller_id}`}>
             <a>
               <strong> {product?.product?.seller}</strong>
             </a>
-          </Link>
+          </Link> */}
           <span className="text-warning">
-            {product?.product?.service_status == 1
+            {/* {product?.product?.service_status == 1
               ? ""
-              : " (Shop Service Unavailable)"}
+              : " (Shop Service Unavailable)"} */}
           </span>
           <span className="text-warning">
             {/* {product?.product?.is_out_of_stock === true &&
@@ -25,9 +25,9 @@ const ModuleProductDetailDescription = ({ product }) => {
           </span>
         </p>
         <p>
-          {product?.product?.short_description
+          {/* {product?.product?.short_description
             ? product.product.short_description
-            : "NA"}
+            : "NA"} */}
         </p>
         {/* <ul className="ps-list--dot">
       <li>Unrestrained and portable active stereo speaker</li>

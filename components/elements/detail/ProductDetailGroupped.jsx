@@ -16,7 +16,7 @@ const ProductDetailGroupped = ({ product }) => (
       <ThumbnailDefault product={product} />
       <div className="ps-product__info">
         <ModuleDetailTopInformation product={product} />
-        <ModuleProductDetailDescription product={product} />
+        {/* <ModuleProductDetailDescription product={product} /> */}
         <ModuleDetailProductGroup />
         <ModuleDetailShoppingActions product={product} />
         <ModuleProductDetailSpecification />

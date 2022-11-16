@@ -60,6 +60,7 @@ const Checkout = () => {
       })
       .then((response) => response.data)
       .then((data) => {
+        console.log("...caaaaaaaaaaaaaartttt,,,,,,,,,,",data)
         if (data.httpcode == 400 && data.status == "error") {
         }
         if (data.httpcode == 200 && data.status == "success") {

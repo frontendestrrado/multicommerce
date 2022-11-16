@@ -451,7 +451,7 @@ document.getElementById('registerId1').style.display='none'
                   >
                     <div className="fotr_txt">
                       Don't have an account?
-                      
+                      <br/>
                         <a onClick={() => reg()} className="ftr_link"> Sign Up </a>
                       
                     </div>

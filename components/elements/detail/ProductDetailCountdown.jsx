@@ -16,7 +16,7 @@ const ProductDetailCountdown = ({ product }) => {
                 <ThumbnailDefault product={product} />
                 <div className="ps-product__info">
                     <ModuleDetailTopInformation product={product} />
-                    <ModuleProductDetailDescription product={product} />
+                    {/* <ModuleProductDetailDescription product={product} /> */}
                     <ModuleDetailCountdown />
                     <ModuleDetailShoppingActions product={product} />
                     <ModuleProductDetailSpecification />

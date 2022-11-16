@@ -22,10 +22,12 @@ const ThumbnailDefault = React.memo(({ product, vertical = true }) => {
 
   useEffect(() => {
     let images = [];
+    console.log("...image....",product )
     if (product && product?.product?.image?.length > 0) {
       product.product.image.map((item) => {
         images.push(`${item.image}`);
       });
+      console.log("...image.1...",images )
       setProductImages(images);
     }
     setGallery(galleryCarousel.current);

@@ -237,7 +237,7 @@ class ModuleProductHasVariants extends Component {
                         </div>
                     </div>
                     {priceArea}
-                    <ModuleProductDetailDescription product={product} />
+                    {/* <ModuleProductDetailDescription product={product} /> */}
                     {variants}
                     <div className="ps-product__shopping">
                         <figure>

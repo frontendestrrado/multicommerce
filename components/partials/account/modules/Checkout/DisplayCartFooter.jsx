@@ -15,7 +15,7 @@ import { selectedPaymentOption } from "~/store/cart/action";
 const DisplayCartFooter = ({ cartdata }) => {
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState({
-    payment_type: 1,
+    payment_type: 2,
   });
 
   const getCheckoutInfo = async (payload) => {
@@ -54,7 +54,7 @@ const DisplayCartFooter = ({ cartdata }) => {
       getCheckoutInfo({ access_token: token });
       dispatch(
         selectedPaymentOption({
-          payment_type: 1,
+          payment_type: 2,
         })
       );
     }
