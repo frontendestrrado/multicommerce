@@ -99,9 +99,9 @@ const featuredProduct = () => {
       }
     })
     .catch((error) => {
-      notification["error"]({
-        message: error,
-      });
+      // notification["error"]({
+      //   message: error,
+      // });
     });
 };
 const newArrailval = () => {

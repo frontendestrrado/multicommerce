@@ -103,7 +103,7 @@ export function priceHelper(num) {
 export function currencyHelperConvertToRinggit(currencyVal) {
   return new Intl.NumberFormat("ms-MY", {
     style: "currency",
-    currency: "MYR",
+    currency: "SAR",
   }).format(priceHelper(currencyVal));
 }
 
