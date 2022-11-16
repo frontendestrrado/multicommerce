@@ -28,14 +28,14 @@ window.location.reload();
         <div class="ps-container">
           <div class="d-flex justify-content-end">
             <div className="top-content">
-              <ul className="top-url">
-              <div>
+              <ul className="top-url d-flex align-items-center">
+              <div className="langu">
                   <select onChange={(e) => aaa(e)} nme="cars" id="cars" >
-                  <option   value="1" >Lang</option>
-    <option   value="1" >English</option>
-    <option value="2" >العربية</option>
-  </select>
-  </div>
+                    <option   value="1" >Lang</option>
+                    <option   value="1" >English</option>
+                    <option value="2" >العربية</option>
+                  </select>
+              </div>
                 <li className="top-li">
                   {/* <a> Eng </a> */}
                  {/* <span onClick={(e) => aaa(e)}>ffffff</span> */}
@@ -75,10 +75,10 @@ window.location.reload();
           <div className="d-flex justify-content-center align-items-center ofr">
             <a href="">Offer Zone</a>
           </div>
-          <div className="header__center">
+          <div className="header__center d-flex align-items-center">
             <SearchHeader />
           </div>
-          <div className="header__right">
+          <div className="header__right d-flex align-items-center justify-content-end">
             <HeaderActions />
           </div>
         </div>
