@@ -21,6 +21,12 @@
   --chat-bubble-you: var(--colour-primary);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+body{
+  font-family: "Manrope", sans-serif !important;
+}
+
 .ps-container {
   max-width: 1475px;
   padding: 0;
@@ -454,6 +460,42 @@
   background-color: #006fb4 !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   background-image: none;
+}
+
+.header .header__top {
+  padding: 10px 0;
+}
+
+.ps-form--quick-search {
+  display: block;
+  width: 100%;
+}
+
+.langu{
+  float: left;
+}
+
+.langu select{ 
+  
+}
+
+.ps-form--quick-search .form-control {
+  background-color: #007AC7;
+  color:#fff;
+}
+
+.ps-carousel .slick-dots {
+  z-index: 1;
+  position: relative;
+  top: -30px;
+}
+
+.ps-carousel .slick-dots > li.slick-active button {
+  background-color: #fdf001;
+}
+
+.ps-form--quick-search .ps-form__input input::placeholder {
+  color:#fff;
 }
 
 #homepage-1 .ps-site-features {
