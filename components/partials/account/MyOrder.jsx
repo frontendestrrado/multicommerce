@@ -54,6 +54,7 @@ const MyOrder = () => {
       order_status: selectedType,
       search: searchValue,
     };
+    console.log(".....gg....g.g.g.g..g.g.g..g...",payload)
     access_token && dispatch(getMyOrders(payload));
   }, [selectedType, selectedYear, searchValue]);
 
@@ -97,7 +98,7 @@ const MyOrder = () => {
                           className="float-right row"
                           style={{ marginRight: "0px" }}
                         >
-                          <div className="mr-2 ml-2 d-none d-md-inline d-lg-inline d-xl-inline d-xxl-inline">
+                          {/* <div className="mr-2 ml-2 d-none d-md-inline d-lg-inline d-xl-inline d-xxl-inline">
                             <Tooltip title={"Search by product name/order ID"}>
                               <Search
                                 placeholder="product name/order ID"
@@ -106,7 +107,7 @@ const MyOrder = () => {
                                 loading={loading}
                               />
                             </Tooltip>
-                          </div>
+                          </div> */}
                           <div className="mr-2 ml-2 d-none d-md-inline d-lg-inline d-xl-inline d-xxl-inline">
                             <Tooltip title={"Year Of Purchase"}>
                               <Select

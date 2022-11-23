@@ -302,7 +302,7 @@ const ModuleDetailShoppingActions = React.memo(
 
     const handleIncreaseItemQty = (e) => {
       setQuantity(quantity + 1);
-      (dispatchsetProductQuantityAction(quantity + 1));
+      dispatch(setProductQuantityAction(quantity + 1));
     };
 
     const handleDecreaseItemQty = (e) => {

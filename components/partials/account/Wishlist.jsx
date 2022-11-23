@@ -13,6 +13,7 @@ import ThumbnailHelper from "~/components/elements/detail/thumbnail/ThumbnailHel
 import ProductThumbnail from "~/components/elements/common/ProductThumbnail";
 
 const Wishlist = ({ wishlist, auth }) => {
+  console.log("...!!!!!!!!!!!!!!!!!!!!....",wishlist)
   const { wishlistItems } = wishlist;
   const dispatch = useDispatch();
 
@@ -32,8 +33,7 @@ const Wishlist = ({ wishlist, auth }) => {
     dispatch(removeWishlistItem(product.product_id));
   };
 
-  const wishListItemsRender = wishlistItems
-    .map((wishList) => wishList)
+  const wishListItemsRender = wishlistItems.map((wishList) => wishList)
     .map((product, index) => {
       return (
         <div
@@ -52,7 +52,7 @@ const Wishlist = ({ wishlist, auth }) => {
           <Link href="/product/[pid]" as={`/product/${product.product_id}`}>
             <a>
               <ProductThumbnail
-                imageLink={product?.product_image[0]?.thumbnail}
+                imageLink={product?.image[0]?.thumbnail}
               />
             </a>
           </Link>

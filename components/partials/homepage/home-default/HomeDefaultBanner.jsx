@@ -48,7 +48,8 @@ const HomeDefaultBanner = ({ homeitems, loading }) => {
       case "image":
         return (
           <a
-            href={item.button_link}
+            // href={item.button_link}
+            href={`/shop?`}
             className="ps-banner-item--default bg--cover"
             style={{
               backgroundImage: `url(${item.media})`,
