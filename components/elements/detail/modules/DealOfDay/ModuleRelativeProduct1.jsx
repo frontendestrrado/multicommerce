@@ -26,7 +26,7 @@ const ModuleRelativeProduct1 = ({ product }) => {
             className="ps-product__title text-capitalize"
             style={{
               fontSize: "medium",
-              fontWeight: "500",
+              fontWeight: "600",
             }}
           >
             {product.product_name}

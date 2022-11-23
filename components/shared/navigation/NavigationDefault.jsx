@@ -36,7 +36,7 @@ class NavigationDefault extends Component {
             <ul className="navigation__extra">
               <li>
                 <Link href="/vendor/become-a-vendor">
-                  <a>Sell on Kangtao</a>
+                  <a></a>
                 </Link>
               </li>
               {isLoggedIn == true ? (
