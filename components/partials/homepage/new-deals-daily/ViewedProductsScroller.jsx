@@ -54,7 +54,7 @@ const RelativePRoductsScroller = ({ homeitems, loading }) => {
   }
 
   return (
-    <div className="ps-deal-of-day newdealsdaily cate">
+    <div className="ps-deal-of-day newdealsdaily cate mb-5">
       <div className="ps-container">
         {/* <div className="ps-section__header justify-content-center">
           <div className="ps-block--countdown-deal">
@@ -70,7 +70,7 @@ const RelativePRoductsScroller = ({ homeitems, loading }) => {
           </Link>
         </div> */}
          <div className="ps-section__header">
-        <h3>Customers also Viewed</h3>
+        <h3 className="custview">Customers also Viewed</h3>
       </div>
         <div className="ps-section__content">{productItemsView}</div>
       </div>

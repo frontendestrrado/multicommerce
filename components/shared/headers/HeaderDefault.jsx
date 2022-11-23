@@ -29,35 +29,35 @@ window.location.reload();
           <div class="d-flex justify-content-end">
             <div className="top-content">
               <ul className="top-url d-flex align-items-center">
-              <div className="langu">
-                  <select onChange={(e) => aaa(e)} nme="cars" id="cars" >
-                    <option   value="1" >Lang</option>
-                    <option   value="1" >English</option>
-                    <option value="2" >العربية</option>
-                  </select>
-              </div>
+                <div className="langu">
+                    <select onChange={(e) => aaa(e)} nme="cars" id="cars" >
+                      <option   value="1" >Lang</option>
+                      <option   value="1" >English</option>
+                      <option value="2" >العربية</option>
+                    </select>
+                </div>
                 <li className="top-li">
-                  {/* <a> Eng </a> */}
-                 {/* <span onClick={(e) => aaa(e)}>ffffff</span> */}
-                  {/* <Dropdown>
-      <Dropdown.Toggle variant="success" id="dropdown-basic" >
-      Select Language
-      </Dropdown.Toggle>
+                    {/* <a> Eng </a> */}
+                  {/* <span onClick={(e) => aaa(e)}>ffffff</span> */}
+                    {/* <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic" >
+                        Select Language
+                        </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-        <Dropdown.Item eventKey="1" onSelect={aaa}>English</Dropdown.Item>
-        <Dropdown.Item eventKey="2" onSelect={aaa}>العربية</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown> */}
-                   <Link href="/account/login">
-            <a> Sign In</a>
-          </Link>
-          {/* <Link href="/account/login">
-            <a>Register</a>
-          </Link> */}
-                  {/* <a href=""> Sign In </a>
-                  <a href=""> Register </a> */}
-                </li>
+                        <Dropdown.Menu>
+                          <Dropdown.Item eventKey="1" onSelect={aaa}>English</Dropdown.Item>
+                          <Dropdown.Item eventKey="2" onSelect={aaa}>العربية</Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown> */}
+                  <Link href="/account/login">
+                    <a> Sign In</a>
+                  </Link>
+                        {/* <Link href="/account/login">
+                          <a>Register</a>
+                        </Link> */}
+                        {/* <a href=""> Sign In </a>
+                        <a href=""> Register </a> */}
+                  </li>
               </ul>
             </div>
           </div>

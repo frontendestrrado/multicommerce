@@ -69,7 +69,7 @@ const Newdealsdaily = ({ homeitems, loading }) => {
             <a>View All</a>
           </Link>
         </div>
-        <div className="ps-section__content">{productItemsView}</div>
+        <div className="ps-section__content shpcate">{productItemsView}</div>
       </div>
     </div>
   );

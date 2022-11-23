@@ -3,7 +3,7 @@ import ModuleRelativeProduct1 from "../detail/modules/DealOfDay/ModuleRelativePr
 
 const ProductRelativeSlider1 = ({ product }) => {
   return (
-    <div className="" style={{ margin: "5px" }}>
+    <div className="bxshdw" style={{ margin: "5px" }}>
       <ModuleRelativeProduct1 product={product} />
     </div>
   );
