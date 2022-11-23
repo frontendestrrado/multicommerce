@@ -15,7 +15,7 @@ import ReturnOrder from "./ReturnOrder";
 const OrdersList = () => {
   const { orders } = useSelector((state) => state.account);
   const router = useRouter();
-
+console.log("...orders...........orders.......",orders)
   const returnOrderDetails = () => {
     let orderDetaisRender;
     if (orders && orders.length > 0) {
@@ -60,9 +60,7 @@ const OrdersList = () => {
                 <div className="col-md-2">
                   <ProductThumbnailWithoutLazyLoad
                     imageLink={
-                      order?.product_image && order.product_image.length > 0
-                        ? order?.product_image[0]?.image
-                        : ""
+                      order.image
                     }
                   />
                 </div>
@@ -84,12 +82,12 @@ const OrdersList = () => {
                     <div className="col-md-3">
                       <div className="ordrplc">Order placed</div>
                       <div className="ordrdat">
-                        {moment(`${order.order_date}`).format("DD/MM/YYYY")}
+                        {order.order_date}
                       </div>
                     </div>
                     <div className="col-md-3">
                       <div className="ordrplc">Quantity</div>
-                      <div className="ordrdat">{order.quantity}</div>
+                      <div className="ordrdat">{order.items_count}</div>
                     </div>
                     <div className="col-md-6">
                       <div className="ordrplc">Ship To</div>
@@ -107,7 +105,8 @@ const OrdersList = () => {
                 <div className="col-md-3">
                   <div className="rin mt-2">
                     {currencyHelperConvertToRinggit(
-                      order.sale_price ? order.sale_price : order.actual_price
+                      order.g_total
+                      // order.sale_price ? order.sale_price : order.actual_price
                     )}
                   </div>
                   {order.order_status == "cancel_initiated" && (

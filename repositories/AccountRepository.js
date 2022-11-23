@@ -161,6 +161,7 @@ class AccountRepository {
   }
 
   async getMyOrders(payload) {
+    console.log("...KKKKKKKKKKKKK....1......",payload)
     const reponse = await Repository.post(
       `${apibaseurl}/api/customer/mypurchase`,
       payload
@@ -169,6 +170,7 @@ class AccountRepository {
         return response.data;
       })
       .catch((error) => ({ error: JSON.stringify(error) }));
+      console.log("...KKKKKKKKKKKKK.......2...",reponse)
     return reponse;
   }
 

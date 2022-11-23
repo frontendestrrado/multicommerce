@@ -245,8 +245,10 @@ newArrailval()
             loading={loading}
           />
         )} */}
+         {/* {!loading && homeitems && getFeatureProduct?.products?.length > 0 && ( */}
         <FeatureAndRecent homeitems={homeitems} getFeatureProduct={getFeatureProduct} loading={loading}/>
-        <Discount getOfferData={getOfferData} loading={loading}/>
+     
+        <Discount getOfferData={getOfferData} homeitems={homeitems} loading={loading}/>
         <BottomCategory homeitems={homeitems} loading={loading}/>
         <Brand homeitems={homeitems} loading={loading}/>
         

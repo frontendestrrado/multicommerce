@@ -15,13 +15,13 @@ const ModuleDealOfDayCardProduct12 = ({ product }) => {
 
   return (
     <>
-      <Link href={`/shop?category=${product.brand_id}`}>
+      <Link href={`/shop?brand=${product.brand_id}`}>
         <a>
           <ProductThumbnail imageLink={product.brand_image} />
         </a>
       </Link>
       <div className="ps-product__container text-truncate text-center">
-        <Link href={`/shop?category=${product.brand_id}`}>
+        <Link href={`/shop?brand=${product.brand_id}`}>
           <a
             className="ps-product__title text-capitalize"
             style={{

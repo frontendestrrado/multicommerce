@@ -208,6 +208,7 @@ function* sendMessageToSellerSaga({ payload }) {
 function* getOrderDetailsSaga({ payload }) {
   try {
     const response = yield call(AccountRepository.getOrderDetails, payload);
+    console.log(".....uuuuu.....1111......",response)
     if (response.httpcode == "200") {
     } else {
       message.error(response.message);
