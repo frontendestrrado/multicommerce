@@ -59,6 +59,12 @@ class AccountRepository {
   }
 
   async editCustomerProfile(payload) {
+    var object1 = {};
+    payload.forEach(function(value, key){
+    object1[key] = value;
+});
+var json1 = JSON.stringify(object1);
+console.log("....nnnnn......",json1)
     const response = await Repository.post(
       `${apibaseurl}/api/customer/edit/profile`,
       payload
@@ -306,6 +312,13 @@ class AccountRepository {
   }
 
   async addAddress(payload) {
+  
+    var object = {};
+    payload.forEach(function(value, key){
+    object[key] = value;
+});
+var json = JSON.stringify(object);
+console.log("...add address...",json)
     const reponse = await Axios({
       method: "post",
       url: `${apibaseurl}/api/customer/add/address`,

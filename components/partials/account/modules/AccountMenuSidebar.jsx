@@ -81,24 +81,24 @@ const AccountMenuSidebar = ({ auth, activeModule }) => {
       icon: "icon-bubble",
       active: activeModule === "MyChats",
     },
-    {
-      text: "Support",
-      url: "/account/support",
-      icon: "icon-phone",
-      active: activeModule === "MySupport",
-    },
-    {
-      text: "My Wallet",
-      url: "/account/my-wallet",
-      icon: "icon-database",
-      active: activeModule === "MyWallet",
-    },
-    {
-      text: "My Auction",
-      url: "/account/my-auction",
-      icon: "icon-bullhorn",
-      active: activeModule === "MyAuction",
-    },
+    // {
+    //   text: "Support",
+    //   url: "/account/support",
+    //   icon: "icon-phone",
+    //   active: activeModule === "MySupport",
+    // },
+    // {
+    //   text: "My Wallet",
+    //   url: "/account/my-wallet",
+    //   icon: "icon-database",
+    //   active: activeModule === "MyWallet",
+    // },
+    // {
+    //   text: "My Auction",
+    //   url: "/account/my-auction",
+    //   icon: "icon-bullhorn",
+    //   active: activeModule === "MyAuction",
+    // },
     {
       text: "Invite & Earn",
       url: "#",

@@ -218,13 +218,13 @@ newArrailval()
         )}
         <TrendingNow homeitems={homeitems}/>
         {/* <Homecategories homeitems={homeitems} loading={loading} /> */}
-        {!loading && homeitems && homeitems?.shocking_sale?.length > 0 && (
+        {/* {!loading && homeitems && homeitems?.shocking_sale?.length > 0 && (
           <Shockingsale
             collectionSlug="deal-of-the-day"
             homeitems={homeitems}
             loading={loading}
           />
-        )}
+        )} */}
        
 
       

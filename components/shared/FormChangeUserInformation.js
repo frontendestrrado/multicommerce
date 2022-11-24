@@ -126,30 +126,40 @@ const FormChangeUserInformation = ({}) => {
 
   const handleSubmit = async (e) => {
     var userUpdateFormData = new FormData();
+    userUpdateFormData.append("access_token", user.access_token);
     userUpdateFormData.append("username", user.username || username);
-    userUpdateFormData.append("profile_img", user.profile_image);
     userUpdateFormData.append("first_name", user.first_name || first_name);
-    userUpdateFormData.append("last_name", user.last_name || last_name);
+    userUpdateFormData.append("last_name", "");
     userUpdateFormData.append("email", user.email || email);
+    userUpdateFormData.append("country_code", "+91");
     userUpdateFormData.append("phone", user.phone || phone);
+    userUpdateFormData.append("country",1);
+    userUpdateFormData.append("state", 1);
+    userUpdateFormData.append("city", 1);
+    userUpdateFormData.append("gender", "");
+    userUpdateFormData.append("birthday", "");   
+    userUpdateFormData.append("profile_img", user.profile_image);
+    userUpdateFormData.append("os_type", user.os_type);
+    userUpdateFormData.append("device_id", user.device_id);
     userUpdateFormData.append("password", user.password);
     userUpdateFormData.append(
       "password_confirmation",
       user.password_confirmation
     );
-    userUpdateFormData.append("address", user.address || address1);
-    userUpdateFormData.append("country", user.country || country_id);
-    userUpdateFormData.append("state", user.state || state_id);
-    userUpdateFormData.append("city", user.city || city_id);
-    userUpdateFormData.append("access_token", user.access_token);
-    userUpdateFormData.append("device_id", user.device_id);
-    userUpdateFormData.append("page_url", user.page_url);
-    userUpdateFormData.append("os_type", user.os_type);
+    
+    
+   // userUpdateFormData.append("address", user.address || address1);
+ 
+    
+    
+    // userUpdateFormData.append("page_url", user.page_url);
+    
+    
 
     const response = await AccountRepository.editCustomerProfile(
       userUpdateFormData
     );
-
+console.log("....zzzzz..",response)
     if (response.httpcode == 200) {
       message.success("Profile Updated Successfully!");
       message.success("Please Relogin to see latest changes!");
@@ -235,7 +245,7 @@ const FormChangeUserInformation = ({}) => {
                   </Form.Item>
                 </div>
               </div>
-              <div className="col-sm-6">
+              {/* <div className="col-sm-6">
                 <div className="form-group">
                   <Form.Item
                     name="lastname"
@@ -259,7 +269,7 @@ const FormChangeUserInformation = ({}) => {
                     />
                   </Form.Item>
                 </div>
-              </div>
+              </div> */}
 
               <div className="col-sm-6">
                 <div className="form-group">
@@ -282,7 +292,7 @@ const FormChangeUserInformation = ({}) => {
                   </Form.Item>
                 </div>
               </div>
-              <div className="col-sm-6">
+              {/* <div className="col-sm-6">
                 <div className="form-group">
                   <Form.Item
                     name="email"
@@ -302,8 +312,8 @@ const FormChangeUserInformation = ({}) => {
                     />
                   </Form.Item>
                 </div>
-              </div>
-              <div className="col-sm-12">
+              </div> */}
+              {/* <div className="col-sm-12">
                 <div className="form-group">
                   <Form.Item
                     name="address"
@@ -323,8 +333,8 @@ const FormChangeUserInformation = ({}) => {
                     />
                   </Form.Item>
                 </div>
-              </div>
-              <div className="col-sm-4">
+              </div> */}
+              {/* <div className="col-sm-4">
                 <div className="form-group">
                   <Form.Item
                     name="country"
@@ -431,7 +441,7 @@ const FormChangeUserInformation = ({}) => {
                     </Select>
                   </Form.Item>
                 </div>
-              </div>
+              </div> */}
               <div className="ps-form__header col-sm-12">
                 <h3>Password Update</h3>
               </div>

@@ -19,6 +19,7 @@ import { addAddress } from "~/store/account/action";
 import { getDeviceId, makePageUrl } from "~/utilities/common-helpers";
 
 const FormEditAddress = ({ selectedAddress }) => {
+  console.log("...1111111111111111111111111111111111111111111111111,,,,,,,,,,,,,,,,,,",selectedAddress)
   const selAddressLength = selectedAddress.length;
   const dispatch = useDispatch();
 
@@ -45,6 +46,7 @@ const FormEditAddress = ({ selectedAddress }) => {
     city_name: selAddressLength > 0 ? selectedAddress[0].city : "",
 
     pincode: selAddressLength > 0 ? selectedAddress[0].pincode : "",
+    country_code: selAddressLength > 0 ? selectedAddress[0].country_code : "",
     access_token: auth.access_token,
     address_type:
       selAddressLength > 0
@@ -65,7 +67,9 @@ const FormEditAddress = ({ selectedAddress }) => {
   const [serverCity, setCity] = useState([]);
 
   async function fetchCountry() {
+    alert("c")
     const countryDataFromServer = await AccountRepository.getCountry();
+    console.log("....contry......",countryDataFromServer)
     setCountry([...countryDataFromServer.country]);
     return null;
   }
@@ -77,6 +81,7 @@ const FormEditAddress = ({ selectedAddress }) => {
   }
 
   async function fetchCity(payload) {
+    console.log("aaaaaaaa")
     const cityDataFromServer = await AccountRepository.getCity(payload);
     setCity([...cityDataFromServer.city]);
     return null;
@@ -106,13 +111,20 @@ const FormEditAddress = ({ selectedAddress }) => {
     addressUpdateFormData.append("address1", address.address1);
     addressUpdateFormData.append("address2", address.address2);
     addressUpdateFormData.append("pincode", address.pincode);
-    addressUpdateFormData.append("is_default", address.is_default);
     addressUpdateFormData.append("latitude", address.latitude);
     addressUpdateFormData.append("longitude", address.longitude);
-    addressUpdateFormData.append("device_id", address.device_id);
-    addressUpdateFormData.append("os_type", address.os_type);
-    addressUpdateFormData.append("page_url", address.page_url);
-
+    addressUpdateFormData.append("is_default", address.is_default);
+    addressUpdateFormData.append("neighborhood", address.city);
+    addressUpdateFormData.append("house", address.city);
+    addressUpdateFormData.append("street", address.city);
+    addressUpdateFormData.append("country_code", "+91");
+ //   addressUpdateFormData.append("country_code", address.country_code);
+ //   addressUpdateFormData.append("house", address.country_code);
+   // addressUpdateFormData.append("device_id", address.device_id);
+    //addressUpdateFormData.append("os_type", address.os_type);
+   // addressUpdateFormData.append("page_url", address.page_url);
+    //addressUpdateFormData.append("country_code", +91);
+console.log("..addressUpdateFormData..addressUpdateFormData..",addressUpdateFormData)
     let response;
 
     if (selAddressLength > 0) {
@@ -142,10 +154,12 @@ const FormEditAddress = ({ selectedAddress }) => {
   };
 
   const handleSelectAddress = (name) => (data) => {
+    console.log("..bbb...",name)
     setAddress({ ...address, [name]: data });
 
     if (name == "country") {
       let payload = { country_id: data };
+      console.log("..ccccc...",payload)
       fetchState(payload);
     }
     if (name == "state") {

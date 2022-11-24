@@ -55,6 +55,7 @@ const LoginWithSMS = () => {
   };
 
   const handleResendOTP = async () => {
+    console.log("...otp...",user)
     try {
       const data = await Axios.post(
         `${apibaseurl}/api/customer/login/send/otp`,
@@ -156,6 +157,7 @@ const LoginWithSMS = () => {
   }
 
   const handleLoginSubmit = async () => {
+    console.log("...otp..1.",user)
     try {
       const data = await Axios.post(
         `${apibaseurl}/api/customer/login/send/otp`,

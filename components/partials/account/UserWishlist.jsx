@@ -105,7 +105,7 @@ const UserWishist = () => {
             <Link href="/product/[pid]" as={`/product/${product.product_id}`}>
               <a>
                 <ProductThumbnail
-                  imageLink={product?.product_image[0]?.thumbnail}
+                  imageLink={product?.image[0]?.thumbnail}
                 />
               </a>
             </Link>
