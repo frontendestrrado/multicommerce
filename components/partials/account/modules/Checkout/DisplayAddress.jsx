@@ -75,7 +75,7 @@ const DisplayAddress = ({ address }) => {
     <>
       {changeAddress === false ? (
         <div>
-          <p className="text-danger " style={{ fontSize: "18px" }}>
+          <p className="text-primary" style={{ fontSize: "18px" }}>
             <LocationOn fontSize="large" /> Delivery Address
           </p>
           <p>
@@ -110,7 +110,7 @@ const DisplayAddress = ({ address }) => {
           <div className="p-2 float-right">
             <AddressModal />
           </div>
-          <p className="text-danger " style={{ fontSize: "18px" }}>
+          <p className="text-primary" style={{ fontSize: "18px" }}>
             <LocationOn fontSize="large" /> Delivery Address
           </p>
           {address && address.length > 0 ? (

@@ -22,7 +22,7 @@ export function homePageProductPriceHelper(product) {
   if (product.offer_price !== false) {
     return (
       <p className="ps-product__price offer">
-        <span>SAR {product.offer_price ? product.offer_price : 0}</span>
+        <span className="yllwbg">SAR {product.offer_price ? product.offer_price : 0}</span>
         <del className="ml-2">
         SAR {product.actual_price ? product.actual_price : 0}
         </del>

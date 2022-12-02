@@ -60,7 +60,7 @@ const Newdealsdaily = ({ homeitems, loading }) => {
           <div className="ps-block--countdown-deal">
             <div className="ps-block__left">
               <h3>Shop By Category</h3>
-              <p className="text-center p-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              {/* <p className="text-center p-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> */}
             </div>
           </div>
         </div>

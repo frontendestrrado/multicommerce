@@ -38,7 +38,7 @@ const Addresses = () => {
                       Billing address
                       <div className="float-right">
                         <Link href="/account/address/new-address">
-                          <Button type="primary" danger>
+                          <Button type="primary yllw" >
                             Add Address
                           </Button>
                         </Link>

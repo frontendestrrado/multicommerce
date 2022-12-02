@@ -12,7 +12,7 @@ const ShopProduct = ({ product }) => {
   // Views
   const priceView = homePageProductPriceHelper(product);
   return (
-    <div className="ps-product shadw mb-5 mr-4 ml-4 text-capitalize">
+    <div className="ps-product shadw mb-5 text-capitalize">
       {product?.end_time && (
         <div className="ps-block--countdown-deal mb-3">
           <figure style={{ fontSize: "11px" }}>
