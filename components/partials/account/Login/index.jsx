@@ -420,7 +420,7 @@ document.getElementById('registerId1').style.display='none'
 
               <div className="card-body" style={{display:'block'}} id="loginId">  
                 <div className="logcard_header_inner">
-                  <div className="logcard_header_title">Log In</div>
+                  <div className="logcard_header_title">Sign In</div>
                 </div>
                 <div className="card-body loginp">
                   {showLoginWithSMS ? <LoginWithSMS /> : <LoginWithEmail />}
@@ -437,8 +437,8 @@ document.getElementById('registerId1').style.display='none'
                         onClick={() => setShowLoginWithSMS(!showLoginWithSMS)}
                       >
                         {showLoginWithSMS
-                          ? "Log in with Email"
-                          : "Log in with SMS"}
+                          ? "Sign In with Email"
+                          : "Sign In  with SMS"}
                       </span>
                     </a>
                   </div>
@@ -481,7 +481,7 @@ document.getElementById('registerId1').style.display='none'
             </li>
           </ul> */}
           <div className="logcard_header_inner">
-              <div className="logcard_header_title"> Register </div>
+              <div className="logcard_header_title"> Sign In </div>
           </div>
           <div className="ps-tab active" id="register">
             <div className="ps-form__content">
@@ -509,7 +509,7 @@ document.getElementById('registerId1').style.display='none'
                   onChange={handleChange("first_name")}
                 />
               </Form.Item>
-              <Form.Item
+              {/* <Form.Item
                 name="firstname"
                 rules={[
                   {
@@ -532,7 +532,7 @@ document.getElementById('registerId1').style.display='none'
                   placeholder="Enter Name"
                   onChange={handleChange("last_name")}
                 />
-              </Form.Item>
+              </Form.Item> */}
               {/* <Form.Item
                 name="lastname"
                 rules={[
@@ -752,7 +752,7 @@ document.getElementById('registerId1').style.display='none'
                     <div className="fotr_txt">
                       Already have an account?
                       
-                        <a onClick={() => login()} className="ftr_link"> Log In </a>
+                        <a onClick={() => login()} className="ftr_link"> Sign In </a>
                       
                     </div>
                   </div>

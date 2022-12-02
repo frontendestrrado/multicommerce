@@ -141,7 +141,7 @@ const MiniCart = React.memo(({ cart }) => {
     cartItemsView = (
       <div className="ps-cart__content">
         <div className="ps-cart__items">{productItemWithSeller}</div>
-        <div className="ps-cart__footer">
+        <div className="ps-cart__footer mincart">
           <h3>
             Sub Total:
             <strong>
@@ -152,10 +152,10 @@ const MiniCart = React.memo(({ cart }) => {
           </h3>
           <figure>
             <Link href="/account/shopping-cart">
-              <a className="ps-btn">View Cart</a>
+              <a className="ps-btn ps-btn--yellow">View Cart</a>
             </Link>
             <Link href="/account/checkout">
-              <a className="ps-btn">Checkout</a>
+              <a className="ps-btn ps-btn--blu">Checkout</a>
             </Link>
           </figure>
         </div>

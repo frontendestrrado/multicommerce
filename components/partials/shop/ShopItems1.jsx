@@ -207,7 +207,7 @@ const ShopItems = ({ columns = 4, pageSize = 12, homeitems }) => {
         <div class="ps-block--countdown-deal">
           <div class="ps-block__left">
             <h3 className="text-center">Trending Now</h3>
-            <p className="text-center p-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            {/* <p className="text-center p-3">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> */}
           </div>
         </div>
       </div>

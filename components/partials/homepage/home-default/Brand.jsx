@@ -116,7 +116,7 @@ const Brand = ({ homeitems, loading }) => {
           <div className="ps-block--countdown-deal">
             <div className="ps-block__left">
               <h3>Brands You Must Try</h3>
-              <p className="text-center p-3">A vertual assistant collects the product from your list.</p>
+              {/* <p className="text-center p-3">A vertual assistant collects the product from your list.</p> */}
             </div>
           </div>
         </div>

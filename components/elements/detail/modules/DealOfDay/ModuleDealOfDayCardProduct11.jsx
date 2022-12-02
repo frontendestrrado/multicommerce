@@ -20,7 +20,7 @@ const ModuleDealOfDayCardProduct11 = ({ product }) => {
           <ProductThumbnail imageLink={product.brand_image} />
         </a>
       </Link>
-      <div className="ps-product__container text-truncate text-center">
+      {/* <div className="ps-product__container text-truncate text-center">
         <Link href={`/shop?brand=${product.brand_id}`}>
           <a
             className="ps-product__title text-capitalize"
@@ -33,21 +33,21 @@ const ModuleDealOfDayCardProduct11 = ({ product }) => {
           </a>
         </Link>
 
-        {/* <hr /> */}
+        <hr />
 
-        {/* <div className="ps-product__content">
-          {priceView} */}
+        <div className="ps-product__content">
+          {priceView}
 
-          {/* <Link href={`/seller/${product.seller_id}`}>
+          <Link href={`/seller/${product.seller_id}`}>
             <a className="ps-product__title text-capitalize">
               {product.seller}
             </a>
-          </Link> */}
-          {/* <div  className="ps-product__rating">
+          </Link>
+          <div  className="ps-product__rating">
             <Rating rating={product.rating} />
-          </div> */}
-        {/* </div> */}
-      </div>
+          </div>
+        </div>
+      </div> */}
     </>
   );
 };

@@ -5,7 +5,7 @@ import {
   currencyHelperConvertToRinggit,
   homePageProductPriceHelper,
   priceHelper,
-} from "~/utilities/product-helper";
+} from "~/utilities/product-helperPrdtDetails";
 
 const ModuleDetailTopInformation = ({ product }) => {
   // Views

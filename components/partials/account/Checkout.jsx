@@ -88,7 +88,7 @@ const Checkout = () => {
         <div className="container">
           <div
             className="ps-section__content"
-            style={{ borderTop: "5px solid #dc3545" }}
+            style={{ borderTop: "5px solid rgb(0 111 180)" }}
           >
             <div className="prdt-box pt-4 pl-4 pb-2">
               {customer_address?.length > 0 ? (

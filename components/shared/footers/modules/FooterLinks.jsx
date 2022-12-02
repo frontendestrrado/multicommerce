@@ -334,7 +334,7 @@ const FooterLinks = () => {
         Top Stories: <b>Brand Directory</b>
       </div>
       <p>
-        <strong>MOST SEARCHED FOR ON KANGTAO:</strong>
+        <strong>MOST SEARCHED FOR ON BIGBASKET:</strong>
         {/* { Links.consumerElectric.map((item) => (
           <Link href={item.url} key={item.text}>
             <a>{item.text}</a>

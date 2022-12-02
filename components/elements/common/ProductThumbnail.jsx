@@ -7,7 +7,7 @@ const ProductThumbnail = ({ imageLink }) => {
     <div
       className="ps-product__thumbnail text-center d-flex"
       style={{
-        height: "200px",
+        height: "120px",
         width: "100%",
         padding: "5px",
         marginBottom: "inherit",
@@ -19,7 +19,7 @@ const ProductThumbnail = ({ imageLink }) => {
         <Image
           src={imageLink || "/static/img/not-found.jpg"}
           preview={false}
-          style={{ maxHeight: "170px" }}
+          style={{ maxHeight: "120px" }}
           fallback="/static/img/not-found.jpg"
         />
       </LazyLoad>

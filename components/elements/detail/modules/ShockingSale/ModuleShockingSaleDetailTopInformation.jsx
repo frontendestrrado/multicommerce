@@ -10,9 +10,9 @@ import CountDownSimpleDiff from "~/components/elements/CountDownSimpleDiff";
 const ModuleShockingSaleDetailTopInformation = ({ product }) => {
   let priceView = (
     <p className="ps-product__price offer">
-      {currencyHelperConvertToRinggit(
-        product.product.offer_price ? product.product.offer_price : 0
-      )}
+        {currencyHelperConvertToRinggit(
+          product.product.offer_price ? product.product.offer_price : 0
+        )}
       <small>
         <del className="ml-2">
           {currencyHelperConvertToRinggit(
