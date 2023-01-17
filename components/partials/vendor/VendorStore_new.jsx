@@ -37,7 +37,7 @@ const VendorStore = ({ pid }) => {
   async function getProduct(pid) {
     let payload = {
       seller_id: pid,
-      lang_id: "",
+      lang_id: localStorage.getItem("langId"),
       device_id: getDeviceId,
       page_url: makePageUrl(Router.asPath),
       os_type: "WEB",

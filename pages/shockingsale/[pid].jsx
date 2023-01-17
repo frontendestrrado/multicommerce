@@ -32,7 +32,7 @@ const ShockingSaleDefaultPage = () => {
     let payload = {
       shock_sale_id: pid,
       product_id: pr_id,
-      lang_id: "",
+      lang_id: localStorage.getItem("langId"),
       access_token: access_token || "",
       device_id: getDeviceId,
       page_url: makePageUrl(router.asPath),
@@ -71,7 +71,7 @@ const ShockingSaleDefaultPage = () => {
     let payload = {
       shock_sale_id: pid,
       product_id: pr_id,
-      lang_id: "",
+      lang_id: localStorage.getItem("langId"),
       access_token: access_token || "",
       device_id: getDeviceId,
       page_url: makePageUrl(router.asPath),

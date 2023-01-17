@@ -64,7 +64,7 @@ const ModuleDetailShoppingActionsSidebar = ({ product }) => {
                 className="ps-btn ps-btn--black"
                 href="#"
                 onClick={(e) => handleAddItemToCart(e)}>
-                Add to cart
+                Add to cart5
             </a>
             <a
                 className="ps-btn"

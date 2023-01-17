@@ -105,6 +105,9 @@ const featuredProduct = () => {
     });
 };
 const newArrailval = () => {
+  let userdata = localStorage.getItem("user");
+  let parsedata = JSON.parse(userdata);
+  let access_token = parsedata?.access_token;
   console.log("....email...login.... ${apibaseurl}...",{apibaseurl})
   const data = Axios.post(
     `${apibaseurl}/api/customer/products-latest`,
@@ -120,7 +123,7 @@ const newArrailval = () => {
         device_id: getDeviceId,
          latest: "0", 
          os_type: "web", 
-         access_token: "",
+         access_token: access_token,
           high_to_low: "0", 
           lang_id: 1, 
           popular: "0",

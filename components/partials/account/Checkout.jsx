@@ -104,7 +104,7 @@ const Checkout = () => {
               <DisplayVoucher />
             </div>
             <div className="cart-footer">
-              <DisplayCartFooter cartdata={cartdata} />
+              <DisplayCartFooter cartdata={cartdata} address={customer_address}/>
             </div>
           </div>
         </div>

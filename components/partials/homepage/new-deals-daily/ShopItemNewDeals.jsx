@@ -43,6 +43,9 @@ const ShopItemsNewDeals = ({ columns = 4, pageSize = 12 }) => {
   }
 
   async function getProducts(params) {
+    let userdata = localStorage.getItem("user");
+    let parsedata = JSON.parse(userdata);
+    let access_token = parsedata?.access_token;
     setLoading(true);
     let params_payload = {
       page: page === undefined ? 1 : page,
@@ -50,7 +53,7 @@ const ShopItemsNewDeals = ({ columns = 4, pageSize = 12 }) => {
 
     let payload = {
       lang_id: localStorage.getItem("langId"),
-      access_token: "",
+      access_token: access_token,
       max_price: "",
       min_price: "",
       low_to_high: "",

@@ -178,7 +178,7 @@ class ProductDetailImageSwatches extends Component {
                 </div>
               </figure>
               <a className="ps-btn ps-btn--black" href="#">
-                Add to cart
+                Add to cart8
               </a>
               <a className="ps-btn" href="#">
                 Buy Now

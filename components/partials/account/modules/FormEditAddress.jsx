@@ -67,7 +67,7 @@ const FormEditAddress = ({ selectedAddress }) => {
   const [serverCity, setCity] = useState([]);
 
   async function fetchCountry() {
-    alert("c")
+   // alert("c")
     const countryDataFromServer = await AccountRepository.getCountry();
     console.log("....contry......",countryDataFromServer)
     setCountry([...countryDataFromServer.country]);
@@ -88,7 +88,9 @@ const FormEditAddress = ({ selectedAddress }) => {
   }
 
   useEffect(() => {
+  //  alert("1111")
     if (auth?.isLoggedIn) {
+    //  alert("22222")
       fetchCountry();
     }
   }, []);

@@ -301,14 +301,15 @@ const ModuleDetailShoppingActions = React.memo(
     };
 
     const handleIncreaseItemQty = (e) => {
+     // alert("a"+quantity)
       setQuantity(quantity + 1);
-      dispatch(setProductQuantityAction(quantity + 1));
+     // dispatch(setProductQuantityAction(quantity + 1));
     };
 
     const handleDecreaseItemQty = (e) => {
       if (quantity > 1) {
         setQuantity(quantity - 1);
-        dispatch(setProductQuantityAction(quantity - 1));
+      //  dispatch(setProductQuantityAction(quantity - 1));
       }
     };
 
@@ -554,7 +555,7 @@ const ModuleDetailShoppingActions = React.memo(
               className="ps-btn ps-btn--yellow"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              {loading1 ? <CircularProgress size={20} /> : "Add to cart"}
+              {loading1 ? <CircularProgress size={20} /> : "Add to cart9"}
             </a>
             <a className="ps-btn ps-btn--blu" onClick={(e) => handleBuynow(e)}>
               {loading2 ? <CircularProgress size={20} /> : "Buy Now"}
@@ -628,7 +629,7 @@ const ModuleDetailShoppingActions = React.memo(
               href="#"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              Add to cart
+              Add to cart6
             </a>
             <div className="ps-product__actions">
               <a href="#" onClick={(e) => handleAddItemToWishlist(e)}>
