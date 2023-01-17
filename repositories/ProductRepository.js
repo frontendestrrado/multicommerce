@@ -19,12 +19,24 @@ class ProductRepository {
   }
 
   async getSearchedProducts(params) {
+    let userdata = localStorage.getItem("user");
+    let parsedata = JSON.parse(userdata);
+    let access_token = parsedata?.access_token;
+    console.log("....search...",params)
     const reponse = await Repository.post(
       `${apibaseurl}/api/customer/product-search`,
       {
-        lang_id: "",
-        category_id: params.category_id,
-        keyword: params.title_contains,
+        // lang_id: "",
+        // category_id: params.category_id,
+        // keyword: params.title_contains,
+        access_token,
+        "lang_id": "1",
+        "keyword": params.title_contains,
+        "limit":10,
+        "offset":1,
+        "device_id": "13a0ccc6c8a5424a",
+        "page_url": "products\/us\/img",
+        "os_type": "Web"
       }
     )
       .then((response) => {
@@ -40,11 +52,14 @@ class ProductRepository {
   }
 
   async getProducts(params) {
+    let userdata = localStorage.getItem("user");
+    let parsedata = JSON.parse(userdata);
+    let access_token = parsedata?.access_token;
     const reponse = await Repository.post(
       `${apibaseurl}/api/customer/product-list?page=` + params.page,
       {
         lang_id: localStorage.getItem("langId"),
-        access_token: "",
+        access_token: access_token,
         device_id: getDeviceId,
         page_url: "https://abc.com/products/us/img",
         os_type: "WEB",

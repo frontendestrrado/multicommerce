@@ -12,7 +12,8 @@ import DisplayPlaceOrderDetails from "./modules/DisplayPlaceOrderDetails";
 import { useDispatch } from "react-redux";
 import { selectedPaymentOption } from "~/store/cart/action";
 
-const DisplayCartFooter = ({ cartdata }) => {
+const DisplayCartFooter = ({ cartdata, address }) => {
+  console.log(".....cartdata....cartdata...cartdata..cartdata",address)
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState({
     payment_type: 2,
@@ -155,7 +156,7 @@ const DisplayCartFooter = ({ cartdata }) => {
         </div>
         <div className="vou-slct">
           <div className="slct-spc"></div>
-          <DisplayPlaceOrderDetails />
+          <DisplayPlaceOrderDetails address={address} />
         </div>
       </div>
     </>

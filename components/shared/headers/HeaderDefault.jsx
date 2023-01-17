@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useLocation } from "react-router-dom";
 import Logo from "~/components/elements/common/Logo";
@@ -10,16 +11,17 @@ import MenuCategoriesDropdown from "~/components/shared/menus/MenuCategoriesDrop
 // import Dropdown from 'react-bootstrap/Dropdown';
 
 const HeaderDefault = () => {
+  const [getLanguage, setLanguage] = useState('');
   useEffect(() => {
+    setLanguage(localStorage.getItem("langId"))
+    console.log("------////--------////-----",localStorage.getItem("langId"))
     if (process.browser) {
       window.addEventListener("scroll", stickyHeader);
     }
   }, []);
   const aaa = (e) => {
-
- // alert("d")
-console.log("ghfhfh",e.target.value)
 localStorage.setItem("langId",e.target.value);
+setLanguage(e.target.value)
 window.location.reload();
 };
   return (
@@ -30,8 +32,8 @@ window.location.reload();
             <div className="top-content">
               <ul className="top-url d-flex align-items-center">
                 <div className="langu">
-                    <select onChange={(e) => aaa(e)} nme="cars" id="cars" >
-                      <option   value="1" >Lang</option>
+                    <select onChange={(e) => aaa(e)} value={getLanguage}  name="cars" id="cars" >
+                      {/* <option   value="1" >Lang</option> */}
                       <option   value="1" >English</option>
                       <option value="2" >العربية</option>
                     </select>

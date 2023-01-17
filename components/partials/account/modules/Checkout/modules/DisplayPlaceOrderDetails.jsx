@@ -14,11 +14,14 @@ import {
 } from "~/utilities/product-helper";
 import { getDeviceId, makePageUrl, osType } from "~/utilities/common-helpers";
 
-const DisplayPlaceOrderDetails = () => {
+const DisplayPlaceOrderDetails = ({address}) => {
+  console.log("..22...",address)
   const [loading1, setloading1] = useState(false);
   const Router = useRouter();
-  const [cartdata, setCartdata] = useState(null);
+  const [cartdata, setCartdata] = useState(null); 
   const [totalItems, setTotalItems] = useState(0);
+  const [getDefltAdd, setDefltAdd] = useState({});
+  // const [getAddressId, setAddressId] = useState('');
   const dispatch = useDispatch();
 
   const { user_details, isLoggedIn, access_token } = useSelector(
@@ -35,17 +38,38 @@ const DisplayPlaceOrderDetails = () => {
     used_wallet_amount_detail,
     selected_payment_option_by_user,
   } = useSelector((state) => state.cart);
-
+console.log("....**************...........",useSelector((state) => state.auth))
   useEffect(() => {
+    console.log(".....6.6.6.6......",cart)
     getCartItem()
     let isMounted = true;
     if (isMounted) {
+      let address_default = addressFilter(1, null);
+      console.log("..111..a...",address_default)
+      setDefltAdd(address_default)
+    }
+    else{
+      let address_default = addressFilter(1, null);
+      console.log("..222..a...",address_default)
+      setDefltAdd(address_default)
     }
     return () => {
       isMounted = false;
     };
 
   }, [cart?.product]);
+  const addressFilter = (is_default, address_id) => {
+    console.log("....333333.....",is_default)
+    console.log("....22222.....",address_id)
+    console.log("....111111.....",address)
+    let address_select = address.filter(
+      (address) =>
+        address.is_default === is_default || address.id === address_id
+    )[0];
+  
+    return address_select;
+
+  };
   const getCartItem = (payload) => {
      // alert("7777767")
     //alert("d")
@@ -120,9 +144,33 @@ const DisplayPlaceOrderDetails = () => {
     // return response;
   }
   const placeOrderNew = async () => {
+    console.log("....1111...1..",selectedAddress.id)
+    console.log("....1111...2..",getDefltAdd)
+    // console.log("....1111...3..",getDefltAdd.id)
+    if(selectedAddress.id == undefined && getDefltAdd == undefined){
+      notification["error"]({
+        message: "Error",
+        description: "Please Select Valid Address Detail",
+        duration: 1,
+      });
+      return;
+
+    }
+    var addId = ''
+    if(selectedAddress.id === undefined){
+    //  alert("1")
+      addId = getDefltAdd.id
+    //   setAddressId(getDefltAdd.id)
+    }
+    else{
+    //  alert("2")
+      addId = selectedAddress.id
+     // setAddressId(selectedAddress.id)
+    }
+  
   alert("checkout")
     if (!isLoggedIn) {
-      console.log("....1111.....")
+     
       notification["error"]({
         message: "Error",
         description: "Please login first",
@@ -130,7 +178,7 @@ const DisplayPlaceOrderDetails = () => {
       });
       return false;
     } else {
-      if (selectedAddress.id == undefined || selectedAddress.id == null) {
+      if (addId == undefined || addId == null) {
         console.log("....2222.....")
         notification["error"]({
           message: "Error",
@@ -140,17 +188,17 @@ const DisplayPlaceOrderDetails = () => {
         return;
       }
 
-      if (
-        selected_payment_option_by_user.payment_type == undefined ||
-        selected_payment_option_by_user.payment_type == null
-      ) {
-        notification["error"]({
-          message: "Error",
-          description: "Please Select Valid Payment type",
-          duration: 1,
-        });
-        return;
-      }
+      // if (
+      //   selected_payment_option_by_user.payment_type == undefined ||
+      //   selected_payment_option_by_user.payment_type == null
+      // ) {
+      //   notification["error"]({
+      //     message: "Error",
+      //     description: "Please Select Valid Payment type",
+      //     duration: 1,
+      //   });
+      //   return;
+      // }
 
       let cart_payload = cart.product
         ?.map((product) => {
@@ -252,8 +300,9 @@ b=parseInt(b,10);
         e_money_amt: used_wallet_amount_detail.wallet_used
           ? used_wallet_amount_detail.wallet_balance
           : used_wallet_amount_detail.wallet_used,
-        payment_type: selected_payment_option_by_user.payment_type,
-        address_id: selectedAddress.id,
+     //   payment_type: selected_payment_option_by_user.payment_type,
+     payment_type: "2",
+        address_id: addId,
         reward_id: "",
        // commission: 0,
         reward_amt: "",

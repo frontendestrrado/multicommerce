@@ -86,7 +86,7 @@ const DisplayPlatformVoucher = ({}) => {
     setApplyButtonLoading(true);
 
     let payload = {
-      lang_id: "",
+      lang_id: localStorage.getItem("langId"),
       access_token,
       coupon_code: platformVoucherText,
     };

@@ -4,8 +4,11 @@ import { getDeviceId, makePageUrl, osType } from "~/utilities/common-helpers";
 
 class Homeapi {
   async getHomedata(pathName) {
+    let userdata = localStorage.getItem("user");
+    let parsedata = JSON.parse(userdata);
+    let access_token = parsedata?.access_token;
     let payload = {
-      access_token: "",
+      access_token: access_token,
       lang_id:localStorage.getItem("langId"),
       device_id: getDeviceId,
       page_url: makePageUrl("/"),

@@ -137,7 +137,7 @@ const SearchHeader = () => {
         };
         // const products = ProductRepository.getRecords(queries);
         const products = ProductRepository.getSearchedProducts(queries);
-
+console.log(">........>.......>.........>...........>",products)
         products.then((result) => {
           setLoading(false);
           setResultItems(result.items);

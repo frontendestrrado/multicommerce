@@ -56,7 +56,7 @@ const VoucherModal = ({ seller_title, seller_product_detail }) => {
   const handleApplyVoucher = async () => {
     setApplyButtonLoading(true);
     let payload = {
-      lang_id: "",
+      lang_id: localStorage.getItem("langId"),
       access_token,
       coupon_code: voucherText,
       seller_id: seller_product_detail.seller_id,

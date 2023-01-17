@@ -681,7 +681,7 @@ console.log("..v..v..v.v.v.v.v.v.v.....2....",responseData)
               className="ps-btn ps-btn--black"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              {loading1 ? <CircularProgress size={20} /> : "Add to cart"}
+              {loading1 ? <CircularProgress size={20} /> : "Add to cart 10"}
             </a>
             <a className="ps-btn text-white" onClick={(e) => handleBuynow(e)}>
               {loading2 ? <CircularProgress size={20} /> : "Buy Now"}
@@ -749,7 +749,7 @@ console.log("..v..v..v.v.v.v.v.v.v.....2....",responseData)
               href="#"
               onClick={(e) => handleAddItemToCart(e)}
             >
-              Add to cart
+              Add to cart1
             </a>
             <div className="ps-product__actions">
               <a href="#" onClick={(e) => handleAddItemToWishlist(e)}>

@@ -26,11 +26,14 @@ const AuctionDefaultPage = () => {
   const [loading, setLoading] = useState(false);
 
   async function getProduct(pid) {
+    let userdata = localStorage.getItem("user");
+    let parsedata = JSON.parse(userdata);
+    let access_token = parsedata?.access_token;
     setLoading(true);
     let payload = {
       auction_id: pid,
-      lang_id: "",
-      access_token: "",
+      lang_id:localStorage.getItem("langId"),
+      access_token: access_token,
       device_id: getDeviceId,
       page_url: makePageUrl(router.asPath),
       os_type: "WEB",

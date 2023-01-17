@@ -53,7 +53,7 @@ class CartRepository {
     const response = await Repository.post(
       `${apibaseurl}/api/customer/coupon/platform`,
       {
-        lang_id: "",
+        lang_id: localStorage.getItem("langId"),
       }
     )
       .then((response) => {
