@@ -30,7 +30,7 @@ class ProductRepository {
         // category_id: params.category_id,
         // keyword: params.title_contains,
         access_token,
-        "lang_id": "1",
+        "lang_id": localStorage.getItem("langId"),
         "keyword": params.title_contains,
         "limit":10,
         "offset":1,

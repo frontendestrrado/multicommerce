@@ -33,6 +33,8 @@ const Login = (props) => {
   });
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
   const [serverCountry, setCountry] = useState([]);
+  const [getBusinessCatgeoryList, setBusinessCatgeoryList] = useState([]);
+  
   const {
     first_name,
     last_name,
@@ -115,8 +117,40 @@ console.log("....register submit......",values)
       duration: 500,
     });
   };
+  const getBusinessCatgeory = () => {
+
+
+      
+    const data = Axios.post(
+      `${apibaseurl}/api/customer/get-business-category`,
+      {
+  
+        
+          lang_id:localStorage.getItem("langId")      
+      })
+      .then((response) => response.data)
+      .then((data) => {
+        console.log("...setBusinessCatgeoryList.....",data.data.business_categories)
+   
+        if (data.httpcode == 400 && data.status == "error") {
+       
+        }
+        if (data.httpcode == 200 && data.status == "success") {
+          setBusinessCatgeoryList(data.data.business_categories)
+         
+          return;
+        }
+      })
+      .catch((error) => {
+        // notification["error"]({
+        //   message: error,
+        // });
+      });
+  }
   useEffect(() => {
     fetchCountry();
+    getBusinessCatgeory();
+  
   }, []);
   async function fetchCountry() {
     const countryDataFromServer = await AccountRepository.getCountry();

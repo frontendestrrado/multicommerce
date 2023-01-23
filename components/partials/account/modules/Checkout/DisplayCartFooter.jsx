@@ -126,14 +126,14 @@ const DisplayCartFooter = ({ cartdata, address }) => {
         )}
         {cartdata.total_tax && (
           <>
-            <div className="coin-bal">
+            {/* <div className="coin-bal">
               <div className="totl-price p-2">
                 <div className="insuf">Tax</div>
               </div>
             </div>
             <div className="coin-coun">
               {currencyHelperConvertToRinggit(cartdata.total_tax)}
-            </div>
+            </div> */}
           </>
         )}
         {/* <div className="vou-brdr"></div> */}

@@ -58,7 +58,7 @@ const featuredProduct = () => {
     {
 
       
-        lang_id:1,
+        lang_id:localStorage.getItem("langId"),
         category_id:"",
         subcategory_id:"",
         brand_id: "",
@@ -125,7 +125,7 @@ const newArrailval = () => {
          os_type: "web", 
          access_token: access_token,
           high_to_low: "0", 
-          lang_id: 1, 
+          lang_id: localStorage.getItem("langId"), 
           popular: "0",
           offset: 0
     
