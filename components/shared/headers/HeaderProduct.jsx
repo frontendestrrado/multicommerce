@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+// import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MenuCategories from "~/components/shared/headers/modules/MenuCategories";
 import SearchHeader from "~/components/shared/headers/modules/SearchHeader";
 import HeaderActions from "~/components/shared/headers/modules/HeaderActions";
@@ -9,12 +10,17 @@ import Link from "next/link";
 import Logo from "~/components/elements/common/Logo";
 
 const HeaderProduct = ({ product }) => {
+  const [getLanguage, setLanguage] = useState('');
   useEffect(() => {
     if (process.browser) {
       window.addEventListener("scroll", stickyHeader);
     }
   }, []);
-
+  const aaa = (e) => {
+    localStorage.setItem("langId",e.target.value);
+    setLanguage(e.target.value)
+    window.location.reload();
+    };
   return (
     <header className="header header--1 header--product" data-sticky="true" id="headerSticky">
 
@@ -24,8 +30,8 @@ const HeaderProduct = ({ product }) => {
             <div className="top-content">
               <ul className="top-url d-flex align-items-center">
                 <div className="langu">
-                    <select onChange={(e) => aaa(e)} nme="cars" id="cars" >
-                      <option   value="1" >Lang</option>
+                    <select onChange={(e) => aaa(e)} nme="cars" id="cars" value={getLanguage}>
+                      {/* <option   value="1" >Lang</option> */}
                       <option   value="1" >English</option>
                       <option value="2" >العربية</option>
                     </select>

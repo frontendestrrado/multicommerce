@@ -154,12 +154,12 @@ const FormChangeUserInformation = ({}) => {
     
     // userUpdateFormData.append("page_url", user.page_url);
     
-    
+    console.log("....zzzzz..update ..1.",userUpdateFormData)
 
     const response = await AccountRepository.editCustomerProfile(
       userUpdateFormData
     );
-console.log("....zzzzz..",response)
+console.log("....zzzzz..update ...",response)
     if (response.httpcode == 200) {
       message.success("Profile Updated Successfully!");
       message.success("Please Relogin to see latest changes!");

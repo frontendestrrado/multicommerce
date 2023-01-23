@@ -88,11 +88,12 @@ const FormEditAddress = ({ selectedAddress }) => {
   }
 
   useEffect(() => {
-  //  alert("1111")
-    if (auth?.isLoggedIn) {
-    //  alert("22222")
+  // alert("1111")
+  console.log("...auth...auth.....",auth)
+  //   if (auth?.isLoggedIn) {
+  //  alert("22222")
       fetchCountry();
-    }
+    // }
   }, []);
 
   const handleChange = (name) => (event) => {

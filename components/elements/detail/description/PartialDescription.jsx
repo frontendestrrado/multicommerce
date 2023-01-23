@@ -12,8 +12,8 @@ const PartialDescription = ({ product }) => {
     <div
       className="ps-document"
       dangerouslySetInnerHTML={createMarkup(
-        product?.product?.content
-          ? product?.product?.content
+        product?.product?.long_description
+          ? product?.product?.long_description
           : "No Description Added"
       )}
     ></div>

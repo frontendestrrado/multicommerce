@@ -244,6 +244,7 @@ const ModuleVarientShoppingActions = React.memo(
       //     duration: 1,
       //   });
       //   return false;
+      
       // } 
       else {
         setLoading1(true);
@@ -253,11 +254,14 @@ const ModuleVarientShoppingActions = React.memo(
         if (payload) {
           payload = {
             ...payload,
-            product_id: getProductIdFromDropDown,
+            product_id:  getProductIdFromDropDown,
+            // product_id:  product.product.product_id,
+            // prd_assign_id:getProductIdFromDropDown
           };
           const responseData =
             payload?.access_token &&
             (await ProductRepository.addProductToCart(payload));
+            console.log("..v..v..v.v.v.v.v.v.v.....6....",payload)
 console.log("..v..v..v.v.v.v.v.v.v.....2....",responseData)
           if (responseData && responseData.httpcode == "200") {
             let tmp = product;
@@ -271,7 +275,11 @@ console.log("..v..v..v.v.v.v.v.v.v.....2....",responseData)
               description: responseData.response,
               duration: 1,
             });
+            setTimeout(function () {
+              Router.push("/account/shopping-cart");
+            }, 200);
             return false;
+           
           } else {
             notification["error"]({
               message: "Error",
@@ -399,7 +407,8 @@ console.log("..v..v..v.v.v.v.v.v.v.....2....",responseData)
     const changeProduct = (e) => {
       //{obj.combination +","+ obj.actual_price+","+ obj.offer+","+ obj.offer_price+","+ obj.pro_id+","+ obj.stock}
       console.log(e.target.value)
-    var changeProductDetailArray = (e.target.value).split(',')
+    var changeProductDetailArray = (e.target.value).split('*')
+    console.log("....o.....0....0.....0.....0...",changeProductDetailArray)
     console.log(changeProductDetailArray.length)
      // setProduct(e.target.value);
       // const [getActualPrice, setActualPrice] = useState('');
@@ -521,7 +530,7 @@ console.log("..v..v..v.v.v.v.v.v.v.....2....",responseData)
                  value={getProduct}
                  >
                 {uniqueAssociativeProd.map((obj) => (
-          <option value={obj.combination +","+ obj.actual_price+","+ obj.offer+","+ obj.offer_price+","+ obj.pro_id+","+ obj.stock}>{obj.combination}</option>
+          <option value={obj.combination +"*"+ obj.actual_price+"*"+ obj.offer+"*"+ obj.offer_price+"*"+ obj.pro_id+"*"+ obj.stock}>{obj.combination}</option>
         ))}
 {/*         
                 uniqueAssociativeProd.map((obj, index) => { 

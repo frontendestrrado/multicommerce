@@ -414,14 +414,14 @@ console.log("....999....",responseData)
                         <div className="prdt-det" key={index}>
                           <div className="prdt-det-inner">
                             <div className="prdct-innr">
-                              <div className="chckbx-prdt-top">
+                              {/* <div className="chckbx-prdt-top">
                                 <input
                                   type="checkbox"
                                   className={`check-${product.brand_name} ps-product__checkbox`}
                                   name="ps-product__checkbox"
                                   value={product.cart_id}
                                 />
-                              </div>
+                              </div> */}
                               <div className="prdt-img">
                                 <div className="prdt-img-innr">
                                   <div className="prodct-imge">
@@ -574,17 +574,17 @@ console.log("....999....",responseData)
 
               <div className="crt-ftr">
                 <div className="plt-vou">
-                  <div className="plt-txt">Platform Voucher</div>
-                  <div className="plt-spc"></div>
-                  <div className="plt-vchrs">
+                  {/* <div className="plt-txt">Platform Voucher</div>
+                  <div className="plt-spc"></div> */}
+                  {/* <div className="plt-vchrs">
                     <DisplayPlatformVoucher />
-                  </div>
+                  </div> */}
                 </div>
-                <div className="vou-brdr"></div>
+                {/* <div className="vou-brdr"></div>
 
                 <DisplayWalletBalance />
 
-                <div className="vou-brdr"></div>
+                <div className="vou-brdr"></div> */}
                 <div className="vou-slct">
                   <div className="chckbx-prdt">
                     <input

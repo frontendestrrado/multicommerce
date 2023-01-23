@@ -45,7 +45,7 @@ const ShopItems = ({ columns = 4, pageSize = 12 }) => {
     };
 
     const responseData = await ProductRepository.getProducts(payload);
-
+console.log("..1..1.1..1.1.1..1.....",responseData)
     if (responseData) {
       setProductItems(responseData.items);
       setTotal(responseData.totalItems);
@@ -59,6 +59,9 @@ const ShopItems = ({ columns = 4, pageSize = 12 }) => {
   }
 
   async function getProductsbyfilters() {
+    let userdata = localStorage.getItem("user");
+    let parsedata = JSON.parse(userdata);
+    let access_token = parsedata?.access_token;
     setLoading(true);
     let payload = {
       // page: page === undefined ? 1 : page,
@@ -72,7 +75,7 @@ const ShopItems = ({ columns = 4, pageSize = 12 }) => {
   
  
       "lang_id":localStorage.getItem("langId"),
-      "access_token": "",
+      "access_token": access_token,
       "device_id": "54655656fdf",
       "page_url": "https://products/us/img",
       "os_type": "web",

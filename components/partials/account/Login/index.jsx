@@ -77,7 +77,7 @@ console.log("....register submit...finale...",values)
     }
   };
   const handleSubmit = async () => {
-    alert("register")
+  //  alert("register")
     let payload = {
       first_name: user.first_name,
       last_name: user.last_name,
@@ -481,7 +481,7 @@ document.getElementById('registerId1').style.display='none'
             </li>
           </ul> */}
           <div className="logcard_header_inner">
-              <div className="logcard_header_title"> Sign In </div>
+              <div className="logcard_header_title"> Sign Up </div>
           </div>
           <div className="ps-tab active" id="register">
             <div className="ps-form__content">

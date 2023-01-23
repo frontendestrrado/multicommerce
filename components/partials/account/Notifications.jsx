@@ -10,6 +10,7 @@ const Notifications = () => {
   const { user_notifications } = useSelector((state) => state.account);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
+    console.log("...user_notifications..",user_notifications)
     setLoading(true);
     access_token &&
       dispatch(getUserNotifications({ access_token: access_token }));

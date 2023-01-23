@@ -84,6 +84,9 @@ const ModuleDetailActionsMobile = ({ product }) => {
           responseData.status,
           responseData.response
         );
+        setTimeout(function () {
+          Router.push("/account/shopping-cart");
+        }, 200);
       } else if (responseData && responseData.httpcode == 400) {
         let error = responseData.errors;
         for (const [key, value] of Object.entries(error)) {

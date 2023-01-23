@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { notification } from "antd";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import Axios from "axios";
 import { useSelector } from "react-redux";
 import ProductRepository from "~/repositories/ProductRepository";
 import Repository, { baseUrl, serializeQuery, apibaseurl } from "~/repositories/Repository";
-import { clearCartSuccess, getCart } from "~/store/cart/action";
+import { clearCartSuccess, getCart, clearCart } from "~/store/cart/action";
 import {
   returnTotalCommission,
   returnTotalOfCartTaxValue,
@@ -18,6 +20,9 @@ const DisplayPlaceOrderDetails = ({address}) => {
   console.log("..22...",address)
   const [loading1, setloading1] = useState(false);
   const Router = useRouter();
+  const [order, setOrder] = useState("");
+  const [open, setOpen] = useState(false);
+  const closeModal = () => setOpen(false);
   const [cartdata, setCartdata] = useState(null); 
   const [totalItems, setTotalItems] = useState(0);
   const [getDefltAdd, setDefltAdd] = useState({});
@@ -70,6 +75,11 @@ console.log("....**************...........",useSelector((state) => state.auth))
     return address_select;
 
   };
+  const goToHome = () => {
+  //  alert("d")
+    Router.push("/");
+
+  }
   const getCartItem = (payload) => {
      // alert("7777767")
     //alert("d")
@@ -143,6 +153,19 @@ console.log("....**************...........",useSelector((state) => state.auth))
     //   // .catch((error) => ({ error: JSON.stringify(error) }));
     // return response;
   }
+
+  // const PopupExample = () => (
+  //   <Popup trigger={<button>Trigger</button>} position="top left">
+  //     {close => (
+  //       <div>
+  //         Content here
+  //         <a className="close" onClick={close}>
+  //           &times;
+  //         </a>
+  //       </div>
+  //     )}
+  //   </Popup>
+  // );
   const placeOrderNew = async () => {
     console.log("....1111...1..",selectedAddress.id)
     console.log("....1111...2..",getDefltAdd)
@@ -168,7 +191,7 @@ console.log("....**************...........",useSelector((state) => state.auth))
      // setAddressId(selectedAddress.id)
     }
   
-  alert("checkout")
+  //alert("checkout")
     if (!isLoggedIn) {
      
       notification["error"]({
@@ -334,15 +357,20 @@ b=parseInt(b,10);
       if (responseData && responseData.httpcode === 200) {
         setloading1(false);
         localStorage.setItem("order", responseData.data.order_id);
-        notification["success"]({
-          message: "Success",
-          description: "Congrats, order successfully placed",
-          duration: 1,
-        });
+        // notification["success"]({
+        //   message: "Success",
+        //   description: "Congrats, order successfully placed",
+        //   duration: 1,
+        // });
         setTimeout(() => {
           dispatch(clearCartSuccess());
         }, 1000);
-        Router.push("/account/thankyou");
+        let orderid = localStorage.getItem("order");
+        console.log("--orderID---",orderid)
+        setOrder(orderid);
+        orderid && dispatch(clearCart());
+        setOpen(true)
+       // Router.push("/account/thankyou");
       } else {
         setloading1(false);
 
@@ -374,6 +402,35 @@ b=parseInt(b,10);
           </div>
         </div>
       </div>
+      {/* <div>
+    <PopupExample />
+    <div id="popup-root" />
+  </div> */}
+
+
+  <div className="popupborder">
+  <Popup open={open} modal>
+    <div>
+    <span className="pop-confirm"> Thank you for placing order. Your order id is {order} on the way.</span>
+
+    </div>
+    <div>
+    <span className="pop-conf"> we will notify you regarding status of the order.  </span>
+    </div>
+   
+    <a
+              className="ps-btn ps-btn--yellow lastpopup"
+              onClick={goToHome}>
+            
+            Continue Shopping      
+                  </a>
+    {/* <button  onClick={goToHome}> </button> */}
+  </Popup>
+    
+  </div>
+
+
+
     </div>
   );
 };

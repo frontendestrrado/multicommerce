@@ -145,9 +145,9 @@ const ModuleDetailShoppingActions = React.memo(
             description: responseData.response,
             duration: 1,
           });
-          // setTimeout(function () {
-          //   Router.push("/account/shopping-cart");
-          // }, 200);
+          setTimeout(function () {
+            Router.push("/account/shopping-cart");
+          }, 200);
         } else {
           notification["error"]({
             message: "Error",

@@ -3748,3 +3748,71 @@ div.ps-block--user-account > i.icon-user:hover {
   }
   
 }
+
+/* ----popup----- */
+.modal {
+  font-size: 12px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+.pop-confirm{
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+}
+.pop-conf{
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  display: block;
+  color: #333;
+}
+
+.popup-content {
+  padding: 40px !important; 
+  /* margin: auto;
+  background: #fff;
+  /* width: 65%; */
+  /* padding: 5px; */
+  /* border: 1px solid #d7d7d7; */ 
+}
+.lastpopup{
+
+  text-align: center;
+    /* margin: 0 auto; */
+    display: block;
+    margin-top: 1.4rem;
+}
+.popupborder{
+  padding: 40px;
+}
