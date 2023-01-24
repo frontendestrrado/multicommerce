@@ -41,8 +41,9 @@ const Login = (props) => {
     email,
     phone_number,
     password,
+    business_category,
     password_confirmation,
-    country_code
+    country_code,
   } = user;
   const [rememberMe, setRemember] = useState(false);
   const [userOtp, setUserOtp] = useState("");
@@ -88,6 +89,8 @@ console.log("....register submit...finale...",values)
       email: user.email,
       password: user.password,
       password_confirmation: user.password_confirmation,
+      business_category: user.business_category,
+      
     };
     console.log("....register submit.. payload....",payload)
     try {
@@ -364,6 +367,7 @@ document.getElementById('registerId1').style.display='none'
   };
 
   const handleSelectCountryCode = (name) => (data) => {
+    console.log("...handleSelectCountryCode...",data,name)
     setUser({ ...user, [name]: data });
     if (name == "country_code" && data !== user.country_code) {
       setOtpButton(initStateOtpButton);
@@ -616,6 +620,36 @@ document.getElementById('registerId1').style.display='none'
                   },
                 ]}
               >
+                <Form.Item
+                    name={["business_category", "countrycode"]}
+                    noStyle
+                    rules={[
+                      { required: true, message: "Business category is required" },
+                    ]}
+                  >
+                    <Select
+                      showSearch
+                      style={{ width: "100%" }}
+                      placeholder="Business Catgeory"
+                      optionFilterProp="children"
+                      onChange={handleSelectCountryCode("business_category")}
+                      filterOption={(input, option) =>
+                        option.children
+                          .toString()
+                          .toLowerCase()
+                          .indexOf(input.toString().toLowerCase()) >= 0
+                      }
+                    >
+                      {getBusinessCatgeoryList?.map((getBusinessCatgeoryList, index) => (
+                        <Option
+                          value={`${getBusinessCatgeoryList.id}`}
+                          key={index}
+                        >
+                          {getBusinessCatgeoryList.name}
+                        </Option>
+                      ))}
+                    </Select>
+                  </Form.Item>
                 <Input.Group compact>
                   <Form.Item
                     name={["phone_number", "countrycode"]}
