@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import GoogleMap from "./googleMap";
 import {
   DatePicker,
   Empty,
@@ -174,6 +175,7 @@ console.log("..addressUpdateFormData..addressUpdateFormData..",addressUpdateForm
   return (
     <>
       <div className="ps-form__content mt-5">
+       
         <Form
           form={form}
           className="ps-form--account-setting"
@@ -208,7 +210,9 @@ console.log("..addressUpdateFormData..addressUpdateFormData..",addressUpdateForm
               </div>
             </div>
           </div>
-
+          
+              <GoogleMap />
+           
           <Form.Item
             name="name"
             rules={[

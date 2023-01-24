@@ -90,6 +90,14 @@ const ModuleVarientShoppingActions = React.memo(
       
       setProductIdFromDropDown(arrayVals[0].pro_id)
 
+      setProductName(arrayVals[0].combination)
+      setActualPrice(arrayVals[0].actual_price)
+      setOffer(arrayVals[0].offer)
+      setOfferPrice(arrayVals[0].offer_price)
+     
+
+
+
     }, [product]);
 
     useEffect(() => {
