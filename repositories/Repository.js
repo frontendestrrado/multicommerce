@@ -3,7 +3,7 @@ const baseDomain = "https://beta.apinouthemes.com"; // API for products
 export const basePostUrl = "https://beta.apinouthemes.com"; // API for post
 export const baseStoreURL = "https://beta.apinouthemes.com"; // API for vendor(store)
 
-let apibaseurlCustom = "https://qa-bigbasket.estrradoweb.com";
+let apibaseurlCustom = "https://multicommerce.synuos.com";
 let basePath = "https://dev-kangtao.vercel.app";
 if (typeof window !== "undefined") {
   if (window.location.hostname == "uat-kangtao.vercel.app") {
